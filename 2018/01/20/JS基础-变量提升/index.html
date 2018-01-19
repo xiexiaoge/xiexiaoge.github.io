@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="�小哥">
+    
+    <meta name="description" content="随笔">
+    
+    
+    
+    
+    
+    
+    <title>JS基础-变量提升 | 小哥</title>
+    <link href=”xiexiaoge.github.io“ rel=”prefetch” />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <script src="//cdn1.lncld.net/static/js/3.4.2/av-min.js"></script>
+    <script>
+      AV.init({
+        appId: 'KPMBRT3j5PYNcM5WWn5BeoC9-gzGzoHsz',
+        appKey: 'RsXJzBDQAjDn7RcthCxQEDLd'
+      })
+    </script>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/avatar.jpg'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+</head>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <div class="gal-menu gal-dropdown">
+    <div class="circle" id="gal">
+        <div class="ring">
+            <a href="xiexiaoge.github.io" class="menuItem" style="left: 50%; top: 15%;">首页</a>
+            
+            <a class="menuItem" style="left: 80.3109%; top: 32.5%;">下一页</a>
+            
+            <a href="/archives" class="menuItem" style="left: 80.3109%; top: 67.5%;">归档</a>
+            <a href="/about" class="menuItem" style="left: 50%; top: 85%;">关于</a>
+            <a href="/message" class="menuItem" style="left: 19.6891%; top: 67.5%;">留言板</a>
+            
+            <a class="menuItem" style="left: 19.6891%; top: 32.5%;">上一页</a>
+            
+        </div>
+        <audio id="audio" src="/imgs/oni.mp3"></audio>
+    </div>
+</div>
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target=".bs-navbar-collapse"
+                    aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="xiexiaoge.github.io">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">小哥</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class="">
+                    <a href="/">
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-list"></i>分类
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/categories/Personal-notes/">Personal notes</a>
+                        </li>
+                        
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>标签
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/javascript-basis/">javascript-basis</a>
+                        </li>
+                        
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/about">
+                        <i class="fa fa-user"></i>关于我
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="/">小哥</a>
+        >
+        <span>JS基础-变量提升</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2018/01/20/JS基础-变量提升/">JS基础-变量提升</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/javascript-basis/">javascript-basis</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2018-01-20
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-eye"></i>
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2018/01/20/JS基础-变量提升/">JS基础-变量提升</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2018-01-20
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/javascript-basis/">javascript-basis</a>
+                
+                
+                
+                <i class="fa fa-eye"></i>
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <p></p><h2>变量提升</h2><p></p>
+<blockquote>
+<p>在<code>当前作用域</code>中js代码自上而下执行之前,浏览器首先会把所有带<code>var/function</code>关键字的进行提前声明或者定义<br>声明(declare):  var num; 在当前作用域中定义一个名字<br>定义(defined): num=12;把声明的名字赋一个值</p>
+<p> <strong>带 var 关键字的只是提前的声明一下; 带function关键字的在变量提升阶段把声明和定义都完成了</strong></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">example <span class="number">1</span></span><br><span class="line"> <span class="keyword">var</span> num =<span class="number">13</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a)<span class="comment">//undefined</span></span><br><span class="line">  <span class="keyword">var</span> a=<span class="number">10</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a)<span class="comment">//10</span></span><br><span class="line">&#125;</span><br><span class="line">fn();</span><br><span class="line"><span class="built_in">console</span>.log(num);<span class="comment">//13</span></span><br></pre></td></tr></table></figure>
+<p></p><h4>定义变量的时候带 var 和不带var 的区别?</h4><p></p>
+<blockquote>
+<p>[带var]<br>在当前作用域中声明了一个变量,如果当前是全局作用域,也相当于给全局作用域设置了一个属性叫做a<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">example <span class="number">1</span></span><br><span class="line">  <span class="built_in">console</span>.log(a)  报错 a is not defined</span><br><span class="line">  a=<span class="number">12</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a) <span class="comment">//12</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">window</span>.a)<span class="comment">// 12</span></span><br></pre></td></tr></table></figure></p>
+<p> [不带var]<br> 在全局作用域中,如果不带var,仅仅是给全局对象设置了一个新的属性名(把window.省略了)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">example <span class="number">2</span> </span><br><span class="line">   <span class="built_in">console</span>.log(a) <span class="comment">//undefined</span></span><br><span class="line">   <span class="keyword">var</span> a =<span class="number">12</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a) <span class="comment">//12</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">window</span>.a)<span class="comment">// 12</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p><strong>心得: 以后项目中,如果是为了创建变量,最好不要省略var,这样会更加严谨一些</strong></p>
+<p></p><h4>作用域链</h4><p></p>
+<blockquote>
+<p>函数执行形成一个私有的作用域(可以保护私有变量),进入到私有作用域中,首先变量提升(声明过的变量是私有的),接下来代码执行</p>
+<ol>
+<li><p>执行的时候遇到一个变量,如果这个变量是私有的,那么按照私有处理即可</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//=&gt;[私有作用域] </span></span><br><span class="line">    <span class="comment">//变量提升 var a;(私有变量)</span></span><br><span class="line">    <span class="built_in">console</span>.log(a);<span class="comment">//undefined</span></span><br><span class="line">    <span class="keyword">var</span> a=<span class="number">12</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);<span class="comment">//12</span></span><br><span class="line">&#125;;</span><br><span class="line">fn();</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">// a is not defined</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果当前这个变量不是私有的,我们需要向它的上级作用域进行查找,上级如果也没有,则继续向上查找,一直找到window全局作用域为止,我们把这种查找机制叫做<code>作用域链</code><br>1) 如果上级作用域有,操作的都是上级作用域中的变量(假如我们在当前作用域把值改了,相当于把上级作用域中的这个值给修改了)<br>2) 如果上级作用域没有这个变量(找到window也没有):<br>变量=值:相当于给window添加一个属性 以后在操作window下就有了<br><code>console.log(变量)</code>: 想要输出这个变量,如果这个变量没有的,所以会报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function fn()&#123;</span><br><span class="line">    //console.log(a);//a is not defined</span><br><span class="line">     a=12;</span><br><span class="line">    console.log(a);//12</span><br><span class="line">&#125;;</span><br><span class="line">fn();</span><br><span class="line">console.log(a);//12</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<p></p><h4>综合例子</h4><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">example <span class="number">1</span></span><br><span class="line"><span class="comment">//=&gt;变量提升 var x; var y; fn=AAAFFF111;</span></span><br><span class="line"><span class="built_in">console</span>.log(x, y);<span class="comment">//undefined undefined</span></span><br><span class="line"><span class="keyword">var</span> x=<span class="number">10</span>,y=<span class="number">20</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//=&gt;[私有作用域]</span></span><br><span class="line">    <span class="comment">//=&gt;变量提升:var x;(x是私有变量)</span></span><br><span class="line">    <span class="built_in">console</span>.log(x, y);<span class="comment">//x undefined ,y 20</span></span><br><span class="line">    <span class="keyword">var</span> x=y=<span class="number">100</span>; <span class="comment">// window.y=100</span></span><br><span class="line">    <span class="built_in">console</span>.log(x, y);<span class="comment">//x 100 y 100</span></span><br><span class="line">&#125;</span><br><span class="line">fn();</span><br><span class="line"><span class="built_in">console</span>.log(x,y);  <span class="comment">//10 100</span></span><br></pre></td></tr></table></figure><p></p>
+<blockquote>
+<p>注意: 这里的 var x=y=100;=&gt;var x=100 ; y=100; 只有x是一个变量,y只是window下面的一个属性, 因为从右到左赋值</p>
+</blockquote>
+<p></p><h4>只对等号左边的进行变量提升</h4><p></p>
+<blockquote>
+<p>只对等号左边进行变量提升,右边是值,不会提前声明什么的;<br>我们创建函数的时候,可以使用函数表达式的方式:</p>
+<ol>
+<li>因为只能对等号左边的进行变量提升,所以变量提升完成后,当前只是声明了,没有定义,想要执行函数,<code>只能放在赋值的代码之后</code>(放在前面执行相当于undefined执行,会报错)</li>
+<li>这样让代码逻辑更加严谨,以后想要知道一个执行的函数做了什么功能,只需要向上查找定义的部分即可(不会存在定义的代码在执行下面的情况)</li>
+</ol>
+</blockquote>
+<p></p><h4>实名函数</h4><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn=<span class="function"><span class="keyword">function</span>  <span class="title">sum</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(sum);<span class="comment">//-&gt;函数本身</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee);<span class="comment">//-&gt;函数本身</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//sum()=&gt;报错 sum is not defined</span></span><br><span class="line">fn();</span><br></pre></td></tr></table></figure><p></p>
+<p></p><h4>不管条件是否成立都要进行变量提升</h4><p></p>
+<blockquote>
+<p>不管条件是否成立,判断体中出现的var/function都会进行变量提升,但是在最新版本浏览器中,function声明的变量只能提前声明不能定义了(前提:函数是在判断题体中)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(num, fn);<span class="comment">//undefined,undefined</span></span><br><span class="line"><span class="keyword">if</span>(<span class="number">1</span>!==<span class="number">1</span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> num=<span class="number">12</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码执行的条件判断<br>[条件不成立]<br>进入不到判断体中,赋值的代码执行不了,此时之前声明的变量或者函数依然是undefined</p>
+<p>[条件成立]<br>进入条件判断体中的第一件事情不是代码执行,而是把之前变量提升没有定义的函数首先定义了(进入到判断体中函数就定义了;迎合ES6中的块级作用域)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(num, fn);<span class="comment">//undefined,undefined</span></span><br><span class="line"><span class="keyword">if</span>(<span class="number">1</span>==<span class="number">1</span>)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(num);<span class="comment">//undefined</span></span><br><span class="line">    <span class="built_in">console</span>.log(fn);<span class="comment">//函数体本身</span></span><br><span class="line">    <span class="keyword">var</span> num=<span class="number">12</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> <span class="built_in">console</span>.log(fn);<span class="comment">//函数体本身</span></span><br></pre></td></tr></table></figure></p>
+<p>老版本浏览器不是这样处理的: 不管条件是否成立,都要进行变量提升(和新版本不一样的地方,新版本function只是声明,老版本function依然是声明+定义)</p>
+</blockquote>
+<p></p><h4>关于重名的处理</h4><p></p>
+<blockquote>
+<p>在变量提升阶段,如果名字重复了,不会重新的进行声明,但是会重新的进行定义(后面赋的值会把前面赋的值替换掉)</p>
+</blockquote>
+<p></p><h4>特殊变量提升的情况</h4><p></p>
+<blockquote>
+<ol>
+<li>= 右边不进行变量提升</li>
+<li>自执行函数不进行变量提升</li>
+<li>匿名函数当作参数的时候不进行变量提升</li>
+<li>函数执行<code>return</code>后面的代码不执行但是需要变量提升,<code>return</code>出的代码执行但是不进行变量提升</li>
+<li>if判断中的变量提升,不管条件是否成立都进行变量提升,新版本中var跟function都是只声明不定义,代码执行的时候,条件一旦成立,先给函数赋值,然后代码执行</li>
+<li>let 和const 定义变量时,没有变量提升</li>
+</ol>
+</blockquote>
+
+    </div>
+</article>
+
+
+<div id="comments-template"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script>
+	if(!window.commentConfig) {
+      window.commentConfig = {}
+      window.commentConfig.title = 'JS基础-变量提升'
+    }
+</script>
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get"
+              action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            �小哥
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="/imgs/avatar.jpg" width="140" height="140"
+                 alt="个人头像" class="author-image">
+            <p class="author-description"><p>随笔</p>
+</p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    <aside id="sidebar-hot_posts">
+    <div class="panel panel-gal hot hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-fire"></i>
+            最热文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/20/JS基础-变量提升/">JS基础-变量提升</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/">JS基础-数据类型的核心操作原理</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/20/JS基础-变量提升/">JS基础-变量提升</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/">JS基础-数据类型的核心操作原理</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+                <li class="">
+                    <a href="/2018/01/20/JS基础-变量提升/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                <li class="">
+                    <a href="/2018/01/20/JS基础-变量提升/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                <li class="">
+                    <a href="/2018/01/20/JS基础-变量提升/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/javascript-basis/" style="font-size: 15.97205025427761px;" class="tag-cloud-link">javascript-basis</a>
+    
+</div>
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="http://kdays.net/days/" target="_blank">KDays Forum</a>
+    </li>
+    
+    <li>
+        <a href="http://www.gal123.com/" target="_blank">绅士导航♂</a>
+    </li>
+    
+    <li>
+        <a href="http://www.moe123.com/" target="_blank">萌导航</a>
+    </li>
+    
+</div>
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/xiexiaoge/" target="_blank">Github</a>
+    </li>
+    
+    <li>
+        <a href="https://www.zhihu.com" target="_blank">知乎</a>
+    </li>
+    
+</div>
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 �小哥 Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+<script src="/js/oni.js"></script>
+
+
+<script>
+    window.hot_posts_count = '10'
+    // window.use_leancloud = 'true'
+</script>
+<script src="/js/comment/leancloud.js"></script>
+
+
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    if(window.commentConfig) {
+      window.commentConfig.owner = 'xiexiaoge'
+      window.commentConfig.repo = 'Blogcomment'
+      window.commentConfig.client_id = 'd699fd54898337e1d4ad'
+      window.commentConfig.client_secret = '17d2e5400ac2a47478689dccc1a0e22ef8cefe36'
+      window.commentConfig.redirect_uri = 'null'
+    } else {
+      window.commentConfig = {
+        owner: 'xiexiaoge',
+        repo: 'Blogcomment',
+        client_id: 'd699fd54898337e1d4ad',
+        client_secret: '17d2e5400ac2a47478689dccc1a0e22ef8cefe36',
+        redirect_uri: 'null'
+      }
+    }
+</script>
+<script src="/js/comment/gitment.js"></script>
+
+</html>
