@@ -12,7 +12,7 @@
     
     
     
-    <title>JS基础-数据类型的核心操作原理 | 小哥</title>
+    <title>JS基础-面向对象 | 小哥</title>
     <link href=”xiexiaoge.github.io“ rel=”prefetch” />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -197,13 +197,13 @@
         <i class="fa fa-home"></i>
         <a href="/">小哥</a>
         >
-        <span>JS基础-数据类型的核心操作原理</span>
+        <span>JS基础-面向对象</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2018/01/19/JS基础-数据类型的核心操作原理/">JS基础-数据类型的核心操作原理</a>
+                <a href="/2018/01/21/JS基础-面向对象/">JS基础-面向对象</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -216,7 +216,7 @@
             </span>
             
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2018-01-19
+                <i class="fa fa-calendar"></i> 2018-01-21
             </span>
             
             <span class="label label-gal">
@@ -230,11 +230,11 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/">JS基础-数据类型的核心操作原理</a>
+                    <a href="/2018/01/21/JS基础-面向对象/">JS基础-面向对象</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2018-01-19
+                <i class="fa fa-calendar"></i> 2018-01-21
             </p>
             <p>
                 
@@ -250,65 +250,90 @@
         </center>
     </div>
     <div class="content-article">
-        <p></p><h4>js中的数据类型</h4><p></p>
-<blockquote>
-<ul>
-<li>基本数据类型(值类型)<ul>
-<li>number</li>
-<li>string</li>
-<li>boolean</li>
-<li>null</li>
-<li>undefined</li>
-</ul>
-</li>
-<li>引用数据类型<ul>
-<li>对象<ul>
-<li>{} 普通对象</li>
-<li>[] 数组</li>
-<li>/^$/ 正则</li>
-</ul>
-</li>
-<li>函数 <ul>
-<li>类</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<p>JS代码运行在浏览器中,是因为浏览器给我们提供了一个供js代码执行的环境-&gt;<code>全局作用域(window/global)</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">example <span class="number">1</span></span><br><span class="line"> <span class="keyword">let</span> a= <span class="number">12</span>;<span class="comment">// 只是给变量a 赋值 让a 和12建立链接关系</span></span><br><span class="line"> <span class="keyword">let</span> b= a; <span class="comment">//b-&gt;a=12 </span></span><br><span class="line"> b=<span class="number">13</span>;  <span class="comment">//b=13</span></span><br><span class="line"> <span class="built_in">console</span>.log(a); </span><br><span class="line">***<span class="number">12</span>***</span><br><span class="line">个人解析:只是把a的值赋值给b ,a和b还是独立的互不影响</span><br><span class="line"></span><br><span class="line">example <span class="number">2</span></span><br><span class="line"> <span class="keyword">let</span> o=&#123;<span class="attr">name</span>:<span class="string">"小哥"</span>&#125;;<span class="comment">//-&gt;o开辟了一个内存空间(aaafff111)</span></span><br><span class="line"> <span class="keyword">let</span> p=o;<span class="comment">// -&gt; p=o-&gt;(aaafff111)</span></span><br><span class="line"> p.name=<span class="string">"小明"</span>;<span class="comment">// -&gt; aaafff111空间的name="小明"</span></span><br><span class="line"> <span class="built_in">console</span>.log(o.name);<span class="comment">// o.name-&gt;aaafff111.name-&gt;小明</span></span><br><span class="line">***小明***</span><br><span class="line">个人解析:因为引用数据类型,所以o,p指向地址aaafff111,p.name是堆内存中的name(后面的o,p都看成aaafff111去理解)</span><br><span class="line"></span><br><span class="line">example <span class="number">3</span></span><br><span class="line">  <span class="keyword">let</span> m=&#123;<span class="attr">name</span>:<span class="string">"小哥"</span>&#125;;<span class="comment">//-&gt;o开辟了一个堆内存(aaafff111)</span></span><br><span class="line">  <span class="keyword">let</span> n=m;<span class="comment">//n=m-&gt;aaafff111</span></span><br><span class="line">  n=&#123;<span class="attr">name</span>:<span class="string">"小明"</span>&#125;;<span class="comment">// 这里的n 重新指向了新的地址,也就是n开辟了一个堆内存, 以后的 m和n就是独立的</span></span><br><span class="line">  <span class="built_in">console</span>.log(m.name)</span><br><span class="line">个人解析:因为n重新指向了新的地址,所以以后的n和m都是独立的</span><br><span class="line">***小哥***</span><br></pre></td></tr></table></figure>
-<p></p><h4>值类型</h4><p></p>
-<blockquote>
-<p>直接按值操作,例如 let a=12;直接把12这个值赋值给变量a(让a变量和12这个值建立了链接关系)</p>
-</blockquote>
-<p></p><h4>对象数据类型</h4><p></p>
-<blockquote>
-<p>在JS中遇到对象,会严格按照如下的步骤操作:</p>
-<ol>
-<li>浏览器为起开辟一个新的内存空间,为了方便后期可以找到这个空间,浏览器给空间分配一个16进行的地址(<a href="https://www.cnblogs.com/lvmylife/p/7158819.html" target="_blank" rel="noopener">堆内存</a>)</li>
-<li>按照一定顺序,分别把对象键值对存储到内存空间中</li>
-<li>把开辟内存的地址赋值给变量(或者其它的东西),以后变量就可以通过地址找到内存空间,然后进行一些操作</li>
-</ol>
-</blockquote>
-<p></p><h4>函数的操作</h4><p></p>
-<blockquote>
-<ol>
-<li>创建函数<ol>
-<li>开辟一个新的内存空间(为其分配一个16进制的地址)</li>
-<li>把函数体中编写的js代码当作 <code>字符串</code> 存放到空间中(函数值创建不执行没有意义)</li>
-<li>把分配的地址赋值给声明的函数名</li>
-</ol>
-</li>
-<li>执行函数 目的:执行函数体中的代码<ol>
-<li>函数执行的时候,浏览器会形成一个新的私有作用域(只能执行函数体中的代码)供函数体中的代码执行</li>
-<li>执行代码之前,先把创建函数存储的那些字符串变为真正的js表达式,按照从上到下的顺序在私有作用域下执行</li>
-</ol>
-</li>
-</ol>
-<p><strong>一个函数可以被执行N次,每一次执行相互之间互不干扰</strong></p>
-</blockquote>
+        <h4>面向对象(oop)</h4>
 
+<ul>
+<li>面向对象是编程思想</li>
+<li>HTML和CSS是标记语言不是编程语言,没有所谓的面向对象编程</li>
+<li>LESS和SASS属于CSS预编译语言,把CSS编程编程语言(面向对对象)</li>
+</ul>
+<p><code>对象,类,实例</code></p>
+<ul>
+<li>对象 : 编程语言中的对象是一个泛指,万物皆对象(所要研究学习以及使用的都是对象)</li>
+<li>类 : 对象的具体细分(按照对象或者特性细分为一些类别)</li>
+<li>实例 : 某一类中具体的事物</li>
+</ul>
+<h4>实际生活中</h4>
+
+<blockquote>
+<p>自然界中万物皆对象,我们为了认知自然界,我们会把自然界中的事物按照特征进行分类,例如:</p>
+<ul>
+<li>动物类<ul>
+<li>人类<ul>
+<li>正常人类</li>
+<li>程序猿类</li>
+</ul>
+</li>
+<li>爬行动物类</li>
+</ul>
+</li>
+<li>植物类</li>
+<li>微生物类</li>
+<li>…<br>每个程序员就是程序猿类别中的一个实例</li>
+</ul>
+<p>JS本身就是基于面向对象创造出来的语言(所以它是面向对象编程),我们想要学习JS,首先也是给其进行分类,拿出某一勒种的实例,进行学习和研究</p>
+</blockquote>
+<h4>JS中常用的内置类</h4>
+
+<ul>
+<li>关于数据类型的<ul>
+<li>Number : 每一个数字或者NaN是它的一个实例</li>
+<li>String : 字符串类</li>
+<li>Boolean : 布尔类</li>
+<li>Undefined / Null :  浏览器屏蔽了我们操作Null或者Undefined这个类</li>
+<li>Object : 对象类,每一个对象数据类型都是它的实例<ul>
+<li>Array : 数组类</li>
+<li>RegExp : 正则类</li>
+<li>Date : 日期类</li>
+<li>…</li>
+</ul>
+</li>
+<li>Function : 函数类,每一个函数都是它的一个实例</li>
+</ul>
+</li>
+<li>关于元素对象和元素集合的<ul>
+<li>HTMLCollection : 元素集合类</li>
+<li>NodeList : 节点集合类</li>
+<li>HTMLElement HTML类</li>
+<li>Element 标签类</li>
+<li>Node 节点类</li>
+<li>EventTarget 事件类</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//=&gt;元素集合类</span></span><br><span class="line">	getElementsByTagName</span><br><span class="line">	getElementsByClassName</span><br><span class="line">	querySelectorAll</span><br><span class="line"></span><br><span class="line"><span class="comment">//=&gt;节点集合类</span></span><br><span class="line">    getELementsByName</span><br><span class="line">    childNodes</span><br></pre></td></tr></table></figure>
+<h4>学习面对对象对于小白的意义</h4>
+
+<blockquote>
+<p>研究数组:</p>
+<ol>
+<li>创建一个数组类的实例,研究其基础语法和结构</li>
+<li>如果想要研究数据具备的功能方法,我们只需要看Array/Object这些类上都赋予了它什么样的方法</li>
+</ol>
+</blockquote>
+<h4>document.getElementById它的上下文只能是document,其它不不可以?</h4>
+
+<ul>
+<li>因为getElementById这个方法只有Document这个类才有,其它类没有,所以只有document这个作为Document的实例才能使用这个方法 </li>
+</ul>
+<h4>基于面向对象创建数据值</h4>
+
+<h4>引用数据类型</h4>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//=&gt;字面量创建方式</span></span><br><span class="line">  <span class="keyword">var</span> ary =[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="comment">// 基于面向对象(构造函数)方式创建一个数组</span></span><br><span class="line">  <span class="keyword">var</span> ary = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"> </span><br><span class="line"> 两种创建方式在核心意义上没有差别,都是创建<span class="built_in">Array</span>这个类的一个实例,但是语法上是有去别的</span><br><span class="line"> <span class="number">1.</span> 字面量创建方式传递进来什么,都是给数组每一项加入的内容</span><br><span class="line"> <span class="number">2.</span> 构造函数创建方式</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">10</span>); 创建一个长度为<span class="number">10</span>的数组,每一项都是空</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"10"</span>);如果只传递一个实参,并且实参不是数组,相当于把当前值作为一个数组的第一项存起来</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>):如果传递多个实参,不设置长度,而是把传递的内容当作数组中的每一项存储起来</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj=&#123;<span class="attr">name</span>:<span class="string">"小哥"</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> obj=<span class="keyword">new</span> <span class="built_in">Object</span>();<span class="comment">//=&gt;一般只用于创建空对象,如果需要增加键值对,创建完成后自己依次添加即可</span></span><br></pre></td></tr></table></figure>
+<h4>基本数据类型</h4>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var num =12 ;//=&gt;字面量创建出来的是一个基本数据类型值(但是也是Number的一个实例,可以调取Number赋予它的方法)</span><br><span class="line">typeOf num //=&gt; &quot;number&quot;</span><br><span class="line"></span><br><span class="line">var num = new Number(12);//=&gt;构造函数方式创建出来的也是Number的一个实例(也可以使用Number赋予它的方法),但是获取的结果是对象数据类型的</span><br><span class="line">typeOf num //=&gt; &quot;object&quot;</span><br></pre></td></tr></table></figure>
     </div>
 </article>
 
@@ -318,7 +343,7 @@
 <script>
 	if(!window.commentConfig) {
       window.commentConfig = {}
-      window.commentConfig.title = 'JS基础-数据类型的核心操作原理'
+      window.commentConfig.title = 'JS基础-面向对象'
     }
 </script>
 
@@ -486,19 +511,19 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2018/01/21/JS基础-面向对象/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2018/01/21/JS基础-面向对象/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2018/01/21/JS基础-面向对象/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/javascript-basis/" style="font-size: 17.958122857565286px;" class="tag-cloud-link">javascript-basis</a>
+    <a href="/tags/javascript-basis/" style="font-size: 14.020529048663295px;" class="tag-cloud-link">javascript-basis</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
