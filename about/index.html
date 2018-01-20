@@ -12,7 +12,7 @@
     
     
     
-    <title>JS基础-数据类型的核心操作原理 | 小哥</title>
+    <title>about | 小哥</title>
     <link href=”xiexiaoge.github.io“ rel=”prefetch” />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -176,7 +176,7 @@
                 
                 
                 
-                <li class="">
+                <li class="current">
                     <a href="/about">
                         <i class="fa fa-/"></i>关于我
                     </a>
@@ -191,38 +191,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    
+                    <!-- 搜索页面(尽可能接近ZanBlog搜索功能) -->
+
+
 <article class="article well article-body" id="article">
-    <div class="breadcrumb">
-        <i class="fa fa-home"></i>
-        <a href="/">小哥</a>
-        >
-        <span>JS基础-数据类型的核心操作原理</span>
-    </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2018/01/19/JS基础-数据类型的核心操作原理/">JS基础-数据类型的核心操作原理</a>
+                <a href="/about/index.html">about</a>
             </h1>
         </div>
         <div class="tag-article">
-            
             <span class="label label-gal">
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/javascript-basis/">javascript-basis</a>
-                
+                <i class="fa fa-calendar"></i> 2018-01-20
             </span>
-            
-            <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2018-01-19
-            </span>
-            
-            <span class="label label-gal">
-                <i class="fa fa-eye"></i>
-            </span>
-            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -230,84 +213,16 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/">JS基础-数据类型的核心操作原理</a>
+                    <a href="/about/index.html">about</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2018-01-19
-            </p>
-            <p>
-                
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/javascript-basis/">javascript-basis</a>
-                
-                
-                
-                <i class="fa fa-eye"></i>
-                
+                <i class="fa fa-calendar"></i> 2018-01-20
             </p>
         </center>
     </div>
     <div class="content-article">
-        <p></p><h4>js中的数据类型</h4><p></p>
-<blockquote>
-<ul>
-<li>基本数据类型(值类型)<ul>
-<li>number</li>
-<li>string</li>
-<li>boolean</li>
-<li>null</li>
-<li>undefined</li>
-</ul>
-</li>
-<li>引用数据类型<ul>
-<li>对象<ul>
-<li>{} 普通对象</li>
-<li>[] 数组</li>
-<li>/^$/ 正则</li>
-</ul>
-</li>
-<li>函数 <ul>
-<li>类</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<p>JS代码运行在浏览器中,是因为浏览器给我们提供了一个供js代码执行的环境-&gt;<code>全局作用域(window/global)</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">example <span class="number">1</span></span><br><span class="line"> <span class="keyword">let</span> a= <span class="number">12</span>;<span class="comment">// 只是给变量a 赋值 让a 和12建立链接关系</span></span><br><span class="line"> <span class="keyword">let</span> b= a; <span class="comment">//b-&gt;a=12 </span></span><br><span class="line"> b=<span class="number">13</span>;  <span class="comment">//b=13</span></span><br><span class="line"> <span class="built_in">console</span>.log(a); </span><br><span class="line">***<span class="number">12</span>***</span><br><span class="line">个人解析:只是把a的值赋值给b ,a和b还是独立的互不影响</span><br><span class="line"></span><br><span class="line">example <span class="number">2</span></span><br><span class="line"> <span class="keyword">let</span> o=&#123;<span class="attr">name</span>:<span class="string">"小哥"</span>&#125;;<span class="comment">//-&gt;o开辟了一个内存空间(aaafff111)</span></span><br><span class="line"> <span class="keyword">let</span> p=o;<span class="comment">// -&gt; p=o-&gt;(aaafff111)</span></span><br><span class="line"> p.name=<span class="string">"小明"</span>;<span class="comment">// -&gt; aaafff111空间的name="小明"</span></span><br><span class="line"> <span class="built_in">console</span>.log(o.name);<span class="comment">// o.name-&gt;aaafff111.name-&gt;小明</span></span><br><span class="line">***小明***</span><br><span class="line">个人解析:因为引用数据类型,所以o,p指向地址aaafff111,p.name是堆内存中的name(后面的o,p都看成aaafff111去理解)</span><br><span class="line"></span><br><span class="line">example <span class="number">3</span></span><br><span class="line">  <span class="keyword">let</span> m=&#123;<span class="attr">name</span>:<span class="string">"小哥"</span>&#125;;<span class="comment">//-&gt;o开辟了一个堆内存(aaafff111)</span></span><br><span class="line">  <span class="keyword">let</span> n=m;<span class="comment">//n=m-&gt;aaafff111</span></span><br><span class="line">  n=&#123;<span class="attr">name</span>:<span class="string">"小明"</span>&#125;;<span class="comment">// 这里的n 重新指向了新的地址,也就是n开辟了一个堆内存, 以后的 m和n就是独立的</span></span><br><span class="line">  <span class="built_in">console</span>.log(m.name)</span><br><span class="line">个人解析:因为n重新指向了新的地址,所以以后的n和m都是独立的</span><br><span class="line">***小哥***</span><br></pre></td></tr></table></figure>
-<p></p><h4>值类型</h4><p></p>
-<blockquote>
-<p>直接按值操作,例如 let a=12;直接把12这个值赋值给变量a(让a变量和12这个值建立了链接关系)</p>
-</blockquote>
-<p></p><h4>对象数据类型</h4><p></p>
-<blockquote>
-<p>在JS中遇到对象,会严格按照如下的步骤操作:</p>
-<ol>
-<li>浏览器为起开辟一个新的内存空间,为了方便后期可以找到这个空间,浏览器给空间分配一个16进行的地址(<a href="https://www.cnblogs.com/lvmylife/p/7158819.html" target="_blank" rel="noopener">堆内存</a>)</li>
-<li>按照一定顺序,分别把对象键值对存储到内存空间中</li>
-<li>把开辟内存的地址赋值给变量(或者其它的东西),以后变量就可以通过地址找到内存空间,然后进行一些操作</li>
-</ol>
-</blockquote>
-<p></p><h4>函数的操作</h4><p></p>
-<blockquote>
-<ol>
-<li>创建函数<ol>
-<li>开辟一个新的内存空间(为其分配一个16进制的地址)</li>
-<li>把函数体中编写的js代码当作 <code>字符串</code> 存放到空间中(函数值创建不执行没有意义)</li>
-<li>把分配的地址赋值给声明的函数名</li>
-</ol>
-</li>
-<li>执行函数 目的:执行函数体中的代码<ol>
-<li>函数执行的时候,浏览器会形成一个新的私有作用域(只能执行函数体中的代码)供函数体中的代码执行</li>
-<li>执行代码之前,先把创建函数存储的那些字符串变为真正的js表达式,按照从上到下的顺序在私有作用域下执行</li>
-</ol>
-</li>
-</ol>
-<p><strong>一个函数可以被执行N次,每一次执行相互之间互不干扰</strong></p>
-</blockquote>
+        <p>刚写博客,可能内容不是很nice,但是希望自己能坚持,技术就像粥,越熬越有味!</p>
 
     </div>
 </article>
@@ -318,9 +233,10 @@
 <script>
 	if(!window.commentConfig) {
       window.commentConfig = {}
-      window.commentConfig.title = 'JS基础-数据类型的核心操作原理'
+      window.commentConfig.title = 'about'
     }
 </script>
+
 
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
@@ -462,19 +378,19 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/about/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/about/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/about/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/javascript-basis/" style="font-size: 9.0565030408122px;" class="tag-cloud-link">javascript-basis</a>
+    <a href="/tags/javascript-basis/" style="font-size: 12.503586962226759px;" class="tag-cloud-link">javascript-basis</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">

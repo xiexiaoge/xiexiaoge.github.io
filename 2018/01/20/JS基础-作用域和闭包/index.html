@@ -12,7 +12,7 @@
     
     
     
-    <title>JS基础-数据类型的核心操作原理 | 小哥</title>
+    <title>JS基础-作用域和闭包 | 小哥</title>
     <link href=”xiexiaoge.github.io“ rel=”prefetch” />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -197,13 +197,13 @@
         <i class="fa fa-home"></i>
         <a href="/">小哥</a>
         >
-        <span>JS基础-数据类型的核心操作原理</span>
+        <span>JS基础-作用域和闭包</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2018/01/19/JS基础-数据类型的核心操作原理/">JS基础-数据类型的核心操作原理</a>
+                <a href="/2018/01/20/JS基础-作用域和闭包/">JS基础-作用域和闭包</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -216,7 +216,7 @@
             </span>
             
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2018-01-19
+                <i class="fa fa-calendar"></i> 2018-01-20
             </span>
             
             <span class="label label-gal">
@@ -230,11 +230,11 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/">JS基础-数据类型的核心操作原理</a>
+                    <a href="/2018/01/20/JS基础-作用域和闭包/">JS基础-作用域和闭包</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2018-01-19
+                <i class="fa fa-calendar"></i> 2018-01-20
             </p>
             <p>
                 
@@ -250,63 +250,80 @@
         </center>
     </div>
     <div class="content-article">
-        <p></p><h4>js中的数据类型</h4><p></p>
+        <p></p><h4>JS中的堆内存和栈内存</h4><p></p>
 <blockquote>
+<p><strong>栈内存</strong><br>俗称叫做作用域(全局作用域/私有作用域)</p>
 <ul>
-<li>基本数据类型(值类型)<ul>
-<li>number</li>
-<li>string</li>
-<li>boolean</li>
-<li>null</li>
-<li>undefined</li>
+<li>为JS代码提供执行的环境(执行JS代码的地方)</li>
+<li>基本数据类型值是直接存放在栈内存中的</li>
 </ul>
-</li>
-<li>引用数据类型<ul>
-<li>对象<ul>
-<li>{} 普通对象</li>
-<li>[] 数组</li>
-<li>/^$/ 正则</li>
-</ul>
-</li>
-<li>函数 <ul>
-<li>类</li>
-</ul>
-</li>
-</ul>
-</li>
+<p><strong>堆内存</strong><br> 存储医用数据类型值(相当于一个存储的仓库) </p>
+<ul>
+<li>对象存储的是键值对</li>
+<li>函数存储的是代码字符串</li>
 </ul>
 </blockquote>
-<p>JS代码运行在浏览器中,是因为浏览器给我们提供了一个供js代码执行的环境-&gt;<code>全局作用域(window/global)</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">example <span class="number">1</span></span><br><span class="line"> <span class="keyword">let</span> a= <span class="number">12</span>;<span class="comment">// 只是给变量a 赋值 让a 和12建立链接关系</span></span><br><span class="line"> <span class="keyword">let</span> b= a; <span class="comment">//b-&gt;a=12 </span></span><br><span class="line"> b=<span class="number">13</span>;  <span class="comment">//b=13</span></span><br><span class="line"> <span class="built_in">console</span>.log(a); </span><br><span class="line">***<span class="number">12</span>***</span><br><span class="line">个人解析:只是把a的值赋值给b ,a和b还是独立的互不影响</span><br><span class="line"></span><br><span class="line">example <span class="number">2</span></span><br><span class="line"> <span class="keyword">let</span> o=&#123;<span class="attr">name</span>:<span class="string">"小哥"</span>&#125;;<span class="comment">//-&gt;o开辟了一个内存空间(aaafff111)</span></span><br><span class="line"> <span class="keyword">let</span> p=o;<span class="comment">// -&gt; p=o-&gt;(aaafff111)</span></span><br><span class="line"> p.name=<span class="string">"小明"</span>;<span class="comment">// -&gt; aaafff111空间的name="小明"</span></span><br><span class="line"> <span class="built_in">console</span>.log(o.name);<span class="comment">// o.name-&gt;aaafff111.name-&gt;小明</span></span><br><span class="line">***小明***</span><br><span class="line">个人解析:因为引用数据类型,所以o,p指向地址aaafff111,p.name是堆内存中的name(后面的o,p都看成aaafff111去理解)</span><br><span class="line"></span><br><span class="line">example <span class="number">3</span></span><br><span class="line">  <span class="keyword">let</span> m=&#123;<span class="attr">name</span>:<span class="string">"小哥"</span>&#125;;<span class="comment">//-&gt;o开辟了一个堆内存(aaafff111)</span></span><br><span class="line">  <span class="keyword">let</span> n=m;<span class="comment">//n=m-&gt;aaafff111</span></span><br><span class="line">  n=&#123;<span class="attr">name</span>:<span class="string">"小明"</span>&#125;;<span class="comment">// 这里的n 重新指向了新的地址,也就是n开辟了一个堆内存, 以后的 m和n就是独立的</span></span><br><span class="line">  <span class="built_in">console</span>.log(m.name)</span><br><span class="line">个人解析:因为n重新指向了新的地址,所以以后的n和m都是独立的</span><br><span class="line">***小哥***</span><br></pre></td></tr></table></figure>
-<p></p><h4>值类型</h4><p></p>
-<blockquote>
-<p>直接按值操作,例如 let a=12;直接把12这个值赋值给变量a(让a变量和12这个值建立了链接关系)</p>
-</blockquote>
-<p></p><h4>对象数据类型</h4><p></p>
-<blockquote>
-<p>在JS中遇到对象,会严格按照如下的步骤操作:</p>
-<ol>
-<li>浏览器为起开辟一个新的内存空间,为了方便后期可以找到这个空间,浏览器给空间分配一个16进行的地址(<a href="https://www.cnblogs.com/lvmylife/p/7158819.html" target="_blank" rel="noopener">堆内存</a>)</li>
-<li>按照一定顺序,分别把对象键值对存储到内存空间中</li>
-<li>把开辟内存的地址赋值给变量(或者其它的东西),以后变量就可以通过地址找到内存空间,然后进行一些操作</li>
-</ol>
-</blockquote>
-<p></p><h4>函数的操作</h4><p></p>
+<p>在项目中,内存越少性能越好,需要把一些没用的内存处理掉</p>
+<p></p><h4>栈内存和堆内存的销毁</h4><p></p>
 <blockquote>
 <ol>
-<li>创建函数<ol>
-<li>开辟一个新的内存空间(为其分配一个16进制的地址)</li>
-<li>把函数体中编写的js代码当作 <code>字符串</code> 存放到空间中(函数值创建不执行没有意义)</li>
-<li>把分配的地址赋值给声明的函数名</li>
+<li>堆内存<br>函数执行形成一个私有作用域,如果私有作用域中的部分内容被以外的变量占用了,当前作用域不销毁<br>函数执行返回一个<code>引用数据类型堆内存地址</code>(并且堆内存隶属于这个作用域),在外面有一个变量接受了这个返回值,此时当前作用就不能销毁(想要销毁,只需要让外面的变量赋值给null,也就是不占用当前作用域中的内容了)</li>
+<li>栈内存<br>一般情况下,函数执行形成栈内存,函数执行完,浏览器会把执行的栈内存自动释放;有时候执行完成,栈内存不能被释放<br>全局作用域在加载页面的时候执行,在关掉页面的时候销毁</li>
 </ol>
+</blockquote>
+<p></p><h4>作用域</h4><p></p>
+<blockquote>
+<ol>
+<li>全局作用域: window</li>
+<li>私有作用域: 函数执行</li>
+<li>块级作用域:使用let创建变量存在块级作用域</li>
+</ol>
+</blockquote>
+<p></p><h4>作用域链</h4><p></p>
+<blockquote>
+<p>当前作用域代码执行的时候遇到一个变量,首先看它是否属于私有变量,如果是当前作用域私有变量,那么以后私有作用域中遇到这个变量都是操作私有的(<a href="#bibao">闭包</a>); 如果当前这个变量不是私有的,我们需要向它的上级作用域进行查找,上级如果也没有,则继续向上查找,一直找到window全局作用域为止,我们把着种查找机制叫做<code>作用域链</code>;全局下右,操作的就是全局变量,全局下没有(设置:给全局对象window增加了属性&amp;&amp;获取:报错)</p>
+</blockquote>
+<p></p><h4>查找私有变量</h4><p></p>
+<blockquote>
+<p>JS中的私有变量有且有两种</p>
+<ul>
+<li>在私有作用域变量提升阶段,声明过的变量(或函数)</li>
+<li>形参也是私有变量<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">example <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">num1,num2</span>)</span>&#123;</span><br><span class="line"> <span class="comment">// total,num1,num2 私有变量</span></span><br><span class="line">  <span class="keyword">var</span> total=num1+num2;</span><br><span class="line">  <span class="keyword">return</span> total</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> result=fn(<span class="number">100</span>,<span class="number">200</span>)</span><br></pre></td></tr></table></figure>
 </li>
-<li>执行函数 目的:执行函数体中的代码<ol>
-<li>函数执行的时候,浏览器会形成一个新的私有作用域(只能执行函数体中的代码)供函数体中的代码执行</li>
-<li>执行代码之前,先把创建函数存储的那些字符串变为真正的js表达式,按照从上到下的顺序在私有作用域下执行</li>
-</ol>
+</ul>
+</blockquote>
+<p></p><h4>函数执行形成一个新的私有作用域</h4><p></p>
+<blockquote>
+<ol>
+<li>形参赋值</li>
+<li>变量提升</li>
+<li>代码自上而下执行</li>
+<li>当前栈内存(私有作用域)销毁或者不销毁<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">example <span class="number">2</span></span><br><span class="line"><span class="comment">//全局作用域下的变量提升  var x,y,z,fn=xxxfff1111</span></span><br><span class="line"><span class="keyword">var</span> x=<span class="number">10</span>,y=<span class="number">20</span>,z=<span class="number">30</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x,y</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//私有作用域</span></span><br><span class="line">    <span class="comment">// 形参赋值: x=10,y=20 (x,y)私有变量</span></span><br><span class="line">    <span class="comment">// 变量提升 var x(忽略的,因为已经存在x这个名字了)</span></span><br><span class="line">    <span class="built_in">console</span>.log(x,y,z);<span class="comment">//z全局变量  10 20 30</span></span><br><span class="line">    <span class="keyword">var</span> x=<span class="number">100</span>;<span class="comment">//私有的x=100</span></span><br><span class="line">    y=<span class="number">200</span>;<span class="comment">//私有的y=200</span></span><br><span class="line">    z=<span class="number">300</span>;<span class="comment">//全局的z变成300</span></span><br><span class="line">    <span class="built_in">console</span>.log(x,y,z);<span class="comment">//100,200,300</span></span><br><span class="line">&#125;</span><br><span class="line">fn(x,y,z);<span class="comment">//fn 执行传递的是实参(实参都是值)</span></span><br><span class="line"><span class="built_in">console</span>.log(x, y, z); <span class="comment">//10 20 300</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p><strong>一个函数可以被执行N次,每一次执行相互之间互不干扰</strong></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">example <span class="number">3</span></span><br><span class="line"><span class="comment">//全局变量 fn=&gt;xxxfff111</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">b</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//私有作用域</span></span><br><span class="line">    <span class="comment">// 形参赋值  b=1</span></span><br><span class="line">    <span class="comment">//变量提升 b=&gt;函数</span></span><br><span class="line">    <span class="built_in">console</span>.log(b);<span class="comment">// 函数b</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">//私有作用域</span></span><br><span class="line">        <span class="comment">//形参赋值和变量提升都没有</span></span><br><span class="line">        <span class="built_in">console</span>.log(b);<span class="comment">//函数b</span></span><br><span class="line">    &#125;</span><br><span class="line">    b();</span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p></p><h4>如何查找上一级作用域?</h4><p></p>
+<blockquote>
+<p>函数执行形成一个私有作用域(A),A的上级作用域是谁,和他在哪执行的没关系,主要看他是在哪定义的,在哪个作用域下定义的,当前A的上级作用域就是谁;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">examplt <span class="number">4</span></span><br><span class="line"><span class="keyword">var</span> n=<span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(n);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//sum(); =&gt;10</span></span><br><span class="line">~<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n=<span class="number">100</span>;</span><br><span class="line">    sum();<span class="comment">//=&gt;10  sum的宿主环境是当前自执行函数形成的私有作用域</span></span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p></p><h4>闭包</h4><p></p>
+<h5 style="font-size: 16px;color:#154226">函数执行,形成一个私有作用域,保护里面的私有变量不受到外界的干扰,这种保护机制叫做 <code>闭包</code></h5>
+
+<p></p><h4>闭包的作用(保护)</h4><p></p>
+<blockquote>
+<p>形成私有作用域,保护里面的私有变量不受外界的干扰</p>
+<p>JQuery:常用的JS类库,提供很多项目中常用的方法(兼容所有浏览器)<br>Zepto: 小型JQ,专门为移动端开发准备的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//=&gt;JQ代码片段</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> jQuery=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.jQuery=<span class="built_in">window</span>.$=jQuery;</span><br><span class="line">&#125;)(<span class="built_in">window</span>)</span><br><span class="line">jQuery()</span><br><span class="line">$()</span><br><span class="line"></span><br><span class="line"><span class="comment">//=&gt;Zepto代码片段</span></span><br><span class="line"><span class="keyword">var</span> Zepto=(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> Zepto=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     ...</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> Zepto</span><br><span class="line">&#125;)()</span><br><span class="line">Zepto();</span><br></pre></td></tr></table></figure></p>
+<p>在项目中,利用这种保护机制,实现团队协作开发(避免了多人同一个命名,导致代码冲突的问题)</p>
+</blockquote>
+<p></p><h4>闭包的作用(保存)</h4><p></p>
+<blockquote>
+<p>函数执行形成一个私有作用域,函数执行完成,形成的这个栈内存一般情况下都会自动释放</p>
+<p>特殊情况:函数执行完成,当前私有作用域(栈内存)中的某一部分被栈内存以外的其它东西(变量/元素的事件)占用了,当前的栈内存就不能释放掉,也就形成了不销毁的私有作用域(里面的私有变量也不会销毁)</p>
+</blockquote>
+<p><code>i++和++i的区别</code></p>
+<blockquote>
+<p>i++: 先拿原有的i值和其他值进行运算,运算完成后在自身累加1<br>++i: 先自身累加1,然后拿累加完成的结果和其他值进行运算<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i=<span class="number">5</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>+i++);<span class="comment">//10</span></span><br><span class="line"><span class="built_in">console</span>.log(i)<span class="comment">//=&gt;6</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> i=<span class="number">5</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>+++i);<span class="comment">//11</span></span><br><span class="line"><span class="built_in">console</span>.log(i)<span class="comment">//=&gt;6</span></span><br></pre></td></tr></table></figure></p>
 </blockquote>
 
     </div>
@@ -318,7 +335,7 @@
 <script>
 	if(!window.commentConfig) {
       window.commentConfig = {}
-      window.commentConfig.title = 'JS基础-数据类型的核心操作原理'
+      window.commentConfig.title = 'JS基础-作用域和闭包'
     }
 </script>
 
@@ -462,19 +479,19 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2018/01/20/JS基础-作用域和闭包/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2018/01/20/JS基础-作用域和闭包/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2018/01/20/JS基础-作用域和闭包/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/javascript-basis/" style="font-size: 9.0565030408122px;" class="tag-cloud-link">javascript-basis</a>
+    <a href="/tags/javascript-basis/" style="font-size: 10.046434660202618px;" class="tag-cloud-link">javascript-basis</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
