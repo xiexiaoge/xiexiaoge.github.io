@@ -12,7 +12,7 @@
     
     
     
-    <title>JS基础-this问题 | 小哥</title>
+    <title>JS基础-构造函数模式 | 小哥</title>
     <link href=”xiexiaoge.github.io“ rel=”prefetch” />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -197,13 +197,13 @@
         <i class="fa fa-home"></i>
         <a href="/">小哥</a>
         >
-        <span>JS基础-this问题</span>
+        <span>JS基础-构造函数模式</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2018/01/20/JS基础-this问题/">JS基础-this问题</a>
+                <a href="/2018/01/21/JS基础-构造函数模式/">JS基础-构造函数模式</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -216,7 +216,7 @@
             </span>
             
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2018-01-20
+                <i class="fa fa-calendar"></i> 2018-01-21
             </span>
             
             <span class="label label-gal">
@@ -230,11 +230,11 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2018/01/20/JS基础-this问题/">JS基础-this问题</a>
+                    <a href="/2018/01/21/JS基础-构造函数模式/">JS基础-构造函数模式</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2018-01-20
+                <i class="fa fa-calendar"></i> 2018-01-21
             </p>
             <p>
                 
@@ -250,23 +250,80 @@
         </center>
     </div>
     <div class="content-article">
-        <h4>在JS非严格模式下(默认模式就是非严格模式)</h4>
+        <h4>构造函数设计模式(constructor)</h4>
 
+<ul>
+<li>使用构造函数方式,主要是为了创建类和实例的,也就是基于面向对象编程思想来实现一些需求的处理</li>
+</ul>
 <blockquote>
-<p>1  自执行函数中的this一般都是window<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=&#123;</span><br><span class="line">  fn:(<span class="function"><span class="keyword">function</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//this-&gt;window</span></span><br><span class="line">   <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">   &#125;</span><br><span class="line">  &#125;()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>2 给元素的某个事件绑定方法,当事件触发执行对应方法的时候,方法中的this一般都是当前操作的元素本身<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">oBox.onclick=function()&#123;</span><br><span class="line">   //this-&gt;oBox</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>3 还有一个方式可以快速区别this : 当方法执行的时候,看看方法名前面是否有<code>点</code>,有<code>点</code>,<code>点</code>前面是谁this就是谁,没有<code>点</code>一般都是window<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=&#123;</span><br><span class="line"> name: <span class="string">"obj"</span>,</span><br><span class="line"> fn:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.fn();<span class="comment">//this-&gt;obj</span></span><br><span class="line"><span class="keyword">var</span> f=obj.fn;</span><br><span class="line">f();<span class="comment">//this-&gt;window</span></span><br></pre></td></tr></table></figure></p>
-<p> 4.当一个函数作为参数的时候，this也是window</p>
+<p>在JS中, 当我们使用<code>new xxx()</code>执行函数的时候,此时的函数就不是普通的函数了,而是变为了一个类,返回的结果叫做当前类的实例,把这种new xxx执行的方式称之为<code>构造函数设计模式</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> Fn();<span class="comment">//=&gt; Fn是一个类,f是当前这个类的一个实例 "构造函数设计模式"(我们一般都会把类名第一个字母大写)</span></span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<h4>切记:<br>   1. ES6的箭头函数中没有this指向 <br><br>   2. this是谁和他在哪定义的以及在哪执行的没有任何关系<br></h4>
+<p><code>普通函数执行 VS 构造函数执行</code></p>
+<blockquote>
+<p>普通函数执行</p>
+<ol>
+<li>开辟一个新的私有作用域</li>
+<li>形参赋值</li>
+<li>变量提升</li>
+<li>代码自上而下执行(return 后面的值就是当前函数返回的结果)</li>
+<li>栈内存释放或者不释放<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.num=num;<span class="comment">//this-&gt;window 相当于给全局对象增加一个num的属性,属性值是 形参num</span></span><br><span class="line">    <span class="keyword">var</span> total=<span class="literal">null</span>;</span><br><span class="line">    total+=num;</span><br><span class="line">    <span class="keyword">return</span> total</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f=fn(<span class="number">10</span>); <span class="comment">//=&gt; 10</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>构造函数执行</p>
+<ol>
+<li>首先和普通函数执行一样,也需要开辟一个新的私有作用域</li>
+<li>私有作用域中完成类似于普通函数的操作: 形参赋值以及变量提升</li>
+<li>在代码自上而下执行之前,构造函数有属于自己比较特殊的操作 : <code>浏览器会在当前的作用域中默认创建一个对象数据类型的值,并且会让当前函数中的this指向创建的这个对象</code></li>
+<li>像普通函数一样,代码自上而下执行:<code>this.xxx=xxx这里操作都是在给创建的这个对象增加属性名和属性值</code></li>
+<li>代码执行完之后,即时然后中没有写return,在构造函数模式中: 浏览器会默认把创建的对象返回到函数的外面<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line"> <span class="comment">//=&gt;在构造函数模式中,方法中出现的this是当前类的一个实例(this.xxx=xxx都是给当前实例添加一些私有的属性)</span></span><br><span class="line">   <span class="keyword">this</span>.num=num;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f=<span class="keyword">new</span> Fn(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<p>构造函数执行,即具备普通函数执行的一面,也同时具备自己独有的一些操作</p>
+<h4 style="font-size:16px;color:#3c2f2f">在构造函数执行期间,浏览器默认创建的对象(也就是函数体中的this)就是当前这个类的一个实例,浏览器会把默认创建的实例返回,所以 new Fn(), Fn是一个类,返回的结果是Fn这个类的一个实例</h4>
 
-<p></p><h4>在JS严格模式下(让JS更加严谨)</h4><p></p>
-<blockquote>
-<p>开始严格模式 : 在当前作用域的第一行加上<code>&quot;user strict&quot;</code>,开启严格模式,那么<code>当前作用域</code>下在执行的JS代码都是按照严格模式处理的;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"user strict"</span>;</span><br><span class="line"><span class="comment">//=&gt;当前JS代码都开启了严格模式(包含了函数中的代码)</span></span><br></pre></td></tr></table></figure></p>
+<h4>深入理解构造函数执行的步骤</h4>
+
+<ol>
+<li>当构造函数或者类,执行的时候不需要传递任何的实参值,此时我们是否加小括号就不重要了(不需要传递实参的情况下,小括号可以省略)</li>
+<li>构造函数执行,同时具备了普通函数执行的一面,也有自己特殊的一面,但是和实例相关的只有自己特殊的一面才相关(也就是this.xxx=xxx才相当于给当前实例增加的私有属性),函数体中出现的私有变量,和实例都没有直接的关系</li>
+<li>通过类创建出来的每一个实例都是单独的个体(单独的堆内存空间) , 实例和实例之间是不相同并且独立互不影响的(市面上部分开发把这种模式叫做单例模式,这种说法是错的,JS中这种模式叫做构造函数设计模式)<blockquote>
+<p>在构造函数体中,通过this.xxx=xxx给实例设置的属性都是当前实例的<code>私有属性</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> num=<span class="number">100</span>;</span><br><span class="line">  <span class="keyword">this</span>.name=<span class="string">"小哥"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f1=<span class="keyword">new</span> Fn();</span><br><span class="line"><span class="keyword">var</span> f2=<span class="keyword">new</span> Fn</span><br><span class="line"></span><br><span class="line"><span class="comment">//=&gt;私有变量和实例没关系</span></span><br><span class="line"><span class="built_in">console</span>.log(f1.num)<span class="comment">// nudefined</span></span><br><span class="line"><span class="built_in">console</span>.log(f1.name)<span class="comment">// "小哥"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//=&gt;不同实例是不同的空间地址</span></span><br><span class="line"> <span class="built_in">console</span>.log(f1===f2) <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line"><span class="comment">//-&gt;只是把当前私有作用域开启了严格模式(对外面全局没有影响)</span></span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>当构造函数体中我们手动的设置了return(默认返回的是实例:对象数据类型值),return的是一个基本类型值,对最后返回的实例没有任何影响,但是如果返回的是引用数据类型的值的话,会把默认返回的实例替换掉<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name=<span class="string">"小哥"</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f=<span class="keyword">new</span> Fn();<span class="comment">//=&gt;f依然是当前类的一个实例</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name=<span class="string">"小哥"</span>;</span><br><span class="line">  <span class="keyword">return</span> &#123;<span class="attr">name</span>:<span class="string">"小明"</span>&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f=<span class="keyword">new</span> Fn();<span class="comment">//=&gt;f不再是Fn是实例,而是变为手动返回的对象了</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4>instanceof</h4>
+
+<ol>
+<li><p>用来检测当前实例是否隶属某个类</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="keyword">var</span> f=<span class="keyword">new</span> Fn;</span><br><span class="line"><span class="built_in">console</span>.log(f <span class="keyword">instanceof</span> Fn) <span class="comment">//=&gt;true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>instanceof解决了typeof无法识别是数组还是正则的问题</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[] <span class="keyword">instanceof</span> <span class="built_in">Array</span> <span class="comment">// =&gt; true</span></span><br><span class="line">/^$/ <span class="keyword">instanceof</span> <span class="built_in">Array</span> <span class="comment">//=&gt; false</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4>hasOwnProperty VS in</h4>
+
+<ul>
+<li><p>in : 用来检测当前这个是属性是否隶属于对象(不管是对象私有的还是公有的属性,只要有返回的就是true)</p>
+</li>
+<li><p>hasOwnProperty : 用来检测当前这个属性是否是对象的私有属性(不仅是对象的属性,而且需要是私有的才可以)</p>
 <blockquote>
-<p>在JS严格模式下,如果执行主题不明确,this指向的是undefined(非严格模式下指向的是window)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>:<span class="string">"小哥"</span>,<span class="attr">age</span>:<span class="number">18</span>&#125;;</span><br><span class="line"><span class="string">"name"</span> <span class="keyword">in</span> obj <span class="comment">//=&gt;true</span></span><br><span class="line"><span class="string">"sex"</span> <span class="keyword">in</span> obj <span class="comment">//=&gt;false</span></span><br><span class="line"><span class="string">"hasOwnProperty"</span> <span class="keyword">in</span> obj <span class="comment">//=&gt;true</span></span><br><span class="line">has是Oobject这个内之类中提供的属性方法,只要当前对象是Objeact的一个实例,就可以使用这个方法</span><br><span class="line"></span><br><span class="line">obj.hasOwnProerty(<span class="string">"name"</span>) <span class="comment">//=&gt;true</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<p></p><h4>检测一个属性是否是当前对象的公有属性</h4><p></p>
+<blockquote>
+<ol>
+<li>是对象的一个属性</li>
+<li>不是对象的私有属性<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hasPubProPerty</span> (<span class="params">obj,property</span>) </span>&#123;</span><br><span class="line">    obj = obj.toString() == <span class="string">"[object Object]"</span> ? obj : &#123;&#125;;</span><br><span class="line">    property=<span class="keyword">typeof</span> property==<span class="string">"string"</span>?property:<span class="string">""</span>;</span><br><span class="line">    <span class="keyword">return</span> (property <span class="keyword">in</span> obj) &amp;&amp;(obj.hasOwnProperty(property)===<span class="literal">false</span>);</span><br><span class="line">   <span class="comment">// return  property in obj?obj.hasOwnProperty(property)?false:true:false</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(hasPubProPerty (&#123;<span class="attr">name</span>: <span class="string">"小哥"</span>&#125;, <span class="string">"hasOwnProperty"</span>));</span><br></pre></td></tr></table></figure></li>
+</ol>
 </blockquote>
 
     </div>
@@ -278,7 +335,7 @@
 <script>
 	if(!window.commentConfig) {
       window.commentConfig = {}
-      window.commentConfig.title = 'JS基础-this问题'
+      window.commentConfig.title = 'JS基础-构造函数模式'
     }
 </script>
 
@@ -446,19 +503,19 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/2018/01/20/JS基础-this问题/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2018/01/21/JS基础-构造函数模式/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/20/JS基础-this问题/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2018/01/21/JS基础-构造函数模式/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/20/JS基础-this问题/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2018/01/21/JS基础-构造函数模式/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/javascript-basis/" style="font-size: 18.14491765598026px;" class="tag-cloud-link">javascript-basis</a>
+    <a href="/tags/javascript-basis/" style="font-size: 18.984919943374127px;" class="tag-cloud-link">javascript-basis</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">

@@ -12,7 +12,7 @@
     
     
     
-    <title>JS基础-this问题 | 小哥</title>
+    <title>Mot-clés: javascript-basis | 小哥</title>
     <link href=”xiexiaoge.github.io“ rel=”prefetch” />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -80,7 +80,7 @@
             <a href="/about" class="menuItem" style="left: 50%; top: 85%;">关于</a>
             <a href="/message" class="menuItem" style="left: 19.6891%; top: 67.5%;">留言板</a>
             
-            <a class="menuItem" style="left: 19.6891%; top: 32.5%;">上一页</a>
+            <a href="/tags/javascript-basis/" class="menuItem" style="left: 19.6891%; top: 32.5%;">上一页</a>
             
         </div>
         <audio id="audio" src="/imgs/oni.mp3"></audio>
@@ -191,38 +191,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    
-<article class="article well article-body" id="article">
+                    <article class="article well article-body" id="article-tag">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="/">小哥</a>
         >
-        <span>JS基础-this问题</span>
+        <span>标签</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2018/01/20/JS基础-this问题/">JS基础-this问题</a>
+                <a href="/tags/javascript-basis/page/2/index.html">javascript-basis</a>
             </h1>
-        </div>
-        <div class="tag-article">
-            
-            <span class="label label-gal">
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/javascript-basis/">javascript-basis</a>
-                
-            </span>
-            
-            <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2018-01-20
-            </span>
-            
-            <span class="label label-gal">
-                <i class="fa fa-eye"></i>
-            </span>
-            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -230,58 +211,27 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2018/01/20/JS基础-this问题/">JS基础-this问题</a>
+                    <a href="/tags/javascript-basis/page/2/index.html">javascript-basis</a>
                 </h4>
             </div>
-            <p>
-                <i class="fa fa-calendar"></i> 2018-01-20
-            </p>
-            <p>
-                
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/javascript-basis/">javascript-basis</a>
-                
-                
-                
-                <i class="fa fa-eye"></i>
-                
-            </p>
         </center>
     </div>
-    <div class="content-article">
-        <h4>在JS非严格模式下(默认模式就是非严格模式)</h4>
-
-<blockquote>
-<p>1  自执行函数中的this一般都是window<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=&#123;</span><br><span class="line">  fn:(<span class="function"><span class="keyword">function</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//this-&gt;window</span></span><br><span class="line">   <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">   &#125;</span><br><span class="line">  &#125;()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>2 给元素的某个事件绑定方法,当事件触发执行对应方法的时候,方法中的this一般都是当前操作的元素本身<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">oBox.onclick=function()&#123;</span><br><span class="line">   //this-&gt;oBox</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>3 还有一个方式可以快速区别this : 当方法执行的时候,看看方法名前面是否有<code>点</code>,有<code>点</code>,<code>点</code>前面是谁this就是谁,没有<code>点</code>一般都是window<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=&#123;</span><br><span class="line"> name: <span class="string">"obj"</span>,</span><br><span class="line"> fn:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.fn();<span class="comment">//this-&gt;obj</span></span><br><span class="line"><span class="keyword">var</span> f=obj.fn;</span><br><span class="line">f();<span class="comment">//this-&gt;window</span></span><br></pre></td></tr></table></figure></p>
-<p> 4.当一个函数作为参数的时候，this也是window</p>
-</blockquote>
-<h4>切记:<br>   1. ES6的箭头函数中没有this指向 <br><br>   2. this是谁和他在哪定义的以及在哪执行的没有任何关系<br></h4>
-
-<p></p><h4>在JS严格模式下(让JS更加严谨)</h4><p></p>
-<blockquote>
-<p>开始严格模式 : 在当前作用域的第一行加上<code>&quot;user strict&quot;</code>,开启严格模式,那么<code>当前作用域</code>下在执行的JS代码都是按照严格模式处理的;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"user strict"</span>;</span><br><span class="line"><span class="comment">//=&gt;当前JS代码都开启了严格模式(包含了函数中的代码)</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line"><span class="comment">//-&gt;只是把当前私有作用域开启了严格模式(对外面全局没有影响)</span></span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>在JS严格模式下,如果执行主题不明确,this指向的是undefined(非严格模式下指向的是window)</p>
-</blockquote>
-
+    <div class="content-article" style="margin-top: 30px;">
+        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
+            
+            <a href="/2018/01/20/JS基础-this问题/">JS基础-this问题</a>
+            <br>
+            
+            <a href="/2018/01/20/JS基础-变量提升/">JS基础-变量提升</a>
+            <br>
+            
+            <a href="/2018/01/19/JS基础-数据类型的核心操作原理/">JS基础-数据类型的核心操作原理</a>
+            <br>
+            
+            
+        </div>
     </div>
 </article>
-
-
-<div id="comments-template"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script>
-	if(!window.commentConfig) {
-      window.commentConfig = {}
-      window.commentConfig.title = 'JS基础-this问题'
-    }
-</script>
-
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -409,6 +359,12 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2018/01/20/JS基础-作用域和闭包/">JS基础-作用域和闭包</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2018/01/21/JS基础-原型和原型链/">JS基础-原型和原型链</a>
                 </span>
             </li>
@@ -416,12 +372,6 @@
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2018/01/20/JS基础-变量提升/">JS基础-变量提升</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/">JS基础-数据类型的核心操作原理</a>
                 </span>
             </li>
             
@@ -446,19 +396,19 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/2018/01/20/JS基础-this问题/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/tags/javascript-basis/page/2/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/20/JS基础-this问题/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/tags/javascript-basis/page/2/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/20/JS基础-this问题/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/tags/javascript-basis/page/2/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/javascript-basis/" style="font-size: 18.14491765598026px;" class="tag-cloud-link">javascript-basis</a>
+    <a href="/tags/javascript-basis/" style="font-size: 10.728345162311307px;" class="tag-cloud-link">javascript-basis</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
