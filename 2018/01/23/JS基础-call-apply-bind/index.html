@@ -12,7 +12,7 @@
     
     
     
-    <title>JS基础-this问题 | 小哥</title>
+    <title>JS基础-call,apply,bind | 小哥</title>
     <link href=”xiexiaoge.github.io“ rel=”prefetch” />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -197,13 +197,13 @@
         <i class="fa fa-home"></i>
         <a href="/">小哥</a>
         >
-        <span>JS基础-this问题</span>
+        <span>JS基础-call,apply,bind</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2018/01/20/JS基础-this问题/">JS基础-this问题</a>
+                <a href="/2018/01/23/JS基础-call-apply-bind/">JS基础-call,apply,bind</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -216,7 +216,7 @@
             </span>
             
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2018-01-20
+                <i class="fa fa-calendar"></i> 2018-01-23
             </span>
             
             <span class="label label-gal">
@@ -230,11 +230,11 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2018/01/20/JS基础-this问题/">JS基础-this问题</a>
+                    <a href="/2018/01/23/JS基础-call-apply-bind/">JS基础-call,apply,bind</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2018-01-20
+                <i class="fa fa-calendar"></i> 2018-01-23
             </p>
             <p>
                 
@@ -250,40 +250,38 @@
         </center>
     </div>
     <div class="content-article">
-        <h4>在JS非严格模式下(默认模式就是非严格模式)</h4>
+        <h4>call apply bind</h4>
 
-<ol>
-<li><p>自执行函数中的this一般都是window</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=&#123;</span><br><span class="line">  fn:(<span class="function"><span class="keyword">function</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//this-&gt;window</span></span><br><span class="line">   <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">   &#125;</span><br><span class="line">  &#125;()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>给元素的某一个事件绑定方法 , 当事件触发 , 方法执行的时候 , 绑定的这个方法中的this一般是当前操作的这个DOM元素</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">oBox.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"> <span class="comment">//=&gt;当绑定的方法执行,方法中的this=&gt;oBox</span></span><br><span class="line"> <span class="comment">//=&gt;如何让绑定的方法执行:</span></span><br><span class="line"> <span class="comment">// 1. 手动点击oBox,经浏览器触发点击事件</span></span><br><span class="line"> <span class="comment">// 2. oBox.onclick();</span></span><br><span class="line"> <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//=&gt;在IE6~8下,如果我们使用的是DOM2事件绑定,方法执行的时候,里面的this不是当前元素而是</span></span><br><span class="line"> <span class="built_in">window</span></span><br><span class="line"> oBox.addEventListener(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="comment">//this=&gt;window</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>还有一个方式可以快速区别this : 当方法执行的时候,看看方法名前面是否有<code>点</code>,有<code>点</code>,<code>点</code>前面是谁this就是谁,没有<code>点</code>一般都是window</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=&#123;</span><br><span class="line"> name: <span class="string">"obj"</span>,</span><br><span class="line"> fn:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.fn();<span class="comment">//this-&gt;obj</span></span><br><span class="line"><span class="keyword">var</span> f=obj.fn;</span><br><span class="line">f();<span class="comment">//this-&gt;window</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>当一个函数作为参数的时候，this也是window</p>
-</li>
-<li><p>在构造函数执行的时候,函数体中的this一般都是当前类的实例</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">//=&gt;this:当前Fn的实例(当前案例中指的是f),而this.xxx=xxx都是给当前实例设置的私有属性</span></span><br><span class="line">  <span class="keyword">this</span>.xxx=xxx;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> Fn();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用Function.prototype上提供的call,apply,bind实现this改变</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>:<span class="string">"小哥"</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">num1,num2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.total=num1+num2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//=&gt;call基础语法的应用</span></span><br><span class="line">fn(<span class="number">10</span>,<span class="number">20</span>);<span class="comment">//=&gt;this:window</span></span><br><span class="line">fn.call(obj,<span class="number">10</span>,<span class="number">20</span>);<span class="comment">//=&gt;首先让fn中的this指向传递的第一个参数值obj,然后执行fn这个函数;此时fn中的this-&gt;obj num1-&gt;10 num2-&gt;20</span></span><br><span class="line"></span><br><span class="line">fn.call();<span class="comment">//=&gt;this:undefined</span></span><br><span class="line">fn.call(<span class="literal">null</span>);<span class="comment">//=&gt;this:undefined</span></span><br><span class="line">fn.call(<span class="literal">undefined</span>);<span class="comment">//=&gt;this:undefined</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在ES6中 , 新增加的箭头函数 , 箭头函数中没有执行主体 , 箭头的函数中this会继承它宿主环境中的this</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Obj = &#123;</span><br><span class="line">   fn:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="comment">//=&gt;this : obj</span></span><br><span class="line">      setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="comment">//=&gt;this : window</span></span><br><span class="line">     &#125;,<span class="number">1000</span>);</span><br><span class="line">   </span><br><span class="line">   <span class="comment">//=&gt;想让定时器函数中的this也是obj</span></span><br><span class="line">    <span class="number">1.</span>setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="comment">//=&gt;this : obj</span></span><br><span class="line">      &#125;.bind(<span class="keyword">this</span>),<span class="number">1000</span>)</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="number">2.</span> <span class="keyword">var</span> _this=<span class="keyword">this</span>;</span><br><span class="line">   setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="comment">//=&gt;_this : obj</span></span><br><span class="line">      &#125;,<span class="number">1000</span>)</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="number">3.</span> setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//=&gt;this : obj 箭头函数中this继承宿主环境中的this</span></span><br><span class="line">     &#125;,<span class="number">1000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.fn();</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4>切记: this是谁和他在哪定义的以及在哪执行的没有任何关系</h4>
+<ul>
+<li>都是天生自带的方法,所有的函数(类也是函数)都可以调取Function.prototype的方法:call/apply/bind</li>
+<li>三个方法都是改变this指向的</li>
+</ul>
+<h4>call</h4>
 
-<p></p><h4>在JS严格模式下(让JS更加严谨)</h4><p></p>
-<blockquote>
-<p>开始严格模式 : 在当前作用域的第一行加上<code>&quot;user strict&quot;</code>,开启严格模式,那么<code>当前作用域</code>下在执行的JS代码都是按照严格模式处理的;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"user strict"</span>;</span><br><span class="line"><span class="comment">//=&gt;当前JS代码都开启了严格模式(包含了函数中的代码)</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line"><span class="comment">//-&gt;只是把当前私有作用域开启了严格模式(对外面全局没有影响)</span></span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>在JS严格模式下,如果执行主题不明确,this指向的是undefined(非严格模式下指向的是window)</p>
-</blockquote>
+<p><code>fn.call(context,para1,...)</code></p>
+<ul>
+<li>把fn方法执行,并且让fn方法中的this 变为context,而para1…都是fn传递的实参</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//=&gt;非严格模式下</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">num1,num2</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj=&#123;<span class="attr">fn</span>:fn&#125;;</span><br><span class="line">fn();<span class="comment">//=&gt;this:window</span></span><br><span class="line">obj.fn();<span class="comment">//=&gt;this:obj</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> opp=&#123;&#125;;</span><br><span class="line"><span class="comment">//opp.fn();//=&gt;报错:opp中没有fn 这个属性</span></span><br><span class="line">fn.call(opp);<span class="comment">//=&gt;this:opp num1&amp;&amp;num2 都是undefined</span></span><br><span class="line">fn.call(<span class="number">1</span>,<span class="number">2</span>)<span class="comment">//=&gt;this:1 num1=2  num2=undefined</span></span><br><span class="line">fn.call(opp,<span class="number">1</span>,<span class="number">2</span>)<span class="comment">//=&gt;this:opp num1=1 num2=2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//=&gt;call方法的几个特殊性</span></span><br><span class="line">fn.call()<span class="comment">//=&gt;this:window</span></span><br><span class="line">fn.call(<span class="literal">null</span>)<span class="comment">//=&gt;this:window</span></span><br><span class="line">fn.call(<span class="literal">undefined</span>)<span class="comment">//=&gt;this:window</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//=&gt;JS严格模式下</span></span><br><span class="line"><span class="meta">"use strict"</span></span><br><span class="line">fn.call();<span class="comment">//=&gt;this:undefined</span></span><br><span class="line">fn.call(<span class="literal">undefined</span>);<span class="comment">//=&gt;this:undefined</span></span><br><span class="line">fn.call(<span class="literal">null</span>);<span class="comment">//=&gt;this:null</span></span><br></pre></td></tr></table></figure>
+<h4>call原理</h4>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.call=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">//this:实例,f1</span></span><br><span class="line">        <span class="keyword">var</span> ary=[...arguments];</span><br><span class="line">        <span class="keyword">if</span>(ary[<span class="number">0</span>]==<span class="literal">undefined</span>) &#123;</span><br><span class="line">            <span class="comment">//没传,null,undefined</span></span><br><span class="line">            <span class="comment">//让实例this()里面的this变成window</span></span><br><span class="line">            <span class="comment">//删除数组ary的第一项</span></span><br><span class="line">            ary.shift();</span><br><span class="line">            <span class="comment">//把剩下的给this当参数穿进去,使用字符串拼接的形式</span></span><br><span class="line">            (<span class="built_in">eval</span>(<span class="string">"this("</span>+ary+<span class="string">")"</span>)) <span class="comment">//this(2,255)</span></span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//将传进来的参数变成一个对象</span></span><br><span class="line">            <span class="keyword">var</span> obj=<span class="built_in">Object</span>(<span class="built_in">arguments</span>[<span class="number">0</span>]);</span><br><span class="line">            <span class="comment">//给obj所属的原型上增加一个属性,属性值是this</span></span><br><span class="line">            obj.__proto__.fn=<span class="keyword">this</span>;<span class="comment">//Object.prototype</span></span><br><span class="line">            ary.shift();</span><br><span class="line">            <span class="built_in">eval</span>(<span class="string">"obj.fn("</span>+ary+<span class="string">")"</span>);</span><br><span class="line">            <span class="comment">//将增加的这个属性删除就可以了</span></span><br><span class="line">            <span class="keyword">delete</span> obj.__proto__.fn;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">m,n</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(m,n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> obj=&#123;&#125;;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    f1.call(f2,<span class="number">2</span>,<span class="number">555</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">Object</span>(<span class="number">2</span>));</span><br><span class="line">    <span class="comment">//Object()将传进来的内容变成一个对象返回</span></span><br></pre></td></tr></table></figure>
+<h4>call深入</h4>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="keyword">var</span> obj=&#123;&#125;;</span><br><span class="line">fn1.call.call(obj);<span class="comment">//=&gt;报错  fn1.call.call is not a function</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//=&gt;后面的call的作用: </span></span><br><span class="line"><span class="number">1.</span>f1.call执行 </span><br><span class="line"><span class="number">2.</span>改变f1.call中的<span class="keyword">this</span></span><br><span class="line"><span class="keyword">this</span>==&gt;obj  obj不能执行</span><br><span class="line">所以说两个或两个以上call的时候,最后的call的第一个参数必须是一个函数</span><br><span class="line"></span><br><span class="line">fn1.call.call(fn2,obj)=&gt;fn2.call(obj)</span><br><span class="line">fn1.call.call....call(fn2,obj)=&gt;fn2.call(obj)</span><br></pre></td></tr></table></figure>
+<h4>apply</h4>
+
+<ul>
+<li>apply的语法和call基本一致,作用原理也基本一致,唯一的区别: apply 把传递的函数的实参以数组的形式存放(但是也相当于在给函数一个个传递实参值)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fn.call(<span class="literal">null</span>,<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>);</span><br><span class="line">fn.apply(<span class="literal">null</span>,[<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>]);<span class="comment">//=&gt;传递fn的时候也是一个个传递进去的</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//=&gt;求最大值</span></span><br><span class="line"> <span class="built_in">Array</span>.prototype.myMax=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="built_in">Math</span>.max.apply(<span class="literal">null</span>,<span class="keyword">this</span>)</span><br><span class="line"> &#125;;</span><br><span class="line"> ary.myMax();</span><br><span class="line"> <span class="comment">//=&gt;还可以最小值,平均值,求和...</span></span><br></pre></td></tr></table></figure>
+<h4>bind</h4>
+
+<p style="font-size:16px;color:#3c1b1b">也是改变this的方法,它在IE6~8下不兼容;它和call(以及apply)改变this的原理不一样</p>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fn.call(opp,<span class="number">10</span>,<span class="number">20</span>);<span class="comment">//=&gt;把fn执行,让fn中的this变为opp,并且把10&amp;&amp;20分别传递给fn</span></span><br><span class="line">fn.bind(opp,<span class="number">10</span>,<span class="number">20</span>);<span class="comment">//=&gt;预先让fn中的this指向opp,并且把10和20预先传递给fn,此时的fn没有被执行(只有当执行的时候this和实参才会起到应有的作用)</span></span><br></pre></td></tr></table></figure>
+<p></p><h4>项目中使用bind的意义</h4><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>:<span class="string">"小哥"</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">num1,num2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.total=num1+num2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//=&gt;需求:一秒后执行fn(定时器驱动),执行fn的时候,让fn中的this-&gt;obj,并且给fn传递两个实参10,20</span></span><br><span class="line"><span class="number">1.</span> <span class="built_in">window</span>.setTimeout(fn.bind(obj,<span class="number">10</span>,<span class="number">20</span>),<span class="number">1000</span>);</span><br><span class="line"><span class="number">2.</span> <span class="built_in">window</span>.setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     fn.call(obj,<span class="number">10</span>,<span class="number">20</span>)</span><br><span class="line">&#125;,<span class="number">1000</span>)</span><br></pre></td></tr></table></figure><p></p>
 
     </div>
 </article>
@@ -294,7 +292,7 @@
 <script>
 	if(!window.commentConfig) {
       window.commentConfig = {}
-      window.commentConfig.title = 'JS基础-this问题'
+      window.commentConfig.title = 'JS基础-call,apply,bind'
     }
 </script>
 
@@ -425,13 +423,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/20/JS基础-this问题/">JS基础-this问题</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/01/23/JS基础-函数的三种角色/">JS基础-函数的三种角色</a>
+                    <a href="/2018/01/21/JS基础-单例模式/">JS基础-单例模式</a>
                 </span>
             </li>
             
@@ -443,13 +435,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/20/JS基础-变量提升/">JS基础-变量提升</a>
+                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/">JS基础-数据类型的核心操作原理</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/">JS基础-数据类型的核心操作原理</a>
+                    <a href="/2018/01/23/JS基础-括号表达式和i++,++i/">JS基础-括号表达式和i++,++i</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/21/JS基础-构造函数模式/">JS基础-构造函数模式</a>
                 </span>
             </li>
             
@@ -462,19 +460,19 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/2018/01/20/JS基础-this问题/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2018/01/23/JS基础-call-apply-bind/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/20/JS基础-this问题/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2018/01/23/JS基础-call-apply-bind/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/20/JS基础-this问题/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2018/01/23/JS基础-call-apply-bind/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/javascript-basis/" style="font-size: 9.386506077773376px;" class="tag-cloud-link">javascript-basis</a>
+    <a href="/tags/javascript-basis/" style="font-size: 13.668551850239307px;" class="tag-cloud-link">javascript-basis</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">

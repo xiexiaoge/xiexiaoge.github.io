@@ -12,7 +12,7 @@
     
     
     
-    <title>小哥</title>
+    <title>JS基础-JSON | 小哥</title>
     <link href=”xiexiaoge.github.io“ rel=”prefetch” />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -74,7 +74,7 @@
         <div class="ring">
             <a href="/" class="menuItem" style="left: 50%; top: 15%;">首页</a>
             
-            <a href="/page/2/" class="menuItem" style="left: 80.3109%; top: 32.5%;">下一页</a>
+            <a class="menuItem" style="left: 80.3109%; top: 32.5%;">下一页</a>
             
             <a href="/archives" class="menuItem" style="left: 80.3109%; top: 67.5%;">归档</a>
             <a href="/about" class="menuItem" style="left: 50%; top: 85%;">关于</a>
@@ -116,7 +116,7 @@
             <ul class="nav navbar-nav" id="menu-gal">
                 
                 
-                <li class="current">
+                <li class="">
                     <a href="/">
                         <i class="fa fa-home"></i>首页
                     </a>
@@ -192,31 +192,18 @@
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
                     
-<div class="alert well fade in" id="gal-issue" role="alert">
-    <!-- TODO 添加关闭公告框功能 -->
-    <button type="button" class="close" data-dismiss="alert">×</button>
-    <!-- 这里自行配置公告内容 -->
-    <h3>Welcome to my blog</h3>
-    <p>博主小白,不喜勿喷!若有错,请联系,共同进步!谢谢</p>
-    <!-- 自行配置公告内容结束 -->
-</div>
-
-<div id="article-list">
-     
-     
-     <div class="article well clearfix article-body article-excerpt" data-aos="flip-up">
-    
-    <div class="data-article hidden-xs">
-        <span class="month">01月</span>
-        <span class="day">23</span>
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="/">小哥</a>
+        >
+        <span>JS基础-JSON</span>
     </div>
-    <!-- 大型设备文章 -->
-    <section class="hidden-xs">
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2018/01/23/JS基础-DOM映射回流重绘/">
-                    <span>JS基础-DOM映射回流重绘</span>
-                </a>
+                <a href="/2018/01/23/JS基础-JSON/">JS基础-JSON</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -228,483 +215,76 @@
                 
             </span>
             
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2018-01-23
+            </span>
             
             <span class="label label-gal">
                 <i class="fa fa-eye"></i>
             </span>
             
-            <!-- TODO 添加评论统计 -->
-            <!--<span class="label label-gal">
-                <i class="fa fa-comments"></i>
-                <a href="/2018/01/23/JS基础-DOM映射回流重绘/#comments">739</a>
-            </span>-->
         </div>
-        <div class="alert alert-gal article-body content-article">
-            <div class="item">
-                <a href="/2018/01/23/JS基础-DOM映射回流重绘/">
-                    <div class="img">
-                        
-                        <img src="/imgs/preview/preview2.jpg" alt="JS基础-DOM映射回流重绘">
-                    </div>
-                    <div class="info">
-                        
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-    <section class="visible-xs">
-        <div class="title-article">
-            <center>
-                <h4>
-                    <a href="/2018/01/23/JS基础-DOM映射回流重绘/">
-                        <span>JS基础-DOM映射回流重绘</span>
-                    </a>
-                </h4>
-            </center>
-        </div>
-        <p></p>
-        <center>
-            <i class="fa fa-calendar"></i> 2018-01-23
-        </center>
-        <p></p>
-        <p></p>
-        <center>
-            
-            <i class="fa fa-tags"></i>
-            
-            <a href="/tags/javascript-basis/">javascript-basis</a>
-            
-            
-            
-            <i class="fa fa-eye"></i>
-            
-        </center>
-        <p></p>
-        <div class="alert alert-gal article-body content-article">
-            <p style="text-align: center;">
-                <a href="/2018/01/23/JS基础-DOM映射回流重绘/">
-                    
-                    <img src="/imgs/preview/preview4.jpg" alt="JS基础-DOM映射回流重绘">
-                </a>
-            </p>
-        </div>
-        
-        <a class="btn btn-danger pull-right read-more btn-block" href="/2018/01/23/JS基础-DOM映射回流重绘/">
-            阅读全文
-            <!--<span class="badge">739</span>-->
-        </a>
-    </section>
-</div>
-     
-     <div class="article well clearfix article-body article-excerpt" data-aos="flip-up">
-    
-    <div class="data-article hidden-xs">
-        <span class="month">01月</span>
-        <span class="day">23</span>
     </div>
-    <!-- 大型设备文章 -->
-    <section class="hidden-xs">
-        <div class="title-article">
-            <h1>
-                <a href="/2018/01/23/JS基础-JSON/">
-                    <span>JS基础-JSON</span>
-                </a>
-            </h1>
-        </div>
-        <div class="tag-article">
-            
-            <span class="label label-gal">
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2018/01/23/JS基础-JSON/">JS基础-JSON</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2018-01-23
+            </p>
+            <p>
+                
                 <i class="fa fa-tags"></i>
                 
                 <a href="/tags/javascript-basis/">javascript-basis</a>
                 
-            </span>
-            
-            
-            <span class="label label-gal">
+                
+                
                 <i class="fa fa-eye"></i>
-            </span>
-            
-            <!-- TODO 添加评论统计 -->
-            <!--<span class="label label-gal">
-                <i class="fa fa-comments"></i>
-                <a href="/2018/01/23/JS基础-JSON/#comments">739</a>
-            </span>-->
-        </div>
-        <div class="alert alert-gal article-body content-article">
-            <div class="item">
-                <a href="/2018/01/23/JS基础-JSON/">
-                    <div class="img">
-                        
-                        <img src="/imgs/preview/preview1.jpg" alt="JS基础-JSON">
-                    </div>
-                    <div class="info">
-                        
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-    <section class="visible-xs">
-        <div class="title-article">
-            <center>
-                <h4>
-                    <a href="/2018/01/23/JS基础-JSON/">
-                        <span>JS基础-JSON</span>
-                    </a>
-                </h4>
-            </center>
-        </div>
-        <p></p>
-        <center>
-            <i class="fa fa-calendar"></i> 2018-01-23
-        </center>
-        <p></p>
-        <p></p>
-        <center>
-            
-            <i class="fa fa-tags"></i>
-            
-            <a href="/tags/javascript-basis/">javascript-basis</a>
-            
-            
-            
-            <i class="fa fa-eye"></i>
-            
-        </center>
-        <p></p>
-        <div class="alert alert-gal article-body content-article">
-            <p style="text-align: center;">
-                <a href="/2018/01/23/JS基础-JSON/">
-                    
-                    <img src="/imgs/preview/preview4.jpg" alt="JS基础-JSON">
-                </a>
+                
             </p>
-        </div>
-        
-        <a class="btn btn-danger pull-right read-more btn-block" href="/2018/01/23/JS基础-JSON/">
-            阅读全文
-            <!--<span class="badge">739</span>-->
-        </a>
-    </section>
-</div>
-     
-     <div class="article well clearfix article-body article-excerpt" data-aos="flip-up">
-    
-    <div class="data-article hidden-xs">
-        <span class="month">01月</span>
-        <span class="day">23</span>
+        </center>
     </div>
-    <!-- 大型设备文章 -->
-    <section class="hidden-xs">
-        <div class="title-article">
-            <h1>
-                <a href="/2018/01/23/JS基础-括号表达式和i++,++i/">
-                    <span>JS基础-括号表达式和i++,++i</span>
-                </a>
-            </h1>
-        </div>
-        <div class="tag-article">
-            
-            <span class="label label-gal">
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/javascript-basis/">javascript-basis</a>
-                
-            </span>
-            
-            
-            <span class="label label-gal">
-                <i class="fa fa-eye"></i>
-            </span>
-            
-            <!-- TODO 添加评论统计 -->
-            <!--<span class="label label-gal">
-                <i class="fa fa-comments"></i>
-                <a href="/2018/01/23/JS基础-括号表达式和i++,++i/#comments">739</a>
-            </span>-->
-        </div>
-        <div class="alert alert-gal article-body content-article">
-            <div class="item">
-                <a href="/2018/01/23/JS基础-括号表达式和i++,++i/">
-                    <div class="img">
-                        
-                        <img src="/imgs/preview/preview2.jpg" alt="JS基础-括号表达式和i++,++i">
-                    </div>
-                    <div class="info">
-                        
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-    <section class="visible-xs">
-        <div class="title-article">
-            <center>
-                <h4>
-                    <a href="/2018/01/23/JS基础-括号表达式和i++,++i/">
-                        <span>JS基础-括号表达式和i++,++i</span>
-                    </a>
-                </h4>
-            </center>
-        </div>
-        <p></p>
-        <center>
-            <i class="fa fa-calendar"></i> 2018-01-23
-        </center>
-        <p></p>
-        <p></p>
-        <center>
-            
-            <i class="fa fa-tags"></i>
-            
-            <a href="/tags/javascript-basis/">javascript-basis</a>
-            
-            
-            
-            <i class="fa fa-eye"></i>
-            
-        </center>
-        <p></p>
-        <div class="alert alert-gal article-body content-article">
-            <p style="text-align: center;">
-                <a href="/2018/01/23/JS基础-括号表达式和i++,++i/">
-                    
-                    <img src="/imgs/preview/preview2.jpg" alt="JS基础-括号表达式和i++,++i">
-                </a>
-            </p>
-        </div>
-        
-        <a class="btn btn-danger pull-right read-more btn-block" href="/2018/01/23/JS基础-括号表达式和i++,++i/">
-            阅读全文
-            <!--<span class="badge">739</span>-->
-        </a>
-    </section>
-</div>
-     
-     <div class="article well clearfix article-body article-excerpt" data-aos="flip-up">
-    
-    <div class="data-article hidden-xs">
-        <span class="month">01月</span>
-        <span class="day">23</span>
+    <div class="content-article">
+        <h4>JSON</h4>
+
+<ul>
+<li><p>JSON在项目中经常被使用,客户端和服务器端的数据传输,目前大部分项目都是依托JSON格式来传输的</p>
+</li>
+<li><p>SON只是一种数据格式,除了格式不一样.其他和正常的数据类型操作都一样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;name : &quot;小哥&quot;, age : 8&#125;;//=&gt;普通格式的对象</span><br><span class="line">var opp = &#123;&quot;name&quot; : &quot;小哥&quot; , &quot;age&quot; : 8&#125;;//=&gt;JSON格式的对象:把属性名用双引号(只能用双引号不能用单引号)包起来的格式叫做JSON格式的数据</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4> window.JSON //=&gt;他是一个对象 , 里面提供了两个方法 parse , stringify</h4>
+
+<ol>
+<li><p>JSON.parse : 把字符串(一般都是JSON格式的字符串)转换为JSON格式的对象,如果转换的字符串不是JSON格式的,转换的过程会报错<br>这个方法在IE6-7中不兼容:不兼容,因为在IE6-7中,window对象中没有JSON这个对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">`[&#123;"name" : "小哥","age":28&#125;,&#123;"name":"小明","age":25&#125;]`</span>;</span><br><span class="line"><span class="keyword">var</span> jsonAry=<span class="built_in">JSON</span>.parse(str);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在IE6-7中,我们可以使用eval来代替JSON.parse这个方法,实现把字符串转换为对象<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">`[&#123;"name" : "小哥","age":28&#125;,&#123;"name":"小明","age":25&#125;]`</span>;</span><br><span class="line"><span class="keyword">var</span> jsonAry=<span class="built_in">eval</span>(<span class="string">"("</span>+str+<span class="string">")"</span>);<span class="comment">//=&gt;使用EVAL转换的时候,需要手动的给字符串外层加一个小括号,目的是为了防止有些数据不加括号报错</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>JSON.stringify : 把对象转化为JSON格式的字符串</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ary=[name:<span class="string">"小哥"</span>,<span class="attr">age</span>:<span class="number">8</span>];</span><br><span class="line"><span class="built_in">JSON</span>.stringify(ary)<span class="comment">//=&gt;`[&#123;"name":"小哥","age":8&#125;]`</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+
     </div>
-    <!-- 大型设备文章 -->
-    <section class="hidden-xs">
-        <div class="title-article">
-            <h1>
-                <a href="/2018/01/23/JS基础-函数的三种角色/">
-                    <span>JS基础-函数的三种角色</span>
-                </a>
-            </h1>
-        </div>
-        <div class="tag-article">
-            
-            <span class="label label-gal">
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/javascript-basis/">javascript-basis</a>
-                
-            </span>
-            
-            
-            <span class="label label-gal">
-                <i class="fa fa-eye"></i>
-            </span>
-            
-            <!-- TODO 添加评论统计 -->
-            <!--<span class="label label-gal">
-                <i class="fa fa-comments"></i>
-                <a href="/2018/01/23/JS基础-函数的三种角色/#comments">739</a>
-            </span>-->
-        </div>
-        <div class="alert alert-gal article-body content-article">
-            <div class="item">
-                <a href="/2018/01/23/JS基础-函数的三种角色/">
-                    <div class="img">
-                        
-                        <img src="/imgs/preview/preview1.jpg" alt="JS基础-函数的三种角色">
-                    </div>
-                    <div class="info">
-                        
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-    <section class="visible-xs">
-        <div class="title-article">
-            <center>
-                <h4>
-                    <a href="/2018/01/23/JS基础-函数的三种角色/">
-                        <span>JS基础-函数的三种角色</span>
-                    </a>
-                </h4>
-            </center>
-        </div>
-        <p></p>
-        <center>
-            <i class="fa fa-calendar"></i> 2018-01-23
-        </center>
-        <p></p>
-        <p></p>
-        <center>
-            
-            <i class="fa fa-tags"></i>
-            
-            <a href="/tags/javascript-basis/">javascript-basis</a>
-            
-            
-            
-            <i class="fa fa-eye"></i>
-            
-        </center>
-        <p></p>
-        <div class="alert alert-gal article-body content-article">
-            <p style="text-align: center;">
-                <a href="/2018/01/23/JS基础-函数的三种角色/">
-                    
-                    <img src="/imgs/preview/preview2.jpg" alt="JS基础-函数的三种角色">
-                </a>
-            </p>
-        </div>
-        
-        <a class="btn btn-danger pull-right read-more btn-block" href="/2018/01/23/JS基础-函数的三种角色/">
-            阅读全文
-            <!--<span class="badge">739</span>-->
-        </a>
-    </section>
-</div>
-     
-     <div class="article well clearfix article-body article-excerpt" data-aos="flip-up">
-    
-    <div class="data-article hidden-xs">
-        <span class="month">01月</span>
-        <span class="day">23</span>
-    </div>
-    <!-- 大型设备文章 -->
-    <section class="hidden-xs">
-        <div class="title-article">
-            <h1>
-                <a href="/2018/01/23/JS基础-call-apply-bind/">
-                    <span>JS基础-call,apply,bind</span>
-                </a>
-            </h1>
-        </div>
-        <div class="tag-article">
-            
-            <span class="label label-gal">
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/javascript-basis/">javascript-basis</a>
-                
-            </span>
-            
-            
-            <span class="label label-gal">
-                <i class="fa fa-eye"></i>
-            </span>
-            
-            <!-- TODO 添加评论统计 -->
-            <!--<span class="label label-gal">
-                <i class="fa fa-comments"></i>
-                <a href="/2018/01/23/JS基础-call-apply-bind/#comments">739</a>
-            </span>-->
-        </div>
-        <div class="alert alert-gal article-body content-article">
-            <div class="item">
-                <a href="/2018/01/23/JS基础-call-apply-bind/">
-                    <div class="img">
-                        
-                        <img src="/imgs/preview/preview4.jpg" alt="JS基础-call,apply,bind">
-                    </div>
-                    <div class="info">
-                        
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-    <section class="visible-xs">
-        <div class="title-article">
-            <center>
-                <h4>
-                    <a href="/2018/01/23/JS基础-call-apply-bind/">
-                        <span>JS基础-call,apply,bind</span>
-                    </a>
-                </h4>
-            </center>
-        </div>
-        <p></p>
-        <center>
-            <i class="fa fa-calendar"></i> 2018-01-23
-        </center>
-        <p></p>
-        <p></p>
-        <center>
-            
-            <i class="fa fa-tags"></i>
-            
-            <a href="/tags/javascript-basis/">javascript-basis</a>
-            
-            
-            
-            <i class="fa fa-eye"></i>
-            
-        </center>
-        <p></p>
-        <div class="alert alert-gal article-body content-article">
-            <p style="text-align: center;">
-                <a href="/2018/01/23/JS基础-call-apply-bind/">
-                    
-                    <img src="/imgs/preview/preview4.jpg" alt="JS基础-call,apply,bind">
-                </a>
-            </p>
-        </div>
-        
-        <a class="btn btn-danger pull-right read-more btn-block" href="/2018/01/23/JS基础-call-apply-bind/">
-            阅读全文
-            <!--<span class="badge">739</span>-->
-        </a>
-    </section>
-</div>
-     
-</div>
-<!-- 前方最多7个 < 1 2 3 4 5 6 -->
-<!-- 前方超过第7页则分为 < 1 ... (n - 3) (n - 2) (n - 1) n, 此时前面为固定的6个 -->
-
-<!-- 后方最多8个 (n + 1) 到 (n + 7) > -->
-<!-- 如果末页和当前页相差超过7, 此时后面为固定的6个, (n + 1) (n + 2) (n + 3) ... total > -->
+</article>
 
 
-
-<div id="gal-pagination" class="clearfix">
-    <ul class="pagination pagination-gal pull-right">
-        
-        
-        
-        
-        <li class="current">
-            <span>1</span>
-        </li>
-        
-        
-        <li>
-            <a href="/page/2">2</a>
-        </li>
-        
-        <li>
-            <a href="/page/3">3</a>
-        </li>
-        
-        
-        
-        <li class="next">
-            <a href="/page/2/">»</a>
-        </li>
-        
-    </ul>
-</div>
+<div id="comments-template"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script>
+	if(!window.commentConfig) {
+      window.commentConfig = {}
+      window.commentConfig.title = 'JS基础-JSON'
+    }
+</script>
 
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
@@ -827,19 +407,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/23/JS基础-DOM映射回流重绘/">JS基础-DOM映射回流重绘</a>
+                    <a href="/2018/01/23/JS基础-JSON/">JS基础-JSON</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2018/01/20/JS基础-this问题/">JS基础-this问题</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/01/20/JS基础-作用域和闭包/">JS基础-作用域和闭包</a>
                 </span>
             </li>
             
@@ -852,6 +426,12 @@
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2018/01/20/JS基础-变量提升/">JS基础-变量提升</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/23/JS基础-括号表达式和i++,++i/">JS基础-括号表达式和i++,++i</a>
                 </span>
             </li>
             
@@ -870,19 +450,19 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2018/01/23/JS基础-JSON/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 <li class="">
-                    <a href="/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2018/01/23/JS基础-JSON/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 <li class="">
-                    <a href="/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2018/01/23/JS基础-JSON/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/javascript-basis/" style="font-size: 8.835133252981198px;" class="tag-cloud-link">javascript-basis</a>
+    <a href="/tags/javascript-basis/" style="font-size: 13.850359271579737px;" class="tag-cloud-link">javascript-basis</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
