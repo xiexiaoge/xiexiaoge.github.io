@@ -260,6 +260,11 @@
 <li>每一个类的实例(每一个对象)都天生自带一个属性: __proto__ , 属性值是当前对象所属类的原型(prototype)<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">this</span>.name=name;</span><br><span class="line">   <span class="keyword">this</span>.age=age;</span><br><span class="line">   <span class="keyword">this</span>.say=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"my name is"</span>+<span class="keyword">this</span>.name+<span class="string">"! i am "</span> + <span class="keyword">this</span>.age +<span class="string">"years old !"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<h4>原型链</h4>
+
+<ul>
+<li>当对象通过对象.属性或者(对象[“”])获取属性的值,首先看是不是自己的私有属性,是的话就获取私有的属性,不是的话通过<strong>proto</strong>找到所属类的原型,看看原型上有没有这个共有属性,还是没有在通过原型上的<strong>proto</strong>去找…一直找到object的原型上,还没有就是undefined<br>这个查找过程就叫做原型链</li>
+</ul>
 <p><img src="/imgs/原型.png"><br><img src="/imgs/原型2.png"></p>
 <h4>关于原型链中提供的私有(公有)中的this指向问题</h4>
 
@@ -421,19 +426,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/23/JS基础-call-apply-bind/">JS基础-call,apply,bind</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/01/23/JS基础-函数的三种角色/">JS基础-函数的三种角色</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2018/01/21/JS基础-原型和原型链/">JS基础-原型和原型链</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/20/JS基础-作用域和闭包/">JS基础-作用域和闭包</a>
                 </span>
             </li>
             
@@ -445,13 +444,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/21/JS基础-面向对象/">JS基础-面向对象</a>
+                    <a href="/2018/01/23/JS基础-JSON/">JS基础-JSON</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/21/JS基础-构造函数模式/">JS基础-构造函数模式</a>
+                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/">JS基础-数据类型的核心操作原理</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/23/JS基础-括号表达式和i++,++i/">JS基础-括号表达式和i++,++i</a>
                 </span>
             </li>
             
@@ -476,7 +481,7 @@
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/javascript-basis/" style="font-size: 10.779545860065747px;" class="tag-cloud-link">javascript-basis</a>
+    <a href="/tags/javascript-basis/" style="font-size: 13.973943867780648px;" class="tag-cloud-link">javascript-basis</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
