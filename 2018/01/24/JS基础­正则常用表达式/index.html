@@ -12,7 +12,7 @@
     
     
     
-    <title>JS基础-函数的三种角色 | 小哥</title>
+    <title>JS基础­正则常用表达式 | 小哥</title>
     <link href=”xiexiaoge.github.io“ rel=”prefetch” />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -197,13 +197,13 @@
         <i class="fa fa-home"></i>
         <a href="/">小哥</a>
         >
-        <span>JS基础-函数的三种角色</span>
+        <span>JS基础­正则常用表达式</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2018/01/23/JS基础-函数的三种角色/">JS基础-函数的三种角色</a>
+                <a href="/2018/01/24/JS基础­正则常用表达式/">JS基础­正则常用表达式</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -216,7 +216,7 @@
             </span>
             
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2018-01-23
+                <i class="fa fa-calendar"></i> 2018-01-24
             </span>
             
             <span class="label label-gal">
@@ -230,11 +230,11 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2018/01/23/JS基础-函数的三种角色/">JS基础-函数的三种角色</a>
+                    <a href="/2018/01/24/JS基础­正则常用表达式/">JS基础­正则常用表达式</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2018-01-23
+                <i class="fa fa-calendar"></i> 2018-01-24
             </p>
             <p>
                 
@@ -250,40 +250,20 @@
         </center>
     </div>
     <div class="content-article">
-        <h4>函数的三种角色</h4>
+        <h4>常用的正则表达式编辑(表单验证)</h4>
 
-<ol>
-<li><p>普通函数</p>
-<ul>
-<li>栈内存(私有作用域)</li>
-<li>作用域链</li>
-<li>arguments</li>
-<li>return</li>
-<li>…</li>
-</ul>
-</li>
-<li><p>第二种角色 : 类</p>
-<ul>
-<li>类</li>
-<li>实例</li>
-<li>私有和公有属性</li>
-<li>prototype</li>
-<li>__proto__</li>
-<li>…</li>
-</ul>
-</li>
-<li><p>第三种角色 : 普通对象</p>
-<ul>
-<li>键值对操作</li>
-<li>…</li>
-</ul>
-</li>
-</ol>
-<p style="font-size:16px;color:#543333">三种角色没有直接的关系</p>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  var name = <span class="string">"小哥"</span>;</span></span></span><br><span class="line"><span class="function"><span class="params">  this.age=<span class="number">18</span>;</span></span></span><br><span class="line"><span class="function"><span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">Fn.prototype</span><br><span class="line">Fn();</span><br><span class="line"><span class="keyword">var</span> f =<span class="keyword">new</span> Fn();</span><br></pre></td></tr></table></figure>
-<p><img src="/imgs/加强原型.png"></p>
-
+<p><code>验证 18 - 65 之间的年龄</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//=&gt;分三个阶段来处理</span></span><br><span class="line"><span class="comment">// 18 | 19</span></span><br><span class="line"><span class="comment">// 20 ~ 59</span></span><br><span class="line"><span class="comment">// 60 ~ 65 </span></span><br><span class="line"><span class="keyword">var</span> reg=<span class="regexp">/^((18|19)|([2-5]\d)|(6[0-5]))$/</span></span><br></pre></td></tr></table></figure>
+<p><code>验证是否为有效数字</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//=&gt;可能是正数, 	负数 , 整数 ,小数</span></span><br><span class="line"><span class="comment">//=&gt;只要出现小数点,后面至少要跟一位数字</span></span><br><span class="line"><span class="comment">//=&gt;小数点前面必须有数字</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^-?(\d|([1-9]\d+))(\.\d+)?$/</span></span><br></pre></td></tr></table></figure>
+<p><code>手机号</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//=&gt;11位数字</span></span><br><span class="line"><span class="comment">//=&gt;1开头</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^1\d&#123;10&#125;$/</span>;</span><br></pre></td></tr></table></figure>
+<p><code>用户名: 真是姓名</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//=&gt; /^[\u4E00-\u9FA5]$/ 中文汉字的正则</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reg=<span class="regexp">/^[\u4E00-\u9FA5]&#123;2,10&#125;(\.[\u4E00-\u9FA5]&#123;2,10&#125;)?/</span>;</span><br></pre></td></tr></table></figure>
+<p><code>邮箱</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/</span>;</span><br><span class="line"><span class="comment">//=&gt; 以数字字母下划线开头</span></span><br><span class="line"><span class="comment">//=&gt;@前面可以是 数字 字母 下划线 - . 这些符号</span></span><br><span class="line"><span class="comment">//=&gt;不能把-和.连续出现 , 出现一次后面必须跟数字字母下划线</span></span><br><span class="line"><span class="comment">//=&gt;@后面的部分支持</span></span><br><span class="line">     企业邮箱</span><br><span class="line">     .com .cn 多域名情况</span><br></pre></td></tr></table></figure>
+<p><code>身份证号码</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//=&gt; 18位 前17位数字最后以为数字|X</span></span><br><span class="line"><span class="comment">//=&gt; 前六位:省市县</span></span><br><span class="line"><span class="comment">//=&gt; 接下来八位出生年+月+日</span></span><br><span class="line"><span class="comment">//=&gt; 倒数第二位 奇数:男 偶数:女</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^(\d&#123;6&#125;)(d&#123;4&#125;)(\d&#123;2&#125;)(\d&#123;2&#125;)(\d&#123;2&#125;)(\d)(\d|X)$/</span>;</span><br><span class="line"><span class="comment">//=&gt;这样写不仅可以匹配,以后再捕获的时候,不仅可以把大正则匹配的结果捕获到,里面每一个小分组(小正则)匹配的结果也可以单独的捕获到"分组捕获"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//=&gt;年 1950-2018  ((19[5-9]\d)|(20((0\d)|(1[0-8])))</span></span><br><span class="line"><span class="comment">//=&gt;第一段 1950-1999   (19[5-9]\d)</span></span><br><span class="line"><span class="comment">//=&gt;第二段 2000-2018   (20((0\d)|(1[0-8]))</span></span><br><span class="line"><span class="comment">//=&gt;00-09  (0\d)</span></span><br><span class="line"><span class="comment">//=&gt;10-18  (1[0-8])</span></span><br><span class="line"><span class="comment">//=&gt;月 (0[1-9]|1[0-2])</span></span><br><span class="line"><span class="comment">//=&gt;日 (0[1-9]|[1-2]/d)</span></span><br></pre></td></tr></table></figure>
     </div>
 </article>
 
@@ -293,7 +273,7 @@
 <script>
 	if(!window.commentConfig) {
       window.commentConfig = {}
-      window.commentConfig.title = 'JS基础-函数的三种角色'
+      window.commentConfig.title = 'JS基础­正则常用表达式'
     }
 </script>
 
@@ -418,13 +398,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/23/JS基础-JSON/">JS基础-JSON</a>
+                    <a href="/2018/01/23/JS基础-DOM映射回流重绘/">JS基础-DOM映射回流重绘</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/23/JS基础-call-apply-bind/">JS基础-call,apply,bind</a>
+                    <a href="/2018/01/20/JS基础-this问题/">JS基础-this问题</a>
                 </span>
             </li>
             
@@ -436,13 +416,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/23/JS基础-括号表达式和i++,++i/">JS基础-括号表达式和i++,++i</a>
+                    <a href="/2018/01/21/JS基础-单例模式/">JS基础-单例模式</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/24/JS基础-正则常用方法和应用/">JS基础-正则常用方法和应用</a>
+                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/">JS基础-数据类型的核心操作原理</a>
                 </span>
             </li>
             
@@ -461,19 +441,19 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/2018/01/23/JS基础-函数的三种角色/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2018/01/24/JS基础­正则常用表达式/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/23/JS基础-函数的三种角色/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2018/01/24/JS基础­正则常用表达式/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/23/JS基础-函数的三种角色/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2018/01/24/JS基础­正则常用表达式/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/javascript-basis/" style="font-size: 12.929739429997024px;" class="tag-cloud-link">javascript-basis</a>
+    <a href="/tags/javascript-basis/" style="font-size: 10.41142674883313px;" class="tag-cloud-link">javascript-basis</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">

@@ -12,7 +12,7 @@
     
     
     
-    <title>JS基础-函数的三种角色 | 小哥</title>
+    <title>JS基础-盒子模型 | 小哥</title>
     <link href=”xiexiaoge.github.io“ rel=”prefetch” />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -197,13 +197,13 @@
         <i class="fa fa-home"></i>
         <a href="/">小哥</a>
         >
-        <span>JS基础-函数的三种角色</span>
+        <span>JS基础-盒子模型</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2018/01/23/JS基础-函数的三种角色/">JS基础-函数的三种角色</a>
+                <a href="/2018/01/24/JS基础-盒子模型/">JS基础-盒子模型</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -216,7 +216,7 @@
             </span>
             
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2018-01-23
+                <i class="fa fa-calendar"></i> 2018-01-24
             </span>
             
             <span class="label label-gal">
@@ -230,11 +230,11 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2018/01/23/JS基础-函数的三种角色/">JS基础-函数的三种角色</a>
+                    <a href="/2018/01/24/JS基础-盒子模型/">JS基础-盒子模型</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2018-01-23
+                <i class="fa fa-calendar"></i> 2018-01-24
             </p>
             <p>
                 
@@ -250,39 +250,83 @@
         </center>
     </div>
     <div class="content-article">
-        <h4>函数的三种角色</h4>
+        <h4>简单的CSS盒子模型</h4><br><img src="/imgs/盒子模型.png"><br><h4>JS盒子模型</h4>
 
+<ul>
+<li>JS提供一些属性和方法来描述当前盒子的样式的</li>
+</ul>
+<p><code>clientWidth / clientHeight</code></p>
+<ul>
+<li>当前盒子可视区域的宽度和高度</li>
+<li>可视区域 : 内容宽高+padding</li>
+<li>clientWidth = width+padding(Left/Right)</li>
+<li>clientHeight = height+padding(Top/Bottom)</li>
+<li>和内容是否溢出以及我们是否设置了overflow:hidden;没有关系<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//=&gt;获取当前页面一屏幕的宽度(加或者是为了兼容所有的浏览器)</span></span><br><span class="line"><span class="built_in">document</span>.documentELement.clientWidth||<span class="built_in">document</span>.body.clientWidth</span><br><span class="line"></span><br><span class="line"><span class="comment">//=&gt;获取当前页面一屏幕的高</span></span><br><span class="line"><span class="built_in">document</span>.documentELement.clientHeight||<span class="built_in">document</span>.body.clientHeight</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><code>clientTop和clientLeft</code></p>
+<ul>
+<li>只有top和left,没有right和bottom这两个属性</li>
+<li>clientTop : 盒子上边框的高度</li>
+<li>clientLeft : 盒子左边框的宽度</li>
+<li>获取的结果起始就是border-width值</li>
+</ul>
+<p><code>offsetWidth 和 offsetHeight</code></p>
+<ul>
+<li>在clientWidth和clientHeight基础上加上盒子的边框即可</li>
+<li>和内容是否溢出没关系</li>
+<li>在项目中如果想获取一个盒子的宽度和高度,一般用offsetWidth(而不是clientWIdth) , border也算是当前盒子的一部分</li>
+</ul>
+<p><code>scrollWidth 和 scrollHeight</code></p>
+<ul>
+<li>没有内容溢出<br>获取的结果和clientWidth/clientHeight是一样的</li>
+<li><p>有内容溢出<br>真是内容的宽度或者高度(包含溢出的内容),再加上左padding或者上padding的值;</p>
+</li>
+<li><p>有内容溢出的情况下,通过scrollWIdth或者scrollHeight获取的结果是一个约等于的值</p>
 <ol>
-<li><p>普通函数</p>
-<ul>
-<li>栈内存(私有作用域)</li>
-<li>作用域链</li>
-<li>arguments</li>
-<li>return</li>
-<li>…</li>
-</ul>
-</li>
-<li><p>第二种角色 : 类</p>
-<ul>
-<li>类</li>
-<li>实例</li>
-<li>私有和公有属性</li>
-<li>prototype</li>
-<li>__proto__</li>
-<li>…</li>
-</ul>
-</li>
-<li><p>第三种角色 : 普通对象</p>
-<ul>
-<li>键值对操作</li>
-<li>…</li>
-</ul>
+<li>有内容溢出 , 每个浏览器对行高或者文字的渲染一样,导致获取的结果也不一样</li>
+<li>是否设置overflow:hidden 对最后获取的结果也有影响<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//=&gt;获取当前页面真是高度(包含溢出部分)</span></span><br><span class="line"><span class="built_in">document</span>.documentELement.scrollHeight||<span class="built_in">document</span>.body.scrollHeight</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p style="font-size:16px;color:#543333">三种角色没有直接的关系</p>
+</li>
+</ul>
+<h4>在JS中获取元素具体的样式值</h4>
 
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  var name = <span class="string">"小哥"</span>;</span></span></span><br><span class="line"><span class="function"><span class="params">  this.age=<span class="number">18</span>;</span></span></span><br><span class="line"><span class="function"><span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">Fn.prototype</span><br><span class="line">Fn();</span><br><span class="line"><span class="keyword">var</span> f =<span class="keyword">new</span> Fn();</span><br></pre></td></tr></table></figure>
-<p><img src="/imgs/加强原型.png"></p>
+<ul>
+<li>通过JS盒子模型属性来获取盒的结果都是盒子的组合样式值,不能直接获取某一个具体样式值,例如: 左padding…<br><code>curELe.style.xxx</code></li>
+<li>获取当前元素所有写在行内样式上的样式值</li>
+<li>特殊 :  只有把样式写在行内样式上,才可以通过这种办法获取到(写在其它地方的样式是获取不到的)</li>
+<li>这种方法用的很少 :  不可能把所有的样式都写在行内上(这样要内嵌和外链式就没有用了) </li>
+</ul>
+<p><code>window.getComputedStyle / currentStyle</code></p>
+<ul>
+<li><p>只要当前元素在页面中显示出来了 , 就可以获取其样式值(不管写在行内还是样式表中) ; 也就是获取所有经过浏览器计算过的样式(当前元素只要能在页面中展示 , 那么它的所有样式都是经过浏览器计算的,包含一些你没有设置的 , 浏览器按照默认样式渲染的样式)</p>
+</li>
+<li><p>window.getComputedStyle : 适用于标准浏览器,但是在IE6~8中就不兼容了 , IE6~8下哦我们使用curEle.currentStyle来过去需要的样式值</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//=&gt;通过window.getComputedStyle获取的结果是一个对象,对象中包含了所有被浏览器计算过的样式属性及属性值</span></span><br><span class="line"><span class="comment">//=&gt;window.getComputedStyle([当前需要操作的额元素],[当前元素的伪类,一般都写成null])</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//=&gt;在IE6~8浏览器的window全局对象中,没有提供getComputedStyle这个属性方法,我们只能使用currentStyle属性获取元素的样式</span></span><br><span class="line"><span class="comment">//=&gt;[当前元素].currentStyle 获取的结果也是一个包含当前元素所有的样式属性和值的对象</span></span><br></pre></td></tr></table></figure>
+<h4>把获取样式的操作封装成为一个公共的方法实现兼容:getCss</h4>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">getCss:获取当前元素的某一个样式属性值</span></span><br><span class="line"><span class="comment">@parameter:</span></span><br><span class="line"><span class="comment">   curEle:当前需要操作的元素</span></span><br><span class="line"><span class="comment">   attr: 当前需要获取的样式属性名</span></span><br><span class="line"><span class="comment">@return</span></span><br><span class="line"><span class="comment">    获取的样式属性值</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCss</span>(<span class="params">curEle,attr</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> value=<span class="literal">null</span>;</span><br><span class="line">   <span class="keyword">if</span>(<span class="string">"getComputedStyle"</span> <span class="keyword">in</span> <span class="built_in">window</span>)&#123;</span><br><span class="line">     value=<span class="built_in">window</span>.getComputedStyle(curEle,<span class="literal">null</span>)[attr];</span><br><span class="line">   &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">   value=curEle.currentStyle[attr]</span><br><span class="line">  &#125;</span><br><span class="line">   <span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4>父级参照物</h4>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">offsetParent:父级参照物(父级参照物不等价于父级元素;父级参照物和它的父级元素没有直接的关系)</span><br><span class="line">父级参照物:同一个平面中最外层的容器是所有里层盒子的父级参照物</span><br><span class="line">默认情况下,一个页面中所有元素的父级参照物都是BODY(而BODY的父级参照物是<span class="literal">null</span>)</span><br><span class="line">当我们给元素设置定位之后,会改变元素的父级参照物(因为设置定位会让元素脱离平面(脱离文档流))</span><br></pre></td></tr></table></figure>
+<p><code>offsetLeft offsetTop</code></p>
+<ul>
+<li>当前元素的外边框 距离 父级参照物的内边框的偏移量(左偏移/上偏移)</li>
+<li>标准IE8浏览器有特殊性:它的偏移量是从当前外边框~父级参照物的外边框</li>
+<li>scrollLeft:横向滚动条卷去的宽度</li>
+<li>scrollTop:竖向滚动条卷去的高度</li>
+</ul>
+<h4>注意</h4>
+
+<ol>
+<li><p>JS盒子模型属性都是”只读属性” : 只能通过属性获取值,不可以修改属性的值(修改也不生效),<code>scrollLeft scrollTop</code>但是这两个属性是”可读写属性”:不仅仅可以获取值,还可以修改</p>
+</li>
+<li><p>通过JS盒子模型属性获取到的结果是不带单位的,而且只能是整数(它会自动四舍五入)</p>
+</li>
+</ol>
 
     </div>
 </article>
@@ -293,7 +337,7 @@
 <script>
 	if(!window.commentConfig) {
       window.commentConfig = {}
-      window.commentConfig.title = 'JS基础-函数的三种角色'
+      window.commentConfig.title = 'JS基础-盒子模型'
     }
 </script>
 
@@ -418,13 +462,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/23/JS基础-JSON/">JS基础-JSON</a>
+                    <a href="/2018/01/20/JS基础-this问题/">JS基础-this问题</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/23/JS基础-call-apply-bind/">JS基础-call,apply,bind</a>
+                    <a href="/2018/01/23/JS基础-函数的三种角色/">JS基础-函数的三种角色</a>
                 </span>
             </li>
             
@@ -442,13 +486,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/24/JS基础-正则常用方法和应用/">JS基础-正则常用方法和应用</a>
+                    <a href="/2018/01/21/JS基础-构造函数模式/">JS基础-构造函数模式</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/24/JS基础­正则常用表达式/">JS基础­正则常用表达式</a>
+                    <a href="/2018/01/21/JS基础-面向对象/">JS基础-面向对象</a>
                 </span>
             </li>
             
@@ -461,19 +505,19 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/2018/01/23/JS基础-函数的三种角色/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2018/01/24/JS基础-盒子模型/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/23/JS基础-函数的三种角色/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2018/01/24/JS基础-盒子模型/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/23/JS基础-函数的三种角色/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2018/01/24/JS基础-盒子模型/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/javascript-basis/" style="font-size: 12.929739429997024px;" class="tag-cloud-link">javascript-basis</a>
+    <a href="/tags/javascript-basis/" style="font-size: 14.427356256707256px;" class="tag-cloud-link">javascript-basis</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
