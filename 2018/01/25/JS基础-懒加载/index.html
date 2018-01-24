@@ -12,7 +12,7 @@
     
     
     
-    <title>Mot-clés: javascript-basis | 小哥</title>
+    <title>JS基础-懒加载 | 小哥</title>
     <link href=”xiexiaoge.github.io“ rel=”prefetch” />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -74,7 +74,7 @@
         <div class="ring">
             <a href="/" class="menuItem" style="left: 50%; top: 15%;">首页</a>
             
-            <a href="/tags/javascript-basis/page/2/" class="menuItem" style="left: 80.3109%; top: 32.5%;">下一页</a>
+            <a class="menuItem" style="left: 80.3109%; top: 32.5%;">下一页</a>
             
             <a href="/archives" class="menuItem" style="left: 80.3109%; top: 67.5%;">归档</a>
             <a href="/about" class="menuItem" style="left: 50%; top: 85%;">关于</a>
@@ -191,19 +191,38 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <article class="article well article-body" id="article-tag">
+                    
+<article class="article well article-body" id="article">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="/">小哥</a>
         >
-        <span>标签</span>
+        <span>JS基础-懒加载</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/tags/javascript-basis/index.html">javascript-basis</a>
+                <a href="/2018/01/25/JS基础-懒加载/">JS基础-懒加载</a>
             </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/javascript-basis/">javascript-basis</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2018-01-25
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-eye"></i>
+            </span>
+            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -211,33 +230,61 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/tags/javascript-basis/index.html">javascript-basis</a>
+                    <a href="/2018/01/25/JS基础-懒加载/">JS基础-懒加载</a>
                 </h4>
             </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2018-01-25
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/javascript-basis/">javascript-basis</a>
+                
+                
+                
+                <i class="fa fa-eye"></i>
+                
+            </p>
         </center>
     </div>
-    <div class="content-article" style="margin-top: 30px;">
-        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-            
-            <a href="/2018/01/25/JS基础-定时器和同异步/">JS基础-定时器和同异步</a>
-            <br>
-            
-            <a href="/2018/01/25/JS基础-懒加载/">JS基础-懒加载</a>
-            <br>
-            
-            <a href="/2018/01/24/JS基础-盒子模型/">JS基础-盒子模型</a>
-            <br>
-            
-            <a href="/2018/01/24/JS基础-正则常用方法和应用/">JS基础-正则常用方法和应用</a>
-            <br>
-            
-            <a href="/2018/01/24/JS基础­正则常用表达式/">JS基础­正则常用表达式</a>
-            <br>
-            
-            
-        </div>
+    <div class="content-article">
+        <h4>图片懒加载</h4>
+
+<ul>
+<li>当浏览器开始加载页面的时候,先不加载真实的图片(限用一张默认图占位),当页面加载完成或者滚动到对应区域的时候,我们再加载真实的图片</li>
+</ul>
+<h4>图片懒加载的目的:</h4>
+
+<ol>
+<li>减少页面第一次打开时候,请求资源的次数,让页面加载速度更快(打开页面的速度更快)</li>
+<li>开始只加载第一屏幕区域的数据和图片(有的网站是第一屏和第二屏都加载了),剩下区域的内容和图片先不进行加载,当用户滚动到具体的区域的时候再加载,这样也可以为用户节省一些流量(尤其是移动端)</li>
+</ol>
+<h4>window.onload VS JS中$()</h4>
+
+<ul>
+<li>$(function(){})()</li>
+<li>可以再统一页面中使用多次,多次都生效(所以在使用JQ完成代码的时候,我们一般都会把代码写在回调函数中: 首先不仅等到加载完成执行,而且还形成了一个闭包)</li>
+<li><p>原理 : 利用了DOM二级事件绑定(可以执行多次),监听的是DOMContentLoaded事件(DOM结构加载完成就会触发)</p>
+</li>
+<li><p>window.onload本身就是资源都加载完成才会执行,使用的是DOM零级事件绑定,在同一页面中只能使用一次</p>
+</li>
+</ul>
+
     </div>
 </article>
+
+
+<div id="comments-template"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script>
+	if(!window.commentConfig) {
+      window.commentConfig = {}
+      window.commentConfig.title = 'JS基础-懒加载'
+    }
+</script>
+
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -359,13 +406,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/23/JS基础-DOM映射回流重绘/">JS基础-DOM映射回流重绘</a>
+                    <a href="/2018/01/23/JS基础-JSON/">JS基础-JSON</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/20/JS基础-变量提升/">JS基础-变量提升</a>
+                    <a href="/2018/01/23/JS基础-call-apply-bind/">JS基础-call,apply,bind</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/21/JS基础-原型和原型链/">JS基础-原型和原型链</a>
                 </span>
             </li>
             
@@ -377,19 +430,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/25/JS基础-懒加载/">JS基础-懒加载</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2018/01/21/JS基础-构造函数模式/">JS基础-构造函数模式</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/24/JS基础-正则常用方法和应用/">JS基础-正则常用方法和应用</a>
+                    <a href="/2018/01/21/JS基础-面向对象/">JS基础-面向对象</a>
                 </span>
             </li>
             
@@ -402,19 +449,19 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/tags/javascript-basis/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2018/01/25/JS基础-懒加载/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 <li class="">
-                    <a href="/tags/javascript-basis/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2018/01/25/JS基础-懒加载/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 <li class="">
-                    <a href="/tags/javascript-basis/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2018/01/25/JS基础-懒加载/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/javascript-basis/" style="font-size: 14.3681680602903px;" class="tag-cloud-link">javascript-basis</a>
+    <a href="/tags/javascript-basis/" style="font-size: 17.32552048091796px;" class="tag-cloud-link">javascript-basis</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">

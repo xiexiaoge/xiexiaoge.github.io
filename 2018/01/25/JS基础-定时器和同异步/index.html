@@ -12,7 +12,7 @@
     
     
     
-    <title>Mot-clés: javascript-basis | 小哥</title>
+    <title>JS基础-定时器和同异步 | 小哥</title>
     <link href=”xiexiaoge.github.io“ rel=”prefetch” />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -74,7 +74,7 @@
         <div class="ring">
             <a href="/" class="menuItem" style="left: 50%; top: 15%;">首页</a>
             
-            <a href="/tags/javascript-basis/page/2/" class="menuItem" style="left: 80.3109%; top: 32.5%;">下一页</a>
+            <a class="menuItem" style="left: 80.3109%; top: 32.5%;">下一页</a>
             
             <a href="/archives" class="menuItem" style="left: 80.3109%; top: 67.5%;">归档</a>
             <a href="/about" class="menuItem" style="left: 50%; top: 85%;">关于</a>
@@ -191,19 +191,38 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <article class="article well article-body" id="article-tag">
+                    
+<article class="article well article-body" id="article">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="/">小哥</a>
         >
-        <span>标签</span>
+        <span>JS基础-定时器和同异步</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/tags/javascript-basis/index.html">javascript-basis</a>
+                <a href="/2018/01/25/JS基础-定时器和同异步/">JS基础-定时器和同异步</a>
             </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/javascript-basis/">javascript-basis</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2018-01-25
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-eye"></i>
+            </span>
+            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -211,33 +230,66 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/tags/javascript-basis/index.html">javascript-basis</a>
+                    <a href="/2018/01/25/JS基础-定时器和同异步/">JS基础-定时器和同异步</a>
                 </h4>
             </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2018-01-25
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/javascript-basis/">javascript-basis</a>
+                
+                
+                
+                <i class="fa fa-eye"></i>
+                
+            </p>
         </center>
     </div>
-    <div class="content-article" style="margin-top: 30px;">
-        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-            
-            <a href="/2018/01/25/JS基础-定时器和同异步/">JS基础-定时器和同异步</a>
-            <br>
-            
-            <a href="/2018/01/25/JS基础-懒加载/">JS基础-懒加载</a>
-            <br>
-            
-            <a href="/2018/01/24/JS基础-盒子模型/">JS基础-盒子模型</a>
-            <br>
-            
-            <a href="/2018/01/24/JS基础-正则常用方法和应用/">JS基础-正则常用方法和应用</a>
-            <br>
-            
-            <a href="/2018/01/24/JS基础­正则常用表达式/">JS基础­正则常用表达式</a>
-            <br>
-            
-            
-        </div>
+    <div class="content-article">
+        <h4>JS中的定时器一共有两种</h4>
+
+<p>定时器的返回值:当我们设置定时器(不管是setTimeout还是setInterval),都会有一个返回值.返回值是一个数字,代表当前是在浏览器中设置的第几个定时器(返回的是定时器序号)</p>
+<ol>
+<li>setTimeout和setInterval虽然是处理不同需求的定时器,但是都是浏览器的定时器,所以设置的时候,返回的序号是依次排列的</li>
+<li>setInterval设置完成定时器会有一个返回值,不管执行多少次,这个代表序列号的返回值不变(设置定时器就有返回值,执行多少次是定时器的处理)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var timer1=setTimeout(function () &#123;</span><br><span class="line"> &#125;,1000);</span><br><span class="line"> console.log(timer);//=&gt;1</span><br><span class="line"> var timer2=setTimeout(function () &#123;</span><br><span class="line"> &#125;,1000);</span><br><span class="line"> console.log(timer);//=&gt;2</span><br></pre></td></tr></table></figure>
+<p>定时器的清除<br>clearTimeout(定时器的排队序号)<br>clearInterval(定时器的排队序号)<br>定时器需要手动清除</p>
+<ul>
+<li><p>JS中的同步编程和异步编程<br>JS是单线程的(一次只能执行一个任务,当前任务没有完成,下面的任务是不进行处理的)</p>
+<p>同步编程(sync) : 任务是按照顺序一件件的完成的,当前任务没有完成,下面的任务不进行处理</p>
+</li>
+</ul>
+<p>   异步编程(async) : 当前任务在等待执行的时候,我们不去执行,继续完成下面的任务,当下面的任务完成后,而是也到达等待的时候了,采取完成当前的任务</p>
+<p>   =&gt;定时器都是异步编程<br>   =&gt;所有的事件绑定也是异步编程<br>   =&gt;Ajax中有异步编程<br>   =&gt;有些人把回调函数当作异步编程</p>
+<p>   其余都是同步编程</p>
+<ul>
+<li><p>同步异步编程的核心原理:<br>JS中有两个任务队列(存放任务列表的空间就是任务队列)<br>1.主任务队列 : 同步执行任务(从上到下一次执*=&gt;游戏中的主线任务,只有做完了第一个才能做第二个 每个任务之间有联系<br>2.等待任务队列 : 异步执行任务(日常任务/副线任务)  任务基本上是独立存在的</p>
+<p>回调函数</p>
+<p>  把一个函数当作实参值传递给另一个函数,在另一个函数中执行这个函数,这种处理机制就是回调函数机制</p>
+<ul>
+<li>数组中的  <code>map ,forEach...</code></li>
+</ul>
+</li>
+</ul>
+
     </div>
 </article>
+
+
+<div id="comments-template"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script>
+	if(!window.commentConfig) {
+      window.commentConfig = {}
+      window.commentConfig.title = 'JS基础-定时器和同异步'
+    }
+</script>
+
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -365,13 +417,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/20/JS基础-变量提升/">JS基础-变量提升</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/01/21/JS基础-单例模式/">JS基础-单例模式</a>
+                    <a href="/2018/01/25/JS基础-定时器和同异步/">JS基础-定时器和同异步</a>
                 </span>
             </li>
             
@@ -383,13 +429,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/21/JS基础-构造函数模式/">JS基础-构造函数模式</a>
+                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/">JS基础-数据类型的核心操作原理</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2018/01/24/JS基础-正则常用方法和应用/">JS基础-正则常用方法和应用</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/24/JS基础-盒子模型/">JS基础-盒子模型</a>
                 </span>
             </li>
             
@@ -402,19 +454,19 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/tags/javascript-basis/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2018/01/25/JS基础-定时器和同异步/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 <li class="">
-                    <a href="/tags/javascript-basis/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2018/01/25/JS基础-定时器和同异步/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 <li class="">
-                    <a href="/tags/javascript-basis/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2018/01/25/JS基础-定时器和同异步/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/javascript-basis/" style="font-size: 14.3681680602903px;" class="tag-cloud-link">javascript-basis</a>
+    <a href="/tags/javascript-basis/" style="font-size: 9.468842056981352px;" class="tag-cloud-link">javascript-basis</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
