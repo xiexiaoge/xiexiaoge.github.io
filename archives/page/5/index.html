@@ -12,7 +12,7 @@
     
     
     
-    <title>JS基础-正则基础 | 小哥</title>
+    <title>Archives | 小哥</title>
     <link href=”xiexiaoge.github.io“ rel=”prefetch” />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -80,7 +80,7 @@
             <a href="/about" class="menuItem" style="left: 50%; top: 85%;">关于</a>
             <a href="/message" class="menuItem" style="left: 19.6891%; top: 67.5%;">留言板</a>
             
-            <a class="menuItem" style="left: 19.6891%; top: 32.5%;">上一页</a>
+            <a href="/archives/page/4/" class="menuItem" style="left: 19.6891%; top: 32.5%;">上一页</a>
             
         </div>
         <audio id="audio" src="/imgs/oni.mp3"></audio>
@@ -124,7 +124,7 @@
                 
                 
                 
-                <li class="">
+                <li class="current">
                     <a href="/archives">
                         <i class="fa fa-archive"></i>归档
                     </a>
@@ -191,38 +191,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    
-<article class="article well article-body" id="article">
+                    <article class="article well article-body" id="article-archive">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="/">小哥</a>
         >
-        <span>JS基础-正则基础</span>
+        <span>归档</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2018/01/24/JS基础-正则基础/">JS基础-正则基础</a>
+                <a href="/archives">归档</a>
             </h1>
-        </div>
-        <div class="tag-article">
-            
-            <span class="label label-gal">
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/javascript-basis/">javascript-basis</a>
-                
-            </span>
-            
-            <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2018-01-24
-            </span>
-            
-            <span class="label label-gal">
-                <i class="fa fa-eye"></i>
-            </span>
-            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -230,119 +211,111 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2018/01/24/JS基础-正则基础/">JS基础-正则基础</a>
+                    <a href="/archives">归档</a>
                 </h4>
             </div>
-            <p>
-                <i class="fa fa-calendar"></i> 2018-01-24
-            </p>
-            <p>
-                
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/javascript-basis/">javascript-basis</a>
-                
-                
-                
-                <i class="fa fa-eye"></i>
-                
-            </p>
         </center>
     </div>
-    <div class="content-article">
-        <h4>什么是正则</h4>
-
-<ul>
-<li>正则就是一个规则 , 用来处理<code>字符串</code>的规则;</li>
-</ul>
-<ol>
-<li>正则匹配<br>编写一个规则 , 验证某个字符串是否符合这个规则 , 正则匹配使用的是test方法 </li>
-<li>正则捕获<br>编写一个规则 , 在一个字符串中把符合规则的内容都获取到 , 正则捕获使用的方法 : 正则的exec方法 , 字符串中的split , replace , match 等方法都支持正则</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^$/</span>;<span class="comment">//=&gt;两个斜杠中间包含一些内容就是正则,两个斜杠之间包含的内容都是元字符</span></span><br></pre></td></tr></table></figure>
-<h4>正则的元字符和修饰符</h4>
-
-<ul>
-<li>任何一个正则都是由 元字符 和 修饰符 组成的</li>
-</ul>
-<p><code>修饰符</code></p>
-<ul>
-<li>g(global) : 全局匹配</li>
-<li>i(ignoreCase) : 忽略单词大小写</li>
-<li>m(mulitiline) : 多行匹配</li>
-</ul>
-<p><code>元字符</code></p>
-<ul>
-<li><p>量词元字符</p>
-<ul>
-<li>+ : 让前面的元字符出现一次或者多次</li>
-<li>? : 出现0到一次</li>
-<li>* : 出现0到多次</li>
-<li>{n} : 出现 n 次</li>
-<li>{n,} : 出现n到多次</li>
-<li>{n,m} : 出现n到m次</li>
-</ul>
-</li>
-<li><p>特殊意义的元字符</p>
-<ul>
-<li>\ : 转义字符(把一个普通字符转变为有特殊意义的字符,或者把一个有意义字符转换为普通的字符)</li>
-<li>. : 除了 \n (换行符) 以外的任意字符</li>
-<li>\d : 匹配一个0~9之间的数字</li>
-<li>\D : 匹配一个非0~9之间的数字</li>
-<li>\w : 匹配一个 0~9 或字母或_之间的字符</li>
-<li>\W : 匹配一个非0~9 或字母或_之间的字符</li>
-<li>\s : 匹配一个任意空白字符</li>
-<li>\S : 匹配一个非任意空白字符</li>
-<li>\b : 匹配一个边界符</li>
-<li>\B : 匹配一个非边界符</li>
-<li>x|y : 匹配x或者y中的一个</li>
-<li>[a-z] : 匹配a-z中的任意一个字符</li>
-<li>[^a-z] : 和上面的相反 , 匹配任意一个非a-z的字符</li>
-<li>[xyz] : 匹配x或者y或者z中的一个字符</li>
-<li>[^xyz] : 匹配除了xyz以外的任意字符</li>
-<li>0 : 正则的小分组 , 匹配一个小分组(小分组可以理解为大正则中的一个小正则)</li>
-<li>^ :  以某一个元字符开始</li>
-<li>$ :  以某一个元字符结束</li>
-<li>?: : 只匹配不捕获</li>
-<li>?= : 正向预查</li>
-<li>?! :负向预查<br>….<br>除了以上特殊元字符和量词元字符,其余的都叫普通元字符 : 代表本身意义的元字符</li>
-</ul>
-</li>
-</ul>
-<h4>元字符详细解读</h4>
-
-<p><code>^ $</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span>  reg=<span class="regexp">/\d+/</span>;</span><br><span class="line"><span class="keyword">var</span> str=<span class="string">"小哥2018"</span>;</span><br><span class="line">reg.test(str)=&gt;<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">reg=<span class="regexp">/^\d+/</span>;</span><br><span class="line">reg.test(str)=&gt;<span class="literal">false</span></span><br><span class="line">reg=<span class="regexp">/^\d+$/</span>;=&gt;只能是某某某的,这里说明只能是<span class="number">1</span>到多个数字</span><br><span class="line"></span><br><span class="line">reg.test(<span class="string">"2018"</span>);=&gt;<span class="literal">true</span></span><br><span class="line">reg.test(str); =&gt;<span class="literal">false</span></span><br><span class="line">reg.test(<span class="string">"2"</span>);=&gt;<span class="literal">true</span> ^或者$只是一个修饰或者声明,不会占据字符串的位置</span><br></pre></td></tr></table></figure></p>
-<p><code>\</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> reg = <span class="regexp">/^2.3$/</span>;</span><br><span class="line"> reg.test(<span class="string">"2.3"</span>);=&gt;<span class="literal">true</span></span><br><span class="line"> reg.test(<span class="string">"2+3"</span>);=&gt;<span class="literal">true</span></span><br><span class="line"> 点在正则中的意思:匹配除了\n以外的任意字符,而不是单纯的小数点</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">var</span> reg = <span class="regexp">/^2\.3$/</span>;</span><br><span class="line"> reg.test(<span class="string">"2.3"</span>);=&gt;<span class="literal">true</span></span><br><span class="line"> reg.test(<span class="string">"2+3"</span>);=&gt;<span class="literal">false</span></span><br><span class="line"> 使用转义字符把点换位本身小数点的意思</span><br><span class="line"></span><br><span class="line"> 好玩的来了:</span><br><span class="line"> <span class="keyword">var</span> reg = <span class="regexp">/^\\d$/</span>;</span><br><span class="line">reg.test(<span class="string">"\9"</span>)<span class="comment">//=&gt;false</span></span><br><span class="line">reg.test(<span class="string">"\\d"</span>)<span class="comment">//=&gt;true</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> reg = <span class="regexp">/^\\\d$/</span>;</span><br><span class="line"> reg.test(<span class="string">"\9"</span>)<span class="comment">//=&gt;false</span></span><br><span class="line"> reg.test(<span class="string">"\\9"</span>)<span class="comment">//=&gt;true</span></span><br><span class="line"> </span><br><span class="line"> <span class="keyword">var</span> reg = <span class="regexp">/\\/</span>; <span class="comment">//=&gt; `\\`的意思</span></span><br></pre></td></tr></table></figure>
-<p><code>x|y</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^18|19$/</span>;</span><br><span class="line"><span class="comment">// 18 或者 19  </span></span><br><span class="line">以<span class="number">1</span>开头<span class="number">9</span>结尾 中间 <span class="number">1</span>或者<span class="number">8</span> </span><br><span class="line">以<span class="number">18</span>开头或者以<span class="number">19</span>结尾  =&gt;<span class="string">"18小哥"</span> ,<span class="string">"小哥19"</span> </span><br><span class="line"><span class="comment">//=&gt;18 19 189 119 819 181 1819...很多都符合这个规则</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^(18|19)$/</span>;<span class="comment">//=&gt;此时只有18或者19符合我们的规则了</span></span><br></pre></td></tr></table></figure>
-<hr>
-<ul>
-<li><p><code>()</code> : 正则中的分组 , 也可以理解为一个大正则中的正则(包起来的部分是一个整体) ; 在正则中我们可以使用小括号</p>
-<ul>
-<li>改变一些默认的优先级</li>
-<li>小分组第二个作用 : <code>分组引用</code></li>
-<li>小分组第三个作用 : <code>分组捕获</code></li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//=&gt;分组引用 : \1 或者 \2 ...出现和第N个分组一摸一样的内容</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^([a-z])([a-z])\2([a-z])$/</span>;</span><br></pre></td></tr></table></figure>
-<p><code>[]</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//=&gt; 正则现实 正则中的\w</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^([a-zA-Z0-9_)$/; </span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">//=&gt;中括号中出现的元字符,一般都代表本身的含义</span></span><br><span class="line"><span class="regexp">点在[]中就是小数点,不是所谓的任意字符;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/=&gt;描述样式类名的规则(数字,字母,下划线,-),并且不能以-开头</span></span><br><span class="line"><span class="regexp"> var reg = /</span>^[\w-]+$/;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^([a-zA-Z0-9_-)+$/;</span></span><br></pre></td></tr></table></figure>
-
+    <div class="content-article" style="margin-top: 30px;">
+        
+        
+            <h1 style="font-size: 24px; margin-top: 40px;">2018年</h1>
+            
+        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
+            
+             
+             
+                        <a href="/2018/01/26/JS基础-检测数据类型/">JS基础-检测数据类型</a>
+                        <br>
+            
+             
+                        <a href="/2018/01/26/JS基础-常用的ES6语法/">JS基础-常用的ES6语法</a>
+                        <br>
+            
+             
+                        <a href="/2018/01/26/JS基础-类的继承/">JS基础-类的继承</a>
+                        <br>
+            
+             
+                        <a href="/2018/01/25/JS基础-定时器和同异步/">JS基础-定时器和同异步</a>
+                        <br>
+            
+             
+                        <a href="/2018/01/25/JS基础-懒加载/">JS基础-懒加载</a>
+                        <br>
+            
+             
+                        <a href="/2018/01/24/JS基础-盒子模型/">JS基础-盒子模型</a>
+                        <br>
+            
+             
+                        <a href="/2018/01/24/JS基础-正则常用方法和应用/">JS基础-正则常用方法和应用</a>
+                        <br>
+            
+             
+                        <a href="/2018/01/24/JS基础­正则常用表达式/">JS基础­正则常用表达式</a>
+                        <br>
+            
+             
+                        <a href="/2018/01/24/JS基础-正则基础/">JS基础-正则基础</a>
+                        <br>
+            
+             
+                        <a href="/2018/01/23/JS基础-DOM映射回流重绘/">JS基础-DOM映射回流重绘</a>
+                        <br>
+            
+             
+                        <a href="/2018/01/23/JS基础-JSON/">JS基础-JSON</a>
+                        <br>
+            
+             
+                        <a href="/2018/01/23/JS基础-括号表达式和i++,++i/">JS基础-括号表达式和i++,++i</a>
+                        <br>
+            
+             
+                        <a href="/2018/01/23/JS基础-函数的三种角色/">JS基础-函数的三种角色</a>
+                        <br>
+            
+             
+                        <a href="/2018/01/23/JS基础-call-apply-bind/">JS基础-call,apply,bind</a>
+                        <br>
+            
+             
+                        <a href="/2018/01/21/JS基础-原型和原型链/">JS基础-原型和原型链</a>
+                        <br>
+            
+             
+                        <a href="/2018/01/21/JS基础-构造函数模式/">JS基础-构造函数模式</a>
+                        <br>
+            
+             
+                        <a href="/2018/01/21/JS基础-面向对象/">JS基础-面向对象</a>
+                        <br>
+            
+             
+                        <a href="/2018/01/21/JS基础-单例模式/">JS基础-单例模式</a>
+                        <br>
+            
+             
+                        <a href="/2018/01/20/JS基础-作用域和闭包/">JS基础-作用域和闭包</a>
+                        <br>
+            
+             
+                        <a href="/2018/01/20/JS基础-this问题/">JS基础-this问题</a>
+                        <br>
+            
+             
+                        <a href="/2018/01/20/JS基础-变量提升/">JS基础-变量提升</a>
+                        <br>
+            
+             
+                        <a href="/2018/01/19/JS基础-数据类型的核心操作原理/">JS基础-数据类型的核心操作原理</a>
+                        <br>
+            
+                    </div>
+        
     </div>
 </article>
-
-
-<div id="comments-template"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script>
-	if(!window.commentConfig) {
-      window.commentConfig = {}
-      window.commentConfig.title = 'JS基础-正则基础'
-    }
-</script>
-
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -470,13 +443,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/23/JS基础-call-apply-bind/">JS基础-call,apply,bind</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/01/23/JS基础-函数的三种角色/">JS基础-函数的三种角色</a>
+                    <a href="/2018/01/20/JS基础-this问题/">JS基础-this问题</a>
                 </span>
             </li>
             
@@ -488,13 +455,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/26/JS基础-检测数据类型/">JS基础-检测数据类型</a>
+                    <a href="/2018/01/21/JS基础-原型和原型链/">JS基础-原型和原型链</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/24/JS基础-盒子模型/">JS基础-盒子模型</a>
+                    <a href="/2018/01/24/JS基础-正则基础/">JS基础-正则基础</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/24/JS基础­正则常用表达式/">JS基础­正则常用表达式</a>
                 </span>
             </li>
             
@@ -507,19 +480,19 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/2018/01/24/JS基础-正则基础/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/archives/page/5/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/24/JS基础-正则基础/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/archives/page/5/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/24/JS基础-正则基础/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/archives/page/5/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/javascript-basis/" style="font-size: 17.166201078106603px;" class="tag-cloud-link">javascript-basis</a>
+    <a href="/tags/javascript-basis/" style="font-size: 11.419974664875138px;" class="tag-cloud-link">javascript-basis</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">

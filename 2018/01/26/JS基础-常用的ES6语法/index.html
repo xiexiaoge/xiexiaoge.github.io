@@ -12,7 +12,7 @@
     
     
     
-    <title>JS基础-正则基础 | 小哥</title>
+    <title>JS基础-常用的ES6语法 | 小哥</title>
     <link href=”xiexiaoge.github.io“ rel=”prefetch” />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -197,13 +197,13 @@
         <i class="fa fa-home"></i>
         <a href="/">小哥</a>
         >
-        <span>JS基础-正则基础</span>
+        <span>JS基础-常用的ES6语法</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2018/01/24/JS基础-正则基础/">JS基础-正则基础</a>
+                <a href="/2018/01/26/JS基础-常用的ES6语法/">JS基础-常用的ES6语法</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -216,7 +216,7 @@
             </span>
             
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2018-01-24
+                <i class="fa fa-calendar"></i> 2018-01-26
             </span>
             
             <span class="label label-gal">
@@ -230,11 +230,11 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2018/01/24/JS基础-正则基础/">JS基础-正则基础</a>
+                    <a href="/2018/01/26/JS基础-常用的ES6语法/">JS基础-常用的ES6语法</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2018-01-24
+                <i class="fa fa-calendar"></i> 2018-01-26
             </p>
             <p>
                 
@@ -250,85 +250,91 @@
         </center>
     </div>
     <div class="content-article">
-        <h4>什么是正则</h4>
+        <h4>常用ES6语法</h4>
+
+<h4>let基础语法</h4>
 
 <ul>
-<li>正则就是一个规则 , 用来处理<code>字符串</code>的规则;</li>
+<li>使用let 创建变量和使用var 创建变量的区别</li>
 </ul>
 <ol>
-<li>正则匹配<br>编写一个规则 , 验证某个字符串是否符合这个规则 , 正则匹配使用的是test方法 </li>
-<li>正则捕获<br>编写一个规则 , 在一个字符串中把符合规则的内容都获取到 , 正则捕获使用的方法 : 正则的exec方法 , 字符串中的split , replace , match 等方法都支持正则</li>
+<li><p>let不存在变量提升机制</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(str);<span class="comment">//=&gt;undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(num);<span class="comment">//=&gt;num is not defined</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"string"</span>;</span><br><span class="line"><span class="keyword">let</span> num = <span class="number">12</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用let定义的变量不允许在<code>同一个作用域中</code>重复声明,单允许重新复制 </p>
+</li>
+<li><p>var 相当与给window增加一个属性,和let不会给window增加属性;</p>
+</li>
+<li><p>关于暂时性死区 : 使用type检测一个未声明过去的变量</p>
+<blockquote>
+<p>ES5中返回的结果是undefined但是不报错<br>ES6中直接报错</p>
+</blockquote>
+</li>
+<li><p>ES6语法创建的变量(let)存在块级作用域,ES5语法创建变量(var/function)没有块级作用域</p>
+<blockquote>
+<p><code>ES5</code><br>window 全局作用域<br>函数执行形成的私有作用域<br><code>ES6</code><br>除了有ES5中的两个作用域,ES6中新增加块级作用域(可以把块级作用域理解为之前学习的私有作用域:存在私有变量和作用域链的一些机制) <code>ES6语法把大部分用大括号包起来的都称之为块级作用域</code><br>循环体 <code>if {} for(每一次循环都会形成一个新的块级作用域)  try{}catch(){} switch(){case break}</code></p>
+</blockquote>
+</li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^$/</span>;<span class="comment">//=&gt;两个斜杠中间包含一些内容就是正则,两个斜杠之间包含的内容都是元字符</span></span><br></pre></td></tr></table></figure>
-<h4>正则的元字符和修饰符</h4>
+<h4>const基础语法</h4>
 
 <ul>
-<li>任何一个正则都是由 元字符 和 修饰符 组成的</li>
-</ul>
-<p><code>修饰符</code></p>
+<li><p>const和let 的区别</p>
 <ul>
-<li>g(global) : 全局匹配</li>
-<li>i(ignoreCase) : 忽略单词大小写</li>
-<li>m(mulitiline) : 多行匹配</li>
-</ul>
-<p><code>元字符</code></p>
-<ul>
-<li><p>量词元字符</p>
-<ul>
-<li>+ : 让前面的元字符出现一次或者多次</li>
-<li>? : 出现0到一次</li>
-<li>* : 出现0到多次</li>
-<li>{n} : 出现 n 次</li>
-<li>{n,} : 出现n到多次</li>
-<li>{n,m} : 出现n到m次</li>
-</ul>
-</li>
-<li><p>特殊意义的元字符</p>
-<ul>
-<li>\ : 转义字符(把一个普通字符转变为有特殊意义的字符,或者把一个有意义字符转换为普通的字符)</li>
-<li>. : 除了 \n (换行符) 以外的任意字符</li>
-<li>\d : 匹配一个0~9之间的数字</li>
-<li>\D : 匹配一个非0~9之间的数字</li>
-<li>\w : 匹配一个 0~9 或字母或_之间的字符</li>
-<li>\W : 匹配一个非0~9 或字母或_之间的字符</li>
-<li>\s : 匹配一个任意空白字符</li>
-<li>\S : 匹配一个非任意空白字符</li>
-<li>\b : 匹配一个边界符</li>
-<li>\B : 匹配一个非边界符</li>
-<li>x|y : 匹配x或者y中的一个</li>
-<li>[a-z] : 匹配a-z中的任意一个字符</li>
-<li>[^a-z] : 和上面的相反 , 匹配任意一个非a-z的字符</li>
-<li>[xyz] : 匹配x或者y或者z中的一个字符</li>
-<li>[^xyz] : 匹配除了xyz以外的任意字符</li>
-<li>0 : 正则的小分组 , 匹配一个小分组(小分组可以理解为大正则中的一个小正则)</li>
-<li>^ :  以某一个元字符开始</li>
-<li>$ :  以某一个元字符结束</li>
-<li>?: : 只匹配不捕获</li>
-<li>?= : 正向预查</li>
-<li>?! :负向预查<br>….<br>除了以上特殊元字符和量词元字符,其余的都叫普通元字符 : 代表本身意义的元字符</li>
+<li>let是创建变量 , const是创建常量</li>
+<li>变量: 值可以修改的  常量:值不能被修改</li>
+<li>const 一旦声明必须赋值</li>
 </ul>
 </li>
 </ul>
-<h4>元字符详细解读</h4>
+<h4>JS中创建变量的方式</h4>
 
-<p><code>^ $</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span>  reg=<span class="regexp">/\d+/</span>;</span><br><span class="line"><span class="keyword">var</span> str=<span class="string">"小哥2018"</span>;</span><br><span class="line">reg.test(str)=&gt;<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">reg=<span class="regexp">/^\d+/</span>;</span><br><span class="line">reg.test(str)=&gt;<span class="literal">false</span></span><br><span class="line">reg=<span class="regexp">/^\d+$/</span>;=&gt;只能是某某某的,这里说明只能是<span class="number">1</span>到多个数字</span><br><span class="line"></span><br><span class="line">reg.test(<span class="string">"2018"</span>);=&gt;<span class="literal">true</span></span><br><span class="line">reg.test(str); =&gt;<span class="literal">false</span></span><br><span class="line">reg.test(<span class="string">"2"</span>);=&gt;<span class="literal">true</span> ^或者$只是一个修饰或者声明,不会占据字符串的位置</span><br></pre></td></tr></table></figure></p>
-<p><code>\</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> reg = <span class="regexp">/^2.3$/</span>;</span><br><span class="line"> reg.test(<span class="string">"2.3"</span>);=&gt;<span class="literal">true</span></span><br><span class="line"> reg.test(<span class="string">"2+3"</span>);=&gt;<span class="literal">true</span></span><br><span class="line"> 点在正则中的意思:匹配除了\n以外的任意字符,而不是单纯的小数点</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">var</span> reg = <span class="regexp">/^2\.3$/</span>;</span><br><span class="line"> reg.test(<span class="string">"2.3"</span>);=&gt;<span class="literal">true</span></span><br><span class="line"> reg.test(<span class="string">"2+3"</span>);=&gt;<span class="literal">false</span></span><br><span class="line"> 使用转义字符把点换位本身小数点的意思</span><br><span class="line"></span><br><span class="line"> 好玩的来了:</span><br><span class="line"> <span class="keyword">var</span> reg = <span class="regexp">/^\\d$/</span>;</span><br><span class="line">reg.test(<span class="string">"\9"</span>)<span class="comment">//=&gt;false</span></span><br><span class="line">reg.test(<span class="string">"\\d"</span>)<span class="comment">//=&gt;true</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> reg = <span class="regexp">/^\\\d$/</span>;</span><br><span class="line"> reg.test(<span class="string">"\9"</span>)<span class="comment">//=&gt;false</span></span><br><span class="line"> reg.test(<span class="string">"\\9"</span>)<span class="comment">//=&gt;true</span></span><br><span class="line"> </span><br><span class="line"> <span class="keyword">var</span> reg = <span class="regexp">/\\/</span>; <span class="comment">//=&gt; `\\`的意思</span></span><br></pre></td></tr></table></figure>
-<p><code>x|y</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^18|19$/</span>;</span><br><span class="line"><span class="comment">// 18 或者 19  </span></span><br><span class="line">以<span class="number">1</span>开头<span class="number">9</span>结尾 中间 <span class="number">1</span>或者<span class="number">8</span> </span><br><span class="line">以<span class="number">18</span>开头或者以<span class="number">19</span>结尾  =&gt;<span class="string">"18小哥"</span> ,<span class="string">"小哥19"</span> </span><br><span class="line"><span class="comment">//=&gt;18 19 189 119 819 181 1819...很多都符合这个规则</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^(18|19)$/</span>;<span class="comment">//=&gt;此时只有18或者19符合我们的规则了</span></span><br></pre></td></tr></table></figure>
-<hr>
+<ol>
+<li>var : ES5中创建变量</li>
+<li><p>function : ES5中创建函数</p>
 <ul>
-<li><p><code>()</code> : 正则中的分组 , 也可以理解为一个大正则中的正则(包起来的部分是一个整体) ; 在正则中我们可以使用小括号</p>
-<ul>
-<li>改变一些默认的优先级</li>
-<li>小分组第二个作用 : <code>分组引用</code></li>
-<li>小分组第三个作用 : <code>分组捕获</code></li>
+<li>ES5中创建变量或者函数存在 : 变量提升,重复声明等特征,但是没有块级作用域的机制</li>
+<li>相当于给 window增加一个私有属性</li>
 </ul>
 </li>
+<li>let : ES6中创建变量</li>
+<li><p>const : ES6中创建常量  声明必须赋值,且不能修改</p>
+<ul>
+<li>ES6中创建的变量或者常量都不可以变量提升,也不可以重复声明,而且还存在块级作用域</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//=&gt;分组引用 : \1 或者 \2 ...出现和第N个分组一摸一样的内容</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^([a-z])([a-z])\2([a-z])$/</span>;</span><br></pre></td></tr></table></figure>
-<p><code>[]</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//=&gt; 正则现实 正则中的\w</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^([a-zA-Z0-9_)$/; </span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">//=&gt;中括号中出现的元字符,一般都代表本身的含义</span></span><br><span class="line"><span class="regexp">点在[]中就是小数点,不是所谓的任意字符;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/=&gt;描述样式类名的规则(数字,字母,下划线,-),并且不能以-开头</span></span><br><span class="line"><span class="regexp"> var reg = /</span>^[\w-]+$/;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^([a-zA-Z0-9_-)+$/;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>class</code>: ES6中创建类的方式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span></span>&#123;</span><br><span class="line"> <span class="comment">//=&gt;私有</span></span><br><span class="line"> <span class="keyword">constructor</span>()&#123;</span><br><span class="line">  <span class="keyword">this</span>.xxx=xxx</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//=&gt;Parent.prototype  原型</span></span><br><span class="line">  get()&#123;&#125;</span><br><span class="line">  <span class="comment">//=&gt;Parent own  property  类本身的私有属性</span></span><br><span class="line">  <span class="keyword">static</span> set()&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>import</code>: ES6中模块导入的方式</p>
+</li>
+</ol>
+<h4>ES6中的解构赋值</h4>
+
+<ul>
+<li>按照原有值的解构 , 把原有值中的某一部分内容快速获取到(快速赋值给一个变量)</li>
+</ul>
+<h4>s数组的解构赋值</h4>
+
+<ul>
+<li>结构赋值本身就是ES6的语法规范,使用什么声明这些变量是无所谓的</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [a,b,c] = [<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>];</span><br><span class="line"><span class="comment">//=&gt;a=12 b=13 c=14</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> [d,e,f] = [<span class="number">16</span>,<span class="number">17</span>,<span class="number">18</span>];</span><br><span class="line"><span class="comment">//=&gt;d=16 e=17 f=18</span></span><br><span class="line"></span><br><span class="line">[a,b,c] = [<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>];</span><br><span class="line"><span class="comment">//=&gt;相当于给window增加全局属性</span></span><br><span class="line"><span class="comment">//=&gt;a=12 b=13 c=14</span></span><br><span class="line"><span class="comment">//=&gt;这个操作在JS的严格模式下是不允许的,因为严格模式下不允许出现非使用var/let等声明的变量</span></span><br></pre></td></tr></table></figure>
+<h4>多维数组的结构赋值</h4>
+
+<ol>
+<li><p>在解构赋值中,我们可以给某一项设置默认值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [,,,B=<span class="number">0</span>] =[<span class="number">12</span>,<span class="number">23</span>,<span class="number">15</span>];<span class="comment">//=&gt;b=0</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在解构赋值中,支持<code>...xxx</code>的扩展运算符</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [...a]=[<span class="number">12</span>,<span class="number">23</span>,<span class="number">24</span>];<span class="comment">//=&gt;a=[12,23,24]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4>解构赋值的应用</h4>
+
+<ul>
+<li>快速交换两个变量的值<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a=<span class="number">12</span>,b=<span class="number">13</span>;</span><br><span class="line">[a,b]=[b,a];</span><br><span class="line"><span class="built_in">console</span>.log(a, b);</span><br></pre></td></tr></table></figure></li>
+</ul>
 
     </div>
 </article>
@@ -339,7 +345,7 @@
 <script>
 	if(!window.commentConfig) {
       window.commentConfig = {}
-      window.commentConfig.title = 'JS基础-正则基础'
+      window.commentConfig.title = 'JS基础-常用的ES6语法'
     }
 </script>
 
@@ -464,31 +470,31 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/23/JS基础-JSON/">JS基础-JSON</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/01/23/JS基础-call-apply-bind/">JS基础-call,apply,bind</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2018/01/23/JS基础-函数的三种角色/">JS基础-函数的三种角色</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/20/JS基础-变量提升/">JS基础-变量提升</a>
+                    <a href="/2018/01/21/JS基础-单例模式/">JS基础-单例模式</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/23/JS基础-括号表达式和i++,++i/">JS基础-括号表达式和i++,++i</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2018/01/26/JS基础-检测数据类型/">JS基础-检测数据类型</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/24/JS基础-正则基础/">JS基础-正则基础</a>
                 </span>
             </li>
             
@@ -507,19 +513,19 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/2018/01/24/JS基础-正则基础/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2018/01/26/JS基础-常用的ES6语法/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/24/JS基础-正则基础/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2018/01/26/JS基础-常用的ES6语法/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/24/JS基础-正则基础/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2018/01/26/JS基础-常用的ES6语法/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/javascript-basis/" style="font-size: 17.166201078106603px;" class="tag-cloud-link">javascript-basis</a>
+    <a href="/tags/javascript-basis/" style="font-size: 10.171828458665683px;" class="tag-cloud-link">javascript-basis</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
