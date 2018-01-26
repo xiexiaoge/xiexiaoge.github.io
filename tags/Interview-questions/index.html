@@ -12,7 +12,7 @@
     
     
     
-    <title>JS基础-括号表达式和i++,++i | 小哥</title>
+    <title>Mot-clés: Interview questions | 小哥</title>
     <link href=”xiexiaoge.github.io“ rel=”prefetch” />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -195,38 +195,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    
-<article class="article well article-body" id="article">
+                    <article class="article well article-body" id="article-tag">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="/">小哥</a>
         >
-        <span>JS基础-括号表达式和i++,++i</span>
+        <span>标签</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2018/01/23/JS基础-括号表达式和i++,++i/">JS基础-括号表达式和i++,++i</a>
+                <a href="/tags/Interview-questions/index.html">Interview questions</a>
             </h1>
-        </div>
-        <div class="tag-article">
-            
-            <span class="label label-gal">
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/javascript-basis/">javascript-basis</a>
-                
-            </span>
-            
-            <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2018-01-23
-            </span>
-            
-            <span class="label label-gal">
-                <i class="fa fa-eye"></i>
-            </span>
-            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -234,57 +215,21 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2018/01/23/JS基础-括号表达式和i++,++i/">JS基础-括号表达式和i++,++i</a>
+                    <a href="/tags/Interview-questions/index.html">Interview questions</a>
                 </h4>
             </div>
-            <p>
-                <i class="fa fa-calendar"></i> 2018-01-23
-            </p>
-            <p>
-                
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/javascript-basis/">javascript-basis</a>
-                
-                
-                
-                <i class="fa fa-eye"></i>
-                
-            </p>
         </center>
     </div>
-    <div class="content-article">
-        <h4>JS中的括号表达式</h4>
-
-<ol>
-<li><p>小括号中出现多项(每一个项目之间用逗号分隔),操作只有最后一项</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(function () &#123;</span><br><span class="line">    console.log(1);</span><br><span class="line">&#125;,function () &#123;</span><br><span class="line">    console.log(2);</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line">//=&gt;2</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>括号表达式会影响this 的指向</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// =&gt;括号中只有一项,this还是按照没有括号的时候处理即可</span><br><span class="line">// =&gt;括号中有多项,执行最后一项的时候,方法中的this就是window(undefined)[浏览器会把这种情况理解为自执行函数处理的]</span><br><span class="line">window.name=&quot;WIN&quot;;</span><br><span class="line">function fn() &#123;</span><br><span class="line">    console.log(this.name);</span><br><span class="line">&#125;</span><br><span class="line">var obj=&#123;name:&quot;obj&quot;,fn:fn&#125;;</span><br><span class="line">obj.fn();//this=&gt;obj</span><br><span class="line">(obj.fn)();//this=&gt;obj</span><br><span class="line">(fn,obj.fn)();//this=&gt;window  严格模式下是undefined</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>运算优先级</p>
-</li>
-</ol>
-<hr>
-<p><code>i++和++i的区别</code></p>
-<blockquote>
-<p>i++: 先拿原有的i值和其他值进行运算,运算完成后在自身累加1<br>++i: 先自身累加1,然后拿累加完成的结果和其他值进行运算<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i=<span class="number">5</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>+i++);<span class="comment">//10</span></span><br><span class="line"><span class="built_in">console</span>.log(i)<span class="comment">//=&gt;6</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> i=<span class="number">5</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>+++i);<span class="comment">//11</span></span><br><span class="line"><span class="built_in">console</span>.log(i)<span class="comment">//=&gt;6</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-
+    <div class="content-article" style="margin-top: 30px;">
+        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
+            
+            <a href="/2018/01/27/JS基础-页面Load/">JS基础-页面Load</a>
+            <br>
+            
+            
+        </div>
     </div>
 </article>
-
-
-<div id="comments-template"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script>
-	if(!window.commentConfig) {
-      window.commentConfig = {}
-      window.commentConfig.title = 'JS基础-括号表达式和i++,++i'
-    }
-</script>
-
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -406,31 +351,31 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/23/JS基础-DOM映射回流重绘/">JS基础-DOM映射回流重绘</a>
+                    <a href="/2018/01/23/JS基础-JSON/">JS基础-JSON</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/20/JS基础-作用域和闭包/">JS基础-作用域和闭包</a>
+                    <a href="/2018/01/23/JS基础-call-apply-bind/">JS基础-call,apply,bind</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/26/JS基础-检测数据类型/">JS基础-检测数据类型</a>
+                    <a href="/2018/01/25/JS基础-定时器和同异步/">JS基础-定时器和同异步</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/21/JS基础-构造函数模式/">JS基础-构造函数模式</a>
+                    <a href="/2018/01/23/JS基础-括号表达式和i++,++i/">JS基础-括号表达式和i++,++i</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/">JS基础-数据类型的核心操作原理</a>
+                    <a href="/2018/01/24/JS基础-正则基础/">JS基础-正则基础</a>
                 </span>
             </li>
             
@@ -449,21 +394,21 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/2018/01/23/JS基础-括号表达式和i++,++i/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/tags/Interview-questions/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/23/JS基础-括号表达式和i++,++i/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/tags/Interview-questions/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/23/JS基础-括号表达式和i++,++i/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/tags/Interview-questions/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/javascript-basis/" style="font-size: 12.688630273735889px;" class="tag-cloud-link">javascript-basis</a>
+    <a href="/tags/javascript-basis/" style="font-size: 18.315890548896135px;" class="tag-cloud-link">javascript-basis</a>
     
-    <a href="/tags/Interview-questions/" style="font-size: 9.69442372690861px;" class="tag-cloud-link">Interview questions</a>
+    <a href="/tags/Interview-questions/" style="font-size: 9.351032230133978px;" class="tag-cloud-link">Interview questions</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">

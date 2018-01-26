@@ -12,7 +12,7 @@
     
     
     
-    <title>JS基础-括号表达式和i++,++i | 小哥</title>
+    <title>JS基础-页面Load | 小哥</title>
     <link href=”xiexiaoge.github.io“ rel=”prefetch” />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -201,13 +201,13 @@
         <i class="fa fa-home"></i>
         <a href="/">小哥</a>
         >
-        <span>JS基础-括号表达式和i++,++i</span>
+        <span>JS基础-页面Load</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2018/01/23/JS基础-括号表达式和i++,++i/">JS基础-括号表达式和i++,++i</a>
+                <a href="/2018/01/27/JS基础-页面Load/">JS基础-页面Load</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -215,12 +215,12 @@
             <span class="label label-gal">
                 <i class="fa fa-tags"></i>
                 
-                <a href="/tags/javascript-basis/">javascript-basis</a>
+                <a href="/tags/Interview-questions/">Interview questions</a>
                 
             </span>
             
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2018-01-23
+                <i class="fa fa-calendar"></i> 2018-01-27
             </span>
             
             <span class="label label-gal">
@@ -234,17 +234,17 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2018/01/23/JS基础-括号表达式和i++,++i/">JS基础-括号表达式和i++,++i</a>
+                    <a href="/2018/01/27/JS基础-页面Load/">JS基础-页面Load</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2018-01-23
+                <i class="fa fa-calendar"></i> 2018-01-27
             </p>
             <p>
                 
                 <i class="fa fa-tags"></i>
                 
-                <a href="/tags/javascript-basis/">javascript-basis</a>
+                <a href="/tags/Interview-questions/">Interview questions</a>
                 
                 
                 
@@ -254,23 +254,32 @@
         </center>
     </div>
     <div class="content-article">
-        <h4>JS中的括号表达式</h4>
+        <h4>$(function(){})()或者$(document).ready(function(){})  VS window.onload</h4>
 
+<p><code>$(function(){})()或者$(document).ready(function(){})</code></p>
+<ul>
+<li>可以在同一页面中使用多次,多次都生效(所以在使用JQ完成代码的时候,我们一般都会把代码写在回调函数中: 首先不仅等到DOM加载完成执行,而且还形成了一个闭包)</li>
+</ul>
 <ol>
-<li><p>小括号中出现多项(每一个项目之间用逗号分隔),操作只有最后一项</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(function () &#123;</span><br><span class="line">    console.log(1);</span><br><span class="line">&#125;,function () &#123;</span><br><span class="line">    console.log(2);</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line">//=&gt;2</span><br></pre></td></tr></table></figure>
+<li><p>JQ提供的方法,JQ基于DOMContentLoaded这个事件完成这个操作的</p>
 </li>
-<li><p>括号表达式会影响this 的指向</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// =&gt;括号中只有一项,this还是按照没有括号的时候处理即可</span><br><span class="line">// =&gt;括号中有多项,执行最后一项的时候,方法中的this就是window(undefined)[浏览器会把这种情况理解为自执行函数处理的]</span><br><span class="line">window.name=&quot;WIN&quot;;</span><br><span class="line">function fn() &#123;</span><br><span class="line">    console.log(this.name);</span><br><span class="line">&#125;</span><br><span class="line">var obj=&#123;name:&quot;obj&quot;,fn:fn&#125;;</span><br><span class="line">obj.fn();//this=&gt;obj</span><br><span class="line">(obj.fn)();//this=&gt;obj</span><br><span class="line">(fn,obj.fn)();//this=&gt;window  严格模式下是undefined</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>运算优先级</p>
+<li><p>JQ中的事件绑定都是基于DOM2事件绑定完成的</p>
 </li>
 </ol>
-<hr>
-<p><code>i++和++i的区别</code></p>
-<blockquote>
-<p>i++: 先拿原有的i值和其他值进行运算,运算完成后在自身累加1<br>++i: 先自身累加1,然后拿累加完成的结果和其他值进行运算<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i=<span class="number">5</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>+i++);<span class="comment">//10</span></span><br><span class="line"><span class="built_in">console</span>.log(i)<span class="comment">//=&gt;6</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> i=<span class="number">5</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>+++i);<span class="comment">//11</span></span><br><span class="line"><span class="built_in">console</span>.log(i)<span class="comment">//=&gt;6</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
+<p>s但是DOMContentLoaded在IE6~8下使用attchEvent也不支持的,JQ在IE6~8下使用attachEvent也是不支持的,JQ在IE6~8中使用的是readystatechange这个事件处理的</p>
+<p><code>window.onload</code></p>
+<ul>
+<li><p>window.onload本身就是资源都加载完成才会执行,使用的是DOM零级事件绑定,在同一页面中只能绑定一次(绑定多个也是以最后一个为主);</p>
+</li>
+<li><p>如果想在一个页面中使用多次,应该基于DOM2事件绑定</p>
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>{}
+标准
+<span class="built_in">window</span>.addEventListener=(<span class="string">"load"</span>,fn,<span class="literal">false</span>)
+IE6~<span class="number">8</span>
+<span class="built_in">window</span>.attachEvent=(<span class="string">"onload"</span>,fn)
+</code></pre>
+</li>
+</ul>
 
     </div>
 </article>
@@ -281,7 +290,7 @@
 <script>
 	if(!window.commentConfig) {
       window.commentConfig = {}
-      window.commentConfig.title = 'JS基础-括号表达式和i++,++i'
+      window.commentConfig.title = 'JS基础-页面Load'
     }
 </script>
 
@@ -406,37 +415,37 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/23/JS基础-DOM映射回流重绘/">JS基础-DOM映射回流重绘</a>
+                    <a href="/2018/01/23/JS基础-JSON/">JS基础-JSON</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/20/JS基础-作用域和闭包/">JS基础-作用域和闭包</a>
+                    <a href="/2018/01/26/JS基础-常用的ES6语法/">JS基础-常用的ES6语法</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/26/JS基础-检测数据类型/">JS基础-检测数据类型</a>
+                    <a href="/2018/01/20/JS基础-this问题/">JS基础-this问题</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/21/JS基础-构造函数模式/">JS基础-构造函数模式</a>
+                    <a href="/2018/01/21/JS基础-单例模式/">JS基础-单例模式</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/">JS基础-数据类型的核心操作原理</a>
+                    <a href="/2018/01/27/JS基础-页面Load/">JS基础-页面Load</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/21/JS基础-面向对象/">JS基础-面向对象</a>
+                    <a href="/2018/01/24/JS基础­正则常用表达式/">JS基础­正则常用表达式</a>
                 </span>
             </li>
             
@@ -449,21 +458,21 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/2018/01/23/JS基础-括号表达式和i++,++i/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2018/01/27/JS基础-页面Load/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/23/JS基础-括号表达式和i++,++i/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2018/01/27/JS基础-页面Load/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 <li class="">
-                    <a href="/2018/01/23/JS基础-括号表达式和i++,++i/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2018/01/27/JS基础-页面Load/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/javascript-basis/" style="font-size: 12.688630273735889px;" class="tag-cloud-link">javascript-basis</a>
+    <a href="/tags/javascript-basis/" style="font-size: 8.27873507057392px;" class="tag-cloud-link">javascript-basis</a>
     
-    <a href="/tags/Interview-questions/" style="font-size: 9.69442372690861px;" class="tag-cloud-link">Interview questions</a>
+    <a href="/tags/Interview-questions/" style="font-size: 17.06105355004893px;" class="tag-cloud-link">Interview questions</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
