@@ -12,7 +12,7 @@
     
     
     
-    <title>about | 小哥</title>
+    <title>JS基础-AJAX同步异步 | 小哥</title>
     <link href=”xiexiaoge.github.io“ rel=”prefetch” />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -180,7 +180,7 @@
                 
                 
                 
-                <li class="current">
+                <li class="">
                     <a href="/about">
                         <i class="fa fa-/"></i>关于我
                     </a>
@@ -195,21 +195,38 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <!-- 搜索页面(尽可能接近ZanBlog搜索功能) -->
-
-
+                    
 <article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="/">小哥</a>
+        >
+        <span>JS基础-AJAX同步异步</span>
+    </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/about/index.html">about</a>
+                <a href="/2018/01/30/JS基础-AJAX同步异步/">JS基础-AJAX同步异步</a>
             </h1>
         </div>
         <div class="tag-article">
+            
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2018-01-20
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/javascript-basis/">javascript-basis</a>
+                
             </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2018-01-30
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-eye"></i>
+            </span>
+            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -217,17 +234,40 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/about/index.html">about</a>
+                    <a href="/2018/01/30/JS基础-AJAX同步异步/">JS基础-AJAX同步异步</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2018-01-20
+                <i class="fa fa-calendar"></i> 2018-01-30
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/javascript-basis/">javascript-basis</a>
+                
+                
+                
+                <i class="fa fa-eye"></i>
+                
             </p>
         </center>
     </div>
     <div class="content-article">
-        <p>刚写博客,可能内容不是很nice,但是希望自己能坚持,技术就像粥,越熬越有味!</p>
+        <h4>AJAX同异步</h4>
 
+<ul>
+<li>AJAX这个任务 : 发送请求接收到响应主体内容(完成一个完整的HTTP事物)</li>
+<li>xhr.send();任务开始</li>
+<li>xhr.readyState===4 ; 任务结束</li>
+</ul>
+<p><code>同步</code></p>
+<p><img src="/imgs/ajax同步.png"></p>
+<p><code>异步</code></p>
+<p><img src="/imgs/ajax异步.png"></p>
+<h4>JQ中的AJAX</h4>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">   url:<span class="string">"xxx"</span>,<span class="comment">//=&gt;请求API地址</span></span><br><span class="line">   method:<span class="string">"get"</span>,<span class="comment">//=&gt;设置请求方式 GET/POST ...在老版本JQ中使用的是TYPE , 使用type和method实现的是相同的效果</span></span><br><span class="line">   dataType:<span class="string">"json"</span>,<span class="comment">//=&gt; dataType 只是我们预设获取结果的类型 , 不会影响服务器的返回 (服务器端一般给我们返回的都是JSON格式字符串) , 如果我们预设的是JSON , 那么类库中将把服务器返回的字符串转换为JSON对象 , 如果我们预设的是text(默认值) , 我们把服务器获取的结果直接把过来操作即可 , 我们预设的值还可以是XML等   </span></span><br><span class="line">   cache :<span class="literal">false</span> <span class="comment">//=&gt;设置是否清除缓存 , 只对GET系类请求有作用 , 默认是true不清缓存,手动设置为false , JQ库会在请求URL的末尾追加一个随机数来清除缓存</span></span><br><span class="line">   data:<span class="literal">null</span> <span class="comment">//=&gt;通过data可以把一些信息传递给服务器;get系列请求会把data中的内容拼接在url的末尾通过问好传参的方式传递给服务器,post系列请求会把内容放在请求主体中传递给服务器;DATA的值可以设置为两种格式:字符串,对象,如果是字符串,设置的值是什么传递给服务器的就是什么,如果设置的是对象,JQ会把对象变为 xxx=xxx&amp;xxx=xxxx 这样的字符串传递给服务器</span></span><br><span class="line">   <span class="keyword">async</span> : <span class="literal">true</span> <span class="comment">//=&gt;异步</span></span><br><span class="line">   success:<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">   <span class="comment">//=&gt;当ajax请求成功 (readyState===4&amp;&amp;status是以2或者3开头的)</span></span><br><span class="line">   <span class="comment">//=&gt;请求成功后JQ会把传递的回调函数执行,并且把获取的结果当做实参传递给回调函数(result就是我们从服务器端获取的结果)</span></span><br><span class="line">  &#125;</span><br><span class="line">  error:<span class="function"><span class="keyword">function</span>(<span class="params">msg</span>)</span>&#123;&#125;,<span class="comment">//=&gt;请求错误触发回调函数</span></span><br><span class="line">  complate:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;<span class="comment">//=&gt;不管请求是错误的还是正确的都会触发回调函数</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
     </div>
 </article>
 
@@ -237,10 +277,9 @@
 <script>
 	if(!window.commentConfig) {
       window.commentConfig = {}
-      window.commentConfig.title = 'about'
+      window.commentConfig.title = 'JS基础-AJAX同步异步'
     }
 </script>
-
 
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
@@ -369,31 +408,31 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/20/JS基础-作用域和闭包/">JS基础-作用域和闭包</a>
+                    <a href="/2018/01/21/JS基础-单例模式/">JS基础-单例模式</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/20/JS基础-变量提升/">JS基础-变量提升</a>
+                    <a href="/2018/01/21/JS基础-原型和原型链/">JS基础-原型和原型链</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/25/JS基础-懒加载/">JS基础-懒加载</a>
+                    <a href="/2018/01/23/JS基础-括号表达式和i++,++i/">JS基础-括号表达式和i++,++i</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/">JS基础-数据类型的核心操作原理</a>
+                    <a href="/2018/01/21/JS基础-构造函数模式/">JS基础-构造函数模式</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/24/JS基础-盒子模型/">JS基础-盒子模型</a>
+                    <a href="/2018/01/24/JS基础-正则常用方法和应用/">JS基础-正则常用方法和应用</a>
                 </span>
             </li>
             
@@ -406,21 +445,21 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/about/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2018/01/30/JS基础-AJAX同步异步/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 <li class="">
-                    <a href="/about/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2018/01/30/JS基础-AJAX同步异步/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 <li class="">
-                    <a href="/about/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2018/01/30/JS基础-AJAX同步异步/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/javascript-basis/" style="font-size: 16.60796396640959px;" class="tag-cloud-link">javascript-basis</a>
+    <a href="/tags/javascript-basis/" style="font-size: 12.895627904174056px;" class="tag-cloud-link">javascript-basis</a>
     
-    <a href="/tags/Interview-questions/" style="font-size: 9.864066270502267px;" class="tag-cloud-link">Interview questions</a>
+    <a href="/tags/Interview-questions/" style="font-size: 17.97620003154438px;" class="tag-cloud-link">Interview questions</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
