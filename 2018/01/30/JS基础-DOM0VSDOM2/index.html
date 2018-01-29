@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="小哥">
+    
+    <meta name="description" content="个人笔记">
+    
+    
+    
+    
+    
+    
+    <title>JS基础-DOM0VSDOM2 | 小哥</title>
+    <link href=”xiexiaoge.github.io“ rel=”prefetch” />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <script src="//cdn1.lncld.net/static/js/3.4.2/av-min.js"></script>
+    <script>
+      AV.init({
+        appId: 'KPMBRT3j5PYNcM5WWn5BeoC9-gzGzoHsz',
+        appKey: 'RsXJzBDQAjDn7RcthCxQEDLd'
+      })
+    </script>
+    
+
+</head>
+<!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/avatar.jpg'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <div class="gal-menu gal-dropdown">
+    <div class="circle" id="gal">
+        <div class="ring">
+            <a href="/" class="menuItem" style="left: 50%; top: 15%;">首页</a>
+            
+            <a class="menuItem" style="left: 80.3109%; top: 32.5%;">下一页</a>
+            
+            <a href="/archives" class="menuItem" style="left: 80.3109%; top: 67.5%;">归档</a>
+            <a href="/about" class="menuItem" style="left: 50%; top: 85%;">关于</a>
+            <a href="/message" class="menuItem" style="left: 19.6891%; top: 67.5%;">留言板</a>
+            
+            <a class="menuItem" style="left: 19.6891%; top: 32.5%;">上一页</a>
+            
+        </div>
+        <audio id="audio" src="/imgs/oni.mp3"></audio>
+    </div>
+</div>
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target=".bs-navbar-collapse"
+                    aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="/">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">小哥</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class="">
+                    <a href="/">
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-list"></i>分类
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/categories/Personal-notes/">Personal notes</a>
+                        </li>
+                        
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>标签
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/javascript-basis/">javascript-basis</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Interview-questions/">Interview questions</a>
+                        </li>
+                        
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/about">
+                        <i class="fa fa-/"></i>关于我
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="/">小哥</a>
+        >
+        <span>JS基础-DOM0VSDOM2</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2018/01/30/JS基础-DOM0VSDOM2/">JS基础-DOM0VSDOM2</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/javascript-basis/">javascript-basis</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2018-01-30
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-eye"></i>
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2018/01/30/JS基础-DOM0VSDOM2/">JS基础-DOM0VSDOM2</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2018-01-30
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/javascript-basis/">javascript-basis</a>
+                
+                
+                
+                <i class="fa fa-eye"></i>
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <h4>DOM0事件绑定和DOM2事件绑定的区别</h4>
+
+<ul>
+<li><p>DOM0事件绑定的原理</p>
+<ul>
+<li>给当前元素对象的某一个私有属性(onxxx)赋值的过程 (之前属性默认值是null,如果我们给赋值一个函数,就相当于绑定了方法)</li>
+<li>当我们赋值成功(函数) , 此时浏览器会自动把DOM元素和赋值的函数建立关联 ,以及建立DOM元素行为操作监听,当某一个行为被用户触发,浏览器会把相关行为赋值的函数执行</li>
+</ul>
+</li>
+<li><p>特点</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//=&gt;1.只有DOM元素天生拥有这个私有属性(onxxx事件私有属性),赋值的方法才叫做事件绑定,否则属于给当前元素设置一个自定义属性而已</span></span><br><span class="line"><span class="built_in">document</span>.body.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;<span class="comment">//=&gt;事件绑定</span></span><br><span class="line">手动点击页面中的BODY触发方法执行</span><br><span class="line">domcument.body.onclick()这样执行也可以</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.body.onxxx=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;<span class="comment">//=&gt;设置自定义属性</span></span><br><span class="line">domcument.body.onxxx()这样执行可以</span><br><span class="line"></span><br><span class="line"><span class="comment">//=&gt;2. 移除事件绑定的时候,我们只需要赋值为null即可</span></span><br><span class="line"><span class="built_in">document</span>.body.onclick=<span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//=&gt;3. 在DOM0事件绑定中,只能给当前元素的某一个事件行为(某一个事件私有属性)绑定一个方法,绑定多个方法,最后一次绑定的会把之前绑定的都替换掉</span></span><br><span class="line"><span class="built_in">document</span>.body.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.body.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//=&gt;点击body只能输出2,因为第二次赋值的函数把第一次赋值的函数给替换了</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4>DOM2事件绑定的原理</h4>
+
+<ol>
+<li><p>DOM2事件绑定使用的addEventListener/attachEvent都是在EventTarget这个类内置类的原型上定义的 , 我们调取使用的时候,首先通过原型链找到这个方法,然后执行完成事件绑定的效果</p>
+</li>
+<li><p>浏览器首先会给当前元素的某一个事件行为开辟一个事件池(事件队列)[其实是浏览器有一个统一的事件池,我们每一个元素的某个行为绑定的方法都放在这个事件池中,只是通过相关的标识来区分的] , 当我们通过addEventListener做事件监听的时候 , 会把绑定的方法存放在事件池中</p>
+</li>
+<li><p>当元素的某一个行为触发 , 浏览器会对应到事件池中,把当前存放在事件池中的所有方法,依次按照存放的先后顺序执行</p>
+</li>
+</ol>
+<blockquote>
+<p>特点:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//=&gt;1. 所有DOM0支持的事件行为 , DOM2都可以使用,不仅如此,DOM2还支持一些DOM0没有的事件行为 : DOMContentLoaded...</span></span><br><span class="line"> </span><br><span class="line"> <span class="built_in">document</span>.body.onDOMContentLoaded===<span class="literal">undefined</span>;<span class="comment">//=&gt;DOM0中没有这个属性</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.body.addEventListener(<span class="string">"DOMContentLoaded"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">//=&gt;标准浏览器中兼容这个事件:当浏览器中的DOM结构加载完成,就会触发这个事件(也会把绑定的方法执行)</span></span><br><span class="line">&#125;,<span class="literal">false</span>)</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//=&gt;2. DOM2中可以给当前元素的某一个事件行为绑定"多个不同的方法"(因为绑定的所有方法都存在事件池中了)</span></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;</span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">fn3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.body.addEventListener(<span class="string">"click"</span>,fn1,<span class="literal">false</span>);</span><br><span class="line"><span class="built_in">document</span>.body.addEventListener(<span class="string">"click"</span>,fn3,<span class="literal">false</span>);</span><br><span class="line"><span class="built_in">document</span>.body.addEventListener(<span class="string">"click"</span>,fn2,<span class="literal">false</span>);</span><br><span class="line"><span class="built_in">document</span>.body.addEventListener(<span class="string">"click"</span>,fn3,<span class="literal">false</span>);<span class="comment">//=&gt;本次向事件池中存储的时候 , 发现fn3已经在事件池存在了 , 不能再存储了</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3.DOM2事件绑定的移除,比较麻烦一些,需要和绑定的时候:事件类型,绑定的方法,传播阶段,三个完全一致蔡可以移除掉</span></span><br><span class="line"><span class="built_in">document</span>.body.removeEventListenter(<span class="string">"click"</span>,fn2,<span class="literal">false</span>);<span class="comment">//=&gt;DOM2事件绑定方法的时候尽量不用匿名函数,为后期可能会把方法再事件池中移除掉做准备</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p><strong>DOM0和DOM2绑定的方法是毫无关系的(因为是两套不同的处理机制),即使绑定的方法相同,也是执行两次<br>谁先绑定的, 就先执行谁</strong></p>
+<h4>DOM2事件绑定的兼容处理</h4>
+
+<ul>
+<li><p>语法上的兼容</p>
+<ul>
+<li><p>标准<br><code>curELe.addEventListener(&quot;type&quot;,function,false)</code></p>
+</li>
+<li><p>IE6~8<br><code>curELe.attachEvent(&quot;type&quot;,function,false)</code></p>
+</li>
+</ul>
+</li>
+<li><p>除了语法上的区别 , 在处理的机制上有一些区别</p>
+</li>
+<li><p>在IE6~8中使用attacEvent做事件绑定(把方法存放在当前元素指定事件类型的事件池中)</p>
+<ol>
+<li>顺序问题 : 当事件行为触发,执行对应事件池中存放的方法的时候,IE低版本浏览器执行方法的顺序是乱序的(标准浏览器是按照绑定的先后顺序依次执行的)</li>
+<li>重复问题 : IE低版本浏览器在向事件池中增加方法的时候,没有去重机制,哪怕当前方法已经存放过了,还会重复的增加进去(标准浏览器的事件池机制很完善,可以自动去重:已经存在过的方法不允许在添加进来)</li>
+<li>this问题 : IE低版本浏览器中,当事件行为触发,把事件池中方法执行,此时方法中的this指向window,而不是像标准浏览器一样,指向当前元素本身<blockquote>
+<p>其实都是IE低版本浏览器对它内置事件池处理机制的不完善导致的<br>DOM2事件兼容处理的原理 : 告别IE6~8内置事件池,而是自己创建一个类似于标准浏览器的”自定义事件池”<br><img src="/imgs/DOM2级事件的兼容.png"></p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ul>
+
+    </div>
+</article>
+
+
+<div id="comments-template"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script>
+	if(!window.commentConfig) {
+      window.commentConfig = {}
+      window.commentConfig.title = 'JS基础-DOM0VSDOM2'
+    }
+</script>
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get"
+              action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            小哥
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="/imgs/avatar.jpg" width="140" height="140"
+                 alt="个人头像" class="author-image">
+            <p class="author-description"><p>个人笔记</p>
+</p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    <aside id="sidebar-hot_posts">
+    <div class="panel panel-gal hot hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-fire"></i>
+            最热文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/30/JS基础-http和ajax/">JS基础-http和ajax</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/30/JS基础-常见的性能优化/">JS基础-常见的性能优化</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/30/JS基础-DOM0VSDOM2/">JS基础-DOM0VSDOM2</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/30/JS基础-事件冒泡-委托/">JS基础-事件冒泡,委托</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/30/JS基础-DOM事件/">JS基础-DOM事件</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/27/JS基础-页面Load/">JS基础-页面Load</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/23/JS基础-DOM映射回流重绘/">JS基础-DOM映射回流重绘</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/20/JS基础-this问题/">JS基础-this问题</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/21/JS基础-构造函数模式/">JS基础-构造函数模式</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/">JS基础-数据类型的核心操作原理</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/24/JS基础-正则基础/">JS基础-正则基础</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/24/JS基础-正则常用方法和应用/">JS基础-正则常用方法和应用</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+                <li class="">
+                    <a href="/2018/01/30/JS基础-DOM0VSDOM2/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                <li class="">
+                    <a href="/2018/01/30/JS基础-DOM0VSDOM2/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                <li class="">
+                    <a href="/2018/01/30/JS基础-DOM0VSDOM2/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/javascript-basis/" style="font-size: 17.3269113666322px;" class="tag-cloud-link">javascript-basis</a>
+    
+    <a href="/tags/Interview-questions/" style="font-size: 12.457506872220138px;" class="tag-cloud-link">Interview questions</a>
+    
+</div>
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="https://www.baidu.com/" target="_blank">百度</a>
+    </li>
+    
+</div>
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/xiexiaoge/" target="_blank">Github</a>
+    </li>
+    
+    <li>
+        <a href="https://www.zhihu.com" target="_blank">知乎</a>
+    </li>
+    
+</div>
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 小哥 Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+<script src="/js/oni.js"></script>
+
+
+<script>
+    window.hot_posts_count = '5'
+    // window.use_leancloud = 'true'
+</script>
+<script src="/js/comment/leancloud.js"></script>
+
+
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    if(window.commentConfig) {
+      window.commentConfig.owner = 'xiexiaoge'
+      window.commentConfig.repo = 'Blogcomment'
+      window.commentConfig.client_id = 'd699fd54898337e1d4ad'
+      window.commentConfig.client_secret = '17d2e5400ac2a47478689dccc1a0e22ef8cefe36'
+      window.commentConfig.redirect_uri = 'null'
+    } else {
+      window.commentConfig = {
+        owner: 'xiexiaoge',
+        repo: 'Blogcomment',
+        client_id: 'd699fd54898337e1d4ad',
+        client_secret: '17d2e5400ac2a47478689dccc1a0e22ef8cefe36',
+        redirect_uri: 'null'
+      }
+    }
+</script>
+<script src="/js/comment/gitment.js"></script>
+
+</html>
