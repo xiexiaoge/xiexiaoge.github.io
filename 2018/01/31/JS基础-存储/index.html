@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="小哥">
+    
+    <meta name="description" content="个人笔记">
+    
+    
+    
+    
+    
+    
+    <title>JS基础-存储 | 小哥</title>
+    <link href=”xiexiaoge.github.io“ rel=”prefetch” />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <script src="//cdn1.lncld.net/static/js/3.4.2/av-min.js"></script>
+    <script>
+      AV.init({
+        appId: 'KPMBRT3j5PYNcM5WWn5BeoC9-gzGzoHsz',
+        appKey: 'RsXJzBDQAjDn7RcthCxQEDLd'
+      })
+    </script>
+    
+
+</head>
+<!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/avatar.jpg'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <div class="gal-menu gal-dropdown">
+    <div class="circle" id="gal">
+        <div class="ring">
+            <a href="/" class="menuItem" style="left: 50%; top: 15%;">首页</a>
+            
+            <a class="menuItem" style="left: 80.3109%; top: 32.5%;">下一页</a>
+            
+            <a href="/archives" class="menuItem" style="left: 80.3109%; top: 67.5%;">归档</a>
+            <a href="/about" class="menuItem" style="left: 50%; top: 85%;">关于</a>
+            <a href="/message" class="menuItem" style="left: 19.6891%; top: 67.5%;">留言板</a>
+            
+            <a class="menuItem" style="left: 19.6891%; top: 32.5%;">上一页</a>
+            
+        </div>
+        <audio id="audio" src="/imgs/oni.mp3"></audio>
+    </div>
+</div>
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target=".bs-navbar-collapse"
+                    aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="/">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">小哥</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class="">
+                    <a href="/">
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-list"></i>分类
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/categories/Personal-notes/">Personal notes</a>
+                        </li>
+                        
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>标签
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/javascript-basis/">javascript-basis</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Interview-questions/">Interview questions</a>
+                        </li>
+                        
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/about">
+                        <i class="fa fa-/"></i>关于我
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="/">小哥</a>
+        >
+        <span>JS基础-存储</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2018/01/31/JS基础-存储/">JS基础-存储</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/Interview-questions/">Interview questions</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2018-01-31
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-eye"></i>
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2018/01/31/JS基础-存储/">JS基础-存储</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2018-01-31
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/Interview-questions/">Interview questions</a>
+                
+                
+                
+                <i class="fa fa-eye"></i>
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <h4>loaclStorage,cookie,sessionStorage</h4>
+
+<ul>
+<li>本地存储</li>
+<li><p>把一些信息存储在<code>当前浏览器</code> <code>指定域下</code>的某一个地方(存储到物理硬盘中)</p>
+<ol>
+<li>在谷歌浏览器中存储的信息,在IE浏览器中无法获取 , 因为本地存储是存在当前浏览器中的某个位置的</li>
+<li>不能跨域传输 : 在京东下存储的信息 , 在淘宝域下不能获取到(也是为了保证信息的安全性)</li>
+<li>本地存储并不安全 , 可以可到每个浏览器存储信息的位置 , 然后把信息进行解码编译 , 导致客户端一些存储的信息泄露</li>
+</ol>
+<ul>
+<li>cookie</li>
+<li>webStorage : loaclStorage sessionStorage</li>
+<li>IndexedDB</li>
+<li>WebSQL</li>
+<li>Cache Stroage</li>
+<li>….</li>
+</ul>
+</li>
+<li><p>服务器存储</p>
+</li>
+<li><p>把信息存储在指定的服务器中(真实项目中大部分都是基于服务器进行存储的)</p>
+<ul>
+<li>session</li>
+<li>服务器端数据库存储</li>
+<li>服务器端缓存存储</li>
+</ul>
+</li>
+</ul>
+<h4>localStorage VS sessionStorage</h4>
+
+<ul>
+<li><p>他们都是H5中新增加的API(不兼容低版本浏览器 , 常应用于移动端开发)</p>
+<ul>
+<li>loaclStorage : 本地永久存储(只要不手动删除 , 本地就存储着)</li>
+<li>sessionStroage : 本地会话存储 , 当前页面关闭 , 代表着会话结束 , 会把存储的信息自动清除(刷新页面不会清除)</li>
+</ul>
+</li>
+<li><p>都支持下一使用方法 : </p>
+<ol>
+<li>setItem([key],[value]) : 通过键值对的方式把信息存储在客户端本地(存储在本地的信息值都是字符串格式的)</li>
+<li>getItem([key]) : 获取本地存储信息中指定属性名的属性值</li>
+<li>removeItem([key]) : 把本地存储信息中指定属性名的信息删除掉</li>
+<li>clear() : 把本地存储的信息都删除掉(清空: 只能清空当前浏览器自己域下的信息)</li>
+<li>key([index]) : 本地存储的信息是有一定的顺序的(一般都是按照存储的先后顺序) , 我们可以把所有存储的信息理解为一个信息集合 , key就是通过索引获取这个集合中指定位置的属性名信息的</li>
+</ol>
+</li>
+</ul>
+<h4>loaclStorage VS cookie</h4>
+
+<ul>
+<li><p>cookie 是一个非常常用的本地存储方式 , 在没有loaclStorage之前 , 基本上使用的都是cookie</p>
+<ol>
+<li><p>关于兼容问题</p>
+<ul>
+<li>cookie兼容所有浏览器</li>
+<li>loaclStorage IE6~8不兼容</li>
+<li>项目中PC端开发 , 如果需要存储的信息比较重要(例如: 登录信息 , 购物车信息等) , 需要兼容的,只能用cookie , 其余不需要考虑兼容的 , 根据需求自己选择</li>
+</ul>
+</li>
+<li><p>时效性</p>
+<ul>
+<li>cookie有过期时间(可以自己设置 , 一般都不会设置很长)</li>
+<li>loaclStorage没有过期时间 , 只要自己不手动清除 , 永久存储在本地</li>
+<li>使用360等安全位置清理垃圾的时候 , 或者使用浏览器自带的清理工具的时候 , 都极有可能会把本地存储的cookie都干掉 , 但是目前是干不掉loaclStorage存储的信息的</li>
+<li>用户可能出于安全角度 , 禁止记录cookie , 例如浏览器的无痕浏览器模式或者隐私模式</li>
+</ul>
+</li>
+<li><p>存储大小</p>
+<ul>
+<li>cokkie允许一个域下最多可以存储4kb左右的内容</li>
+<li>localStorage允许一个域下最多可以存储 5 MB左右的内容<br>项目中基于本地存储 , 存储的信息量不会特别多(使用loaclStorage存储的可能还多一些) , 大量的信息都需要基于服务器进行存储</li>
+</ul>
+</li>
+<li><p>处理机制</p>
+<ul>
+<li>cookie不是完全的本地存储 , 在我们使用cookie的时候 , 需要客户端和服务器端进行相关的通信处理(cookie总会在客户端和服务器端来回进行传输)</li>
+<li>loaclStorage是完整的本地存储 , 和服务器端没有半毛线关系</li>
+</ul>
+</li>
+<li><p>安全性</p>
+<ul>
+<li>不管cookie还是loaclStorage都是本地明文存储 , 控制台 - &gt; Application 可以看到存储的内容</li>
+<li>重要的信息不建议在本地进行存储(例如 : 用户名 , 密码 , 手机等) , 如果非要存储 , 一定要做好加密工作</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+
+    </div>
+</article>
+
+
+<div id="comments-template"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script>
+	if(!window.commentConfig) {
+      window.commentConfig = {}
+      window.commentConfig.title = 'JS基础-存储'
+    }
+</script>
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get"
+              action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            小哥
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="/imgs/avatar.jpg" width="140" height="140"
+                 alt="个人头像" class="author-image">
+            <p class="author-description"><p>个人笔记</p>
+</p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    <aside id="sidebar-hot_posts">
+    <div class="panel panel-gal hot hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-fire"></i>
+            最热文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/31/JS基础-JSONP/">JS基础-JSONP</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/31/JS基础-存储/">JS基础-存储</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/30/JS基础-AJAX同步异步/">JS基础-AJAX同步异步</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/30/JS基础-http和ajax/">JS基础-http和ajax</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/30/JS基础-常见的性能优化/">JS基础-常见的性能优化</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/30/JS基础-DOM0VSDOM2/">JS基础-DOM0VSDOM2</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/30/JS基础-DOM0VSDOM2/">JS基础-DOM0VSDOM2</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/23/JS基础-JSON/">JS基础-JSON</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/30/JS基础-http和ajax/">JS基础-http和ajax</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/26/JS基础-常用的ES6语法/">JS基础-常用的ES6语法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/24/JS基础-盒子模型/">JS基础-盒子模型</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/24/JS基础-正则常用方法和应用/">JS基础-正则常用方法和应用</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+                <li class="">
+                    <a href="/2018/01/31/JS基础-存储/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                <li class="">
+                    <a href="/2018/01/31/JS基础-存储/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                <li class="">
+                    <a href="/2018/01/31/JS基础-存储/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/javascript-basis/" style="font-size: 15.40296983880371px;" class="tag-cloud-link">javascript-basis</a>
+    
+    <a href="/tags/Interview-questions/" style="font-size: 16.371948585078094px;" class="tag-cloud-link">Interview questions</a>
+    
+</div>
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="https://www.baidu.com/" target="_blank">百度</a>
+    </li>
+    
+</div>
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/xiexiaoge/" target="_blank">Github</a>
+    </li>
+    
+    <li>
+        <a href="https://www.zhihu.com" target="_blank">知乎</a>
+    </li>
+    
+</div>
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 小哥 Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+<script src="/js/oni.js"></script>
+
+
+<script>
+    window.hot_posts_count = '5'
+    // window.use_leancloud = 'true'
+</script>
+<script src="/js/comment/leancloud.js"></script>
+
+
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    if(window.commentConfig) {
+      window.commentConfig.owner = 'xiexiaoge'
+      window.commentConfig.repo = 'Blogcomment'
+      window.commentConfig.client_id = 'd699fd54898337e1d4ad'
+      window.commentConfig.client_secret = '17d2e5400ac2a47478689dccc1a0e22ef8cefe36'
+      window.commentConfig.redirect_uri = 'null'
+    } else {
+      window.commentConfig = {
+        owner: 'xiexiaoge',
+        repo: 'Blogcomment',
+        client_id: 'd699fd54898337e1d4ad',
+        client_secret: '17d2e5400ac2a47478689dccc1a0e22ef8cefe36',
+        redirect_uri: 'null'
+      }
+    }
+</script>
+<script src="/js/comment/gitment.js"></script>
+
+</html>
