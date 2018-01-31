@@ -272,7 +272,7 @@
 <ul>
 <li>exec有自己的局限性 : 执行一次exec 只能捕获到一个和正则匹配的结果(即使加了修饰符g) , 如果需要都捕获到 , 我们需要执行 N 次exec方法才可以</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> <span class="built_in">RegExp</span>.prototype.myExecAll=<span class="function"><span class="keyword">function</span> <span class="title">myExecAll</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">//=&gt;this:当前需要处理的正则</span></span><br><span class="line">   <span class="keyword">var</span> str = <span class="built_in">arguments</span>[<span class="number">0</span>]||<span class="string">""</span>,result=[];</span><br><span class="line">   <span class="keyword">var</span> ary = <span class="keyword">this</span>.exec(str);</span><br><span class="line">   <span class="keyword">if</span>(!<span class="keyword">this</span>.global)&#123;</span><br><span class="line">        <span class="keyword">return</span> ary</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">while</span>(ary)&#123;</span><br><span class="line">        result.push(ary[<span class="number">0</span>]);</span><br><span class="line">        ary=<span class="keyword">this</span>.exec(str);</span><br><span class="line">  &#125; </span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"回首2017展望2018"</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\d+/g</span>;</span><br><span class="line">reg.myExecAll();</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> <span class="built_in">RegExp</span>.prototype.myExecAll=<span class="function"><span class="keyword">function</span> <span class="title">myExecAll</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">//=&gt;this:当前需要处理的正则</span></span><br><span class="line">   <span class="keyword">var</span> str = <span class="built_in">arguments</span>[<span class="number">0</span>]||<span class="string">""</span>,result=[];</span><br><span class="line">   <span class="keyword">var</span> ary = <span class="keyword">this</span>.exec(str);</span><br><span class="line">   <span class="keyword">if</span>(!<span class="keyword">this</span>.global)&#123;</span><br><span class="line">        <span class="keyword">return</span> ary   <span class="comment">//如果没有全局运算符g</span></span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">while</span>(ary)&#123;</span><br><span class="line">        result.push(ary[<span class="number">0</span>]);</span><br><span class="line">        ary=<span class="keyword">this</span>.exec(str);</span><br><span class="line">  &#125; </span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"回首2017展望2018"</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\d+/g</span>;</span><br><span class="line">reg.myExecAll();</span><br></pre></td></tr></table></figure>
 <h4>使用字符串中的match实现捕获</h4>
 
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"回首2017展望2018"</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\d+/g</span>;</span><br><span class="line">str.match(reg)<span class="comment">//=&gt;["2017","2018"];</span></span><br></pre></td></tr></table></figure>
@@ -476,25 +476,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/31/JS基础-JSONP/">JS基础-JSONP</a>
+                    <a href="/2018/01/23/JS基础-函数的三种角色/">JS基础-函数的三种角色</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/21/JS基础-原型和原型链/">JS基础-原型和原型链</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/01/25/JS基础-定时器和同异步/">JS基础-定时器和同异步</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/01/30/JS基础-常见的性能优化/">JS基础-常见的性能优化</a>
+                    <a href="/2018/01/26/JS基础-常用的ES6语法/">JS基础-常用的ES6语法</a>
                 </span>
             </li>
             
@@ -506,7 +494,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/26/JS基础-检测数据类型/">JS基础-检测数据类型</a>
+                    <a href="/2018/01/24/JS基础-盒子模型/">JS基础-盒子模型</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/21/JS基础-面向对象/">JS基础-面向对象</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/24/JS基础-正则常用方法和应用/">JS基础-正则常用方法和应用</a>
                 </span>
             </li>
             
@@ -531,9 +531,9 @@
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/javascript-basis/" style="font-size: 17.40743326121746px;" class="tag-cloud-link">javascript-basis</a>
+    <a href="/tags/javascript-basis/" style="font-size: 10.856893596542426px;" class="tag-cloud-link">javascript-basis</a>
     
-    <a href="/tags/Interview-questions/" style="font-size: 14.413966426679972px;" class="tag-cloud-link">Interview questions</a>
+    <a href="/tags/Interview-questions/" style="font-size: 19.620866842000105px;" class="tag-cloud-link">Interview questions</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
