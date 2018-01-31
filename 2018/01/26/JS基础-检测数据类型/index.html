@@ -296,7 +296,7 @@
 <li><p>在Object这个类的原型上也有一个方法toString,但是这个方法并不是把值转换为字符串,而是<code>返回当前值的所属类详细信息,固定结构: [object 所属类]</code></p>
 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=&#123;<span class="attr">name</span>:<span class="string">"xxx"</span>&#125;;</span><br><span class="line">obj.toString();<span class="comment">//=&gt;"[object Object]"  调取的正是Object.prototype.toString</span></span><br><span class="line">=&gt;首先执行<span class="built_in">Object</span>.prototype.toString方法</span><br><span class="line">这个方法中的<span class="keyword">this</span>就是我们操作的数值</span><br><span class="line"><span class="built_in">Object</span>.prototype.toString执行的时候会返回当前方法中thsi的所属类信息</span><br><span class="line">也就是,向知道谁的所属类信息,我们就把这个toString方法执行,并且让<span class="keyword">this</span>变为我们检测的这个数据值,那么方法返回的结果就是当前检测这个值的所属类的信息</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=&#123;<span class="attr">name</span>:<span class="string">"xxx"</span>&#125;;</span><br><span class="line">obj.toString();<span class="comment">//=&gt;"[object Object]"  调取的正是Object.prototype.toString</span></span><br><span class="line">=&gt;首先执行<span class="built_in">Object</span>.prototype.toString方法</span><br><span class="line">这个方法中的<span class="keyword">this</span>就是我们操作的数值</span><br><span class="line"><span class="built_in">Object</span>.prototype.toString执行的时候会返回当前方法中<span class="keyword">this</span>的所属类信息</span><br><span class="line">也就是,向知道谁的所属类信息,我们就把这个toString方法执行,并且让<span class="keyword">this</span>变为我们检测的这个数据值,那么方法返回的结果就是当前检测这个值的所属类的信息</span><br></pre></td></tr></table></figure>
 <h5>使用toString检测数据类型,不管你是啥值,我们都可以正常检测出需要的结果</h5>
     </div>
 </article>
@@ -432,37 +432,37 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/23/JS基础-JSON/">JS基础-JSON</a>
+                    <a href="/2018/01/30/JS基础-DOM0VSDOM2/">JS基础-DOM0VSDOM2</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/20/JS基础-this问题/">JS基础-this问题</a>
+                    <a href="/2018/01/30/JS基础-DOM事件/">JS基础-DOM事件</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/20/JS基础-作用域和闭包/">JS基础-作用域和闭包</a>
+                    <a href="/2018/01/30/JS基础-事件冒泡-委托/">JS基础-事件冒泡,委托</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/21/JS基础-原型和原型链/">JS基础-原型和原型链</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/01/24/JS基础-正则常用方法和应用/">JS基础-正则常用方法和应用</a>
+                    <a href="/2018/01/23/JS基础-括号表达式和i++,++i/">JS基础-括号表达式和i++,++i</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2018/01/24/JS基础-盒子模型/">JS基础-盒子模型</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/24/JS基础­正则常用表达式/">JS基础­正则常用表达式</a>
                 </span>
             </li>
             
@@ -487,9 +487,9 @@
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/javascript-basis/" style="font-size: 17.788975026617177px;" class="tag-cloud-link">javascript-basis</a>
+    <a href="/tags/javascript-basis/" style="font-size: 18.831485606833873px;" class="tag-cloud-link">javascript-basis</a>
     
-    <a href="/tags/Interview-questions/" style="font-size: 16.0460698821554px;" class="tag-cloud-link">Interview questions</a>
+    <a href="/tags/Interview-questions/" style="font-size: 19.97647991295587px;" class="tag-cloud-link">Interview questions</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
