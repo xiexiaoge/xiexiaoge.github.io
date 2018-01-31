@@ -259,7 +259,7 @@
 <blockquote>
 <p><strong>利用事件的冒泡传播机制完成(mouseenter不存在委托机制,因为它不存在冒泡传播)</strong></p>
 </blockquote>
-<p style="line-height:25px;">一个容器中很多元素的同一个事件行为都要绑定方法,此时我们没有必要在获取所有元素,一个个的绑定方法了,我们只需要给最外层元素的这个事件绑定一个方法,这样不管里面哪一个元素的这个事件行为被触发,都会利用冒泡传播机制,把外层容器绑定的那个方法执行,在方法执行的时候,我们可以根据事件源判断出操作的是哪个元素,从而做不同的事件(使用事件委托这样完成的操作i一个个的单独事件绑定性能提高50%左右)</p>
+<p style="line-height:25px;">一个容器中很多元素的同一个事件行为都要绑定方法,此时我们没有必要在获取所有元素,一个个的绑定方法了,我们只需要给最外层元素的这个事件绑定一个方法,这样不管里面哪一个元素的这个事件行为被触发,都会利用冒泡传播机制,把外层容器绑定的那个方法执行,在方法执行的时候,我们可以根据事件源判断出操作的是哪个元素,从而做不同的事件(使用事件委托这样完成的操作一个个的单独事件绑定性能提高50%左右)</p>
     </div>
 </article>
 
@@ -394,19 +394,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/30/JS基础-AJAX同步异步/">JS基础-AJAX同步异步</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/01/30/JS基础-DOM事件/">JS基础-DOM事件</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/01/21/JS基础-原型和原型链/">JS基础-原型和原型链</a>
+                    <a href="/2018/01/21/JS基础-单例模式/">JS基础-单例模式</a>
                 </span>
             </li>
             
@@ -418,13 +406,25 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/19/JS基础-数据类型的核心操作原理/">JS基础-数据类型的核心操作原理</a>
+                    <a href="/2018/01/31/JS基础-存储/">JS基础-存储</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/26/JS基础-检测数据类型/">JS基础-检测数据类型</a>
+                    <a href="/2018/01/30/JS基础-常见的性能优化/">JS基础-常见的性能优化</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/21/JS基础-构造函数模式/">JS基础-构造函数模式</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/21/JS基础-面向对象/">JS基础-面向对象</a>
                 </span>
             </li>
             
@@ -449,9 +449,9 @@
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/javascript-basis/" style="font-size: 10.13779010548626px;" class="tag-cloud-link">javascript-basis</a>
+    <a href="/tags/javascript-basis/" style="font-size: 14.240842508002563px;" class="tag-cloud-link">javascript-basis</a>
     
-    <a href="/tags/Interview-questions/" style="font-size: 13.012172557049325px;" class="tag-cloud-link">Interview questions</a>
+    <a href="/tags/Interview-questions/" style="font-size: 15.656214087832147px;" class="tag-cloud-link">Interview questions</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
