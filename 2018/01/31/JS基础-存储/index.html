@@ -254,7 +254,7 @@
         </center>
     </div>
     <div class="content-article">
-        <h4>loaclStorage,cookies,sessionStorage</h4>
+        <h4>loaclStorage,cookie,sessionStorage</h4>
 
 <ul>
 <li>本地存储</li>
@@ -265,7 +265,7 @@
 <li>本地存储并不安全 , 可以可到每个浏览器存储信息的位置 , 然后把信息进行解码编译 , 导致客户端一些存储的信息泄露</li>
 </ol>
 <ul>
-<li>cookies</li>
+<li>cookie</li>
 <li>webStorage : loaclStorage sessionStorage</li>
 <li>IndexedDB</li>
 <li>WebSQL</li>
@@ -302,41 +302,41 @@
 </ol>
 </li>
 </ul>
-<h4>loaclStorage VS cookies</h4>
+<h4>loaclStorage VS cookie</h4>
 
 <ul>
-<li><p>cookies 是一个非常常用的本地存储方式 , 在没有loaclStorage之前 , 基本上使用的都是cookies</p>
+<li><p>cookie 是一个非常常用的本地存储方式 , 在没有loaclStorage之前 , 基本上使用的都是cookie</p>
 <ol>
 <li><p>关于兼容问题</p>
 <ul>
-<li>cookies兼容所有浏览器</li>
+<li>cookie兼容所有浏览器</li>
 <li>loaclStorage IE6~8不兼容</li>
-<li>项目中PC端开发 , 如果需要存储的信息比较重要(例如: 登录信息 , 购物车信息等) , 需要兼容的,只能用cookies , 其余不需要考虑兼容的 , 根据需求自己选择</li>
+<li>项目中PC端开发 , 如果需要存储的信息比较重要(例如: 登录信息 , 购物车信息等) , 需要兼容的,只能用cookie , 其余不需要考虑兼容的 , 根据需求自己选o</li>
 </ul>
 </li>
 <li><p>时效性</p>
 <ul>
-<li>cookies有过期时间(可以自己设置 , 一般都不会设置很长)</li>
+<li>cookie有过期时间(可以自己设置 , 一般都不会设置很长)</li>
 <li>loaclStorage没有过期时间 , 只要自己不手动清除 , 永久存储在本地</li>
-<li>使用360等安全位置清理垃圾的时候 , 或者使用浏览器自带的清理工具的时候 , 都极有可能会把本地存储的cookies都干掉 , 但是目前是干不掉loaclStorage存储的信息的</li>
-<li>用户可能出于安全角度 , 禁止记录cookies , 例如浏览器的无痕浏览器模式或者隐私模式</li>
+<li>使用360等安全位置清理垃圾的时候 , 或者使用浏览器自带的清理工具的时候 , 都极有可能会把本地存储的cookie都干掉 , 但是目前是干不掉loaclStorage存储的信息的</li>
+<li>用户可能出于安全角度 , 禁止记录cookie , 例如浏览器的无痕浏览器模式或者隐私模式</li>
 </ul>
 </li>
 <li><p>存储大小</p>
 <ul>
-<li>cookies允许一个域下最多可以存储4kb左右的内容</li>
+<li>cookie允许一个域下最多可以存储4kb左右的内容</li>
 <li>localStorage允许一个域下最多可以存储 5 MB左右的内容<br>项目中基于本地存储 , 存储的信息量不会特别多(使用loaclStorage存储的可能还多一些) , 大量的信息都需要基于服务器进行存储</li>
 </ul>
 </li>
 <li><p>处理机制</p>
 <ul>
-<li>cookies不是完全的本地存储 , 在我们使用cookies的时候 , 需要客户端和服务器端进行相关的通信处理(cookies总会在客户端和服务器端来回进行传输)</li>
+<li>cookie不是完全的本地存储 , 在我们使用cookie的时候 , 需要客户端和服务器端进行相关的通信处理(cookie总会在客户端和服务器端来回进行传输)</li>
 <li>loaclStorage是完整的本地存储 , 和服务器端没有半毛线关系</li>
 </ul>
 </li>
 <li><p>安全性</p>
 <ul>
-<li>不管cookies还是loaclStorage都是本地明文存储 , 控制台 - &gt; Application 可以看到存储的内容</li>
+<li>不管cookie还是loaclStorage都是本地明文存储 , 控制台 - &gt; Application 可以看到存储的内容</li>
 <li>重要的信息不建议在本地进行存储(例如 : 用户名 , 密码 , 手机等) , 如果非要存储 , 一定要做好加密工作</li>
 </ul>
 </li>
@@ -484,31 +484,31 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/01/30/JS基础-AJAX同步异步/">JS基础-AJAX同步异步</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/01/26/JS基础-常用的ES6语法/">JS基础-常用的ES6语法</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/01/25/JS基础-懒加载/">JS基础-懒加载</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/01/30/JS基础-常见的性能优化/">JS基础-常见的性能优化</a>
+                    <a href="/2018/01/31/JS基础-存储/">JS基础-存储</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2018/01/21/JS基础-构造函数模式/">JS基础-构造函数模式</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/26/JS基础-检测数据类型/">JS基础-检测数据类型</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/23/JS基础-括号表达式和i++,++i/">JS基础-括号表达式和i++,++i</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/01/21/JS基础-面向对象/">JS基础-面向对象</a>
                 </span>
             </li>
             
@@ -533,9 +533,9 @@
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/javascript-basis/" style="font-size: 17.083523245442095px;" class="tag-cloud-link">javascript-basis</a>
+    <a href="/tags/javascript-basis/" style="font-size: 10.0128456276254px;" class="tag-cloud-link">javascript-basis</a>
     
-    <a href="/tags/Interview-questions/" style="font-size: 8.41250467706439px;" class="tag-cloud-link">Interview questions</a>
+    <a href="/tags/Interview-questions/" style="font-size: 16.11964779258328px;" class="tag-cloud-link">Interview questions</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
